@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="style.css">
+    <title>CRAVETCHI</title>
+    <meta charset="UTF-8">
+    <style>
+    
+
+
+      table{
+       border-collapse: collapse;
+      }
+      td{
+        padding: 8px;
+      }
+      body{
+	  background-color: #dae8e5;
+      }
+      img{
+          border: 1px solid #000000;
+          border-radius: 2px;
+          padding: 5px;
+          margin-right: 7px;
+          margin-bottom: 7px;
+      }
+      p{
+          font-family: Garamond, serif;
+          font-size: 18px;
+          margin-top: 5px;
+          text-align: justify;
+      }
+      hr{
+	  margin-right: 400px;
+	  margin-left: 400px;
+      }
+
+
+    </style>
+  </head>
+  <body>
+    
+<center>
+    <font font-family="Times New Roman, Times, serif">
+		  <big>C R A V E T C H I</big>
+		</font>
+</center>
+    
+     
+    <hr>
+    <div>
+      <center>
+	<table style="width: 800px;">
+	  <tr>
+	    <td>
+	      <img src="pictureofme.JPG" alt="" id="img1" style="float: left;">
+	    </td>
+	    <td>
+	     
+	      <p>
+		"...an anarch in space, a metahistorian in time -
+		committed to neither political present nor tradition; I am blank
+		and also open and potent in any direction." <i>~E. Jünger</i>
+	      </p>
+	      
+		<p>
+		Info
+		</p>
+	    </td>
+	  </tr>
+	</table>
+      </center>
+    </div>
+    <hr>
+  </body>
+</html>
