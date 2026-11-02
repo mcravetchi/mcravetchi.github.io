@@ -1,34 +1,56 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CRAVETCHI</title>
   <link rel="stylesheet" href="style.css">
 
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       background: #C8BFA8;
       margin: 0;
+      color: #000;
     }
 
-    hr {
-      width: 800px;
+    .page {
+      width: min(800px, calc(100% - 32px));
+      margin: 25px auto 35px;
+    }
+
+    .site-title {
+      text-align: center;
+      font: 22px "Times New Roman", Times, serif;
+      letter-spacing: 5px;
+      margin-bottom: 12px;
+    }
+
+    .rule {
+      width: 100%;
       border: 0;
       border-top: 1px solid #000;
+      margin: 12px 0;
     }
 
-    table {
-      width: 800px;
+    .intro-table {
+      width: 100%;
       border-collapse: collapse;
+      margin: 10px 0;
     }
 
-    td {
+    .intro-table td {
       padding: 8px;
       vertical-align: top;
     }
 
-    img {
-      max-width: 200px;
+    .intro-table img {
+      display: block;
+      max-width: 190px;
+      width: 100%;
       height: auto;
       padding: 5px;
       border: 1px solid #000;
@@ -43,74 +65,173 @@
       line-height: 1.2;
     }
 
-    .essays {
-      display: inline-block;
-      margin: 20px 0;
-      border: 1px solid #000;
+    /* Three-column index */
+
+    .index-table {
+      width: 100%;
+      table-layout: fixed;
+      border-collapse: collapse;
+      margin: 16px 0;
     }
 
-    .essays a {
+    .index-table col:nth-child(1) {
+      width: 58%;
+    }
+
+    .index-table col:nth-child(2) {
+      width: 25%;
+    }
+
+    .index-table col:nth-child(3) {
+      width: 17%;
+    }
+
+    .index-table td {
+      height: 22px;
+      padding: 4px 8px;
+      border: 1px solid #000;
+      vertical-align: middle;
+      font: 14px "Times New Roman", Times, serif;
+      overflow-wrap: break-word;
+    }
+
+    .index-table a {
       display: block;
-      padding: 6px 20px;
       color: #000;
-      font: 14px "Times New Roman", serif;
       text-decoration: none;
     }
 
-    .essays a:hover {
+    .index-table a:hover {
       background: #000;
       color: #dae8e5;
+    }
+
+    .index-table .heading-cell {
+      font-weight: bold;
+    }
+
+    @media (max-width: 620px) {
+      .intro-table,
+      .intro-table tbody,
+      .intro-table tr,
+      .intro-table td {
+        display: block;
+        width: 100%;
+      }
+
+      .intro-table img {
+        max-width: 170px;
+        margin: 0 auto 12px;
+      }
+
+      .index-table td {
+        padding: 4px;
+        font-size: 12px;
+      }
     }
   </style>
 </head>
 
 <body>
 
-<center>
-    <font font-family="Times New Roman, Times, serif">
-		  <big>C R A V E T C H I</big>
-		</font>
-</center>
+  <main class="page">
 
-<center>
+    <div class="site-title">
+      C R A V E T C H I
+    </div>
 
-  <hr>
+    <hr class="rule">
 
-  <table>
-    <tr>
-      <td>
-        <img src="picturereal.jpg" alt="">
-      </td>
+    <table class="intro-table">
+      <tr>
+        <td>
+          <img src="picturereal.jpg" alt="">
+        </td>
 
-      <td>
-        <p>
-          "...an anarch in space, a metahistorian in time -
-          committed to neither political present nor tradition; I am blank
-          and also open and potent in any direction."
-          <i>~E. Jünger</i>
-        </p>
+        <td>
+          <p>
+            "...an anarch in space, a metahistorian in time -
+            committed to neither political present nor tradition; I am blank
+            and also open and potent in any direction."
+            <i>~E. Jünger</i>
+          </p>
 
-		  <br>
-		  
-        <p>
-        Onto-historical research seeks to exhaust the transcendental problematics of phenomenological ontology.
-			It studies history as the guiding clue for the investigations undertaken. The crux of this research lies with
-			the fate of the question concerning Being; truth, meaning, sense, and so on. At once custodial and radical.
-        </p>
-      </td>
-    </tr>
-  </table>
+          <br>
 
-  <hr>
+          <p>
+            Onto-historical research seeks to exhaust the transcendental
+            problematics of phenomenological ontology. It studies history
+            as the guiding clue for the investigations undertaken. The crux
+            of this research lies with the fate of the question concerning
+            Being; truth, meaning, sense, and so on. At once custodial and radical.
+          </p>
+        </td>
+      </tr>
+    </table>
 
-	 <div class="essays">
+    <hr class="rule">
 
-    <a href="essay1.html">I</a>
-    <a href="essay2.html">II</a>
-    <a href="essay3.html">III</a>
-  </div>
-	
-</center>
+    <!-- INDEX TABLE: 19 rows, 4 rows, and 2 rows -->
 
-</body
+    <table class="index-table">
+      <colgroup>
+        <col>
+        <col>
+        <col>
+      </colgroup>
+
+      <tbody>
+
+        <!-- Row 1: first row of all three columns -->
+        <tr>
+          <td class="heading-cell">
+            Sidetracks: A Rewriting of Logical Investigations
+          </td>
+          <td class="heading-cell">TO BE FULFILLED</td>
+          <td class="heading-cell">TO BE FULFILLED</td>
+        </tr>
+
+        <!-- Row 2: second row of all three columns -->
+        <tr>
+          <td><a href="sidetracks-1.html">1/18</a></td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+
+        <!-- Rows 3 and 4: first and second columns only -->
+        <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+
+        <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+
+        <!-- Rows 5–19: first column only -->
+        <tr><td>&nbsp;</td></tr>
+        <tr><td>&nbsp;</td></tr>
+        <tr><td>&nbsp;</td></tr>
+        <tr><td>&nbsp;</td></tr>
+        <tr><td>&nbsp;</td></tr>
+        <tr><td>&nbsp;</td></tr>
+        <tr><td>&nbsp;</td></tr>
+        <tr><td>&nbsp;</td></tr>
+        <tr><td>&nbsp;</td></tr>
+        <tr><td>&nbsp;</td></tr>
+        <tr><td>&nbsp;</td></tr>
+        <tr><td>&nbsp;</td></tr>
+        <tr><td>&nbsp;</td></tr>
+        <tr><td>&nbsp;</td></tr>
+        <tr><td>&nbsp;</td></tr>
+
+      </tbody>
+    </table>
+
+    <hr class="rule">
+
+  </main>
+
+</body>
 </html>
