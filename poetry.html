@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CRAVETCHI — POETRY</title>
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #C8BFA8;
+      margin: 0;
+      color: #000;
+    }
+
+    .page {
+      width: min(1000px, calc(100% - 40px));
+      margin: 25px auto 50px;
+    }
+
+    .site-title {
+      text-align: center;
+      font: 22px "Times New Roman", serif;
+      letter-spacing: 5px;
+      margin-bottom: 12px;
+    }
+
+    .rule {
+      width: 100%;
+      border: 0;
+      border-top: 1px solid #000;
+      margin: 12px 0;
+    }
+
+    .page-heading {
+      text-align: center;
+      font: 17px "Times New Roman", serif;
+      letter-spacing: 3px;
+      margin: 28px 0 55px;
+    }
+
+    /* PATCHWORK GRID */
+
+    .poem-grid {
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      grid-template-rows: auto auto auto;
+      column-gap: 16px;
+      row-gap: 55px;
+      align-items: start;
+    }
+
+    /* Individual text patches */
+
+    .patch {
+      border: 1px solid #000;
+      padding: 15px 17px;
+      min-width: 0;
+      background: transparent;
+    }
+
+    .patch-number {
+      font: 12px "Times New Roman", serif;
+      margin-bottom: 15px;
+    }
+
+    .patch p {
+      font: 18px Garamond, serif;
+      line-height: 1.35;
+      text-align: left;
+      white-space: pre-line;
+      margin: 0;
+    }
+
+    /* Patch positions */
+
+    .patch-1 {
+      grid-column: 1 / span 5;
+      grid-row: 1;
+      margin-top: 0;
+    }
+
+    .patch-2 {
+      grid-column: 8 / span 5;
+      grid-row: 1;
+      margin-top: 75px;
+    }
+
+    .patch-3 {
+      grid-column: 4 / span 5;
+      grid-row: 2;
+      margin-top: 5px;
+    }
+
+    .patch-4 {
+      grid-column: 10 / span 3;
+      grid-row: 2;
+      margin-top: 90px;
+    }
+
+    .patch-5 {
+      grid-column: 1 / span 4;
+      grid-row: 3;
+      margin-top: 35px;
+    }
+
+    .patch-6 {
+      grid-column: 7 / span 5;
+      grid-row: 3;
+      margin-top: 0;
+    }
+
+    .return-link {
+      display: inline-block;
+      margin-top: 65px;
+      border: 1px solid #000;
+    }
+
+    .return-link a {
+      display: block;
+      padding: 6px 20px;
+      color: #000;
+      font: 14px "Times New Roman", serif;
+      text-decoration: none;
+    }
+
+    .return-link a:hover {
+      background: #000;
+      color: #dae8e5;
+    }
+
+    /* Responsive arrangement */
+
+    @media (max-width: 650px) {
+      .poem-grid {
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+        grid-template-rows: auto;
+        row-gap: 25px;
+      }
+
+      .patch-1 {
+        grid-column: 1 / span 5;
+        grid-row: auto;
+        margin-top: 0;
+      }
+
+      .patch-2 {
+        grid-column: 2 / span 5;
+        grid-row: auto;
+        margin-top: 0;
+      }
+
+      .patch-3 {
+        grid-column: 1 / span 5;
+        grid-row: auto;
+        margin-top: 0;
+      }
+
+      .patch-4 {
+        grid-column: 3 / span 4;
+        grid-row: auto;
+        margin-top: 0;
+      }
+
+      .patch-5 {
+        grid-column: 1 / span 4;
+        grid-row: auto;
+        margin-top: 0;
+      }
+
+      .patch-6 {
+        grid-column: 2 / span 5;
+        grid-row: auto;
+        margin-top: 0;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .poem-grid {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .patch {
+        width: 90%;
+      }
+
+      .patch:nth-child(even) {
+        align-self: flex-end;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="page">
+
+    <div class="site-title">
+      C R A V E T C H I
+    </div>
+
+    <hr class="rule">
+
+    <div class="page-heading">
+      P O E T R Y
+    </div>
+
+    <div class="poem-grid">
+
+      <!-- PATCH I -->
+      <div class="patch patch-1">
+        <div class="patch-number">I.</div>
+        <p>
+          she churned a gods away
+          from trees to trials to treasures
+          but not without a bite
+          then branches and a kiss
+          that is not for those without a fight
+          for the sight that sees her wish
+          that she withholds, withal pressures
+          then sets the world asway. 
+        </p>
+      </div>
+
+      <!-- PATCH II -->
+      <div class="patch patch-2">
+        <div class="patch-number">II.</div>
+        <p>
+[Insert second poem here.]
+        </p>
+      </div>
+
+      <!-- PATCH III -->
+      <div class="patch patch-3">
+        <div class="patch-number">III.</div>
+        <p>
+[Insert third poem here.]
+        </p>
+      </div>
+
+      <!-- PATCH IV -->
+      <div class="patch patch-4">
+        <div class="patch-number">IV.</div>
+        <p>
+[Insert fourth poem here.]
+        </p>
+      </div>
+
+      <!-- PATCH V -->
+      <div class="patch patch-5">
+        <div class="patch-number">V.</div>
+        <p>
+[Insert fifth poem here.]
+        </p>
+      </div>
+
+      <!-- PATCH VI -->
+      <div class="patch patch-6">
+        <div class="patch-number">VI.</div>
+        <p>
+[Insert sixth poem here.]
+        </p>
+      </div>
+
+    </div>
+
+    <a class="return-link" href="index.html">
+      RETURN TO INDEX
+    </a>
+
+    <hr class="rule">
+
+  </main>
+
+</body>
+</html>
