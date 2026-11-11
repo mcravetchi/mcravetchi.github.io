@@ -18,7 +18,7 @@
     }
 
     .page {
-      width: min(1000px, calc(100% - 40px));
+      width: min(1100px, calc(100% - 40px));
       margin: 25px auto 50px;
     }
 
@@ -48,7 +48,7 @@
     .search-container {
       display: flex;
       justify-content: center;
-      margin: 0 auto 55px;
+      margin: 0 auto 65px;
     }
 
     .poem-search {
@@ -92,26 +92,38 @@
       color: #C8BFA8;
     }
 
-    /* AUTOMATIC PATCH GRID */
+    /* SPORADIC PATCH GRID */
 
     .poem-grid {
       display: grid;
-      grid-template-columns: repeat(12, minmax(0, 1fr));
+
+      /* More precise horizontal positioning */
+      grid-template-columns: repeat(24, minmax(0, 1fr));
+
       grid-auto-flow: row;
-      column-gap: 16px;
-      row-gap: 55px;
+      column-gap: 9px;
+      row-gap: 85px;
       align-items: start;
     }
 
     /* INDIVIDUAL PATCHES */
 
     .patch {
-      grid-column: span var(--patch-span, 5);
+      grid-column:
+        var(--patch-start, 1) /
+        span var(--patch-span, 10);
+
       min-width: 0;
+
       border: 1px solid #000;
       padding: 15px 17px;
+
       background: transparent;
+
       margin-top: var(--patch-offset, 0px);
+
+      transform: rotate(var(--patch-rotation, 0deg));
+
       animation: patchAppear 0.55s ease both;
     }
 
@@ -125,10 +137,11 @@
       line-height: 1.35;
       text-align: left;
       white-space: pre-line;
+      overflow-wrap: anywhere;
       margin: 0;
     }
 
-    /* POEM ATTRIBUTION */
+    /* ATTRIBUTION */
 
     .patch-source {
       text-align: right;
@@ -143,16 +156,20 @@
     @keyframes patchAppear {
       from {
         opacity: 0;
-        transform: translateY(9px);
+        transform:
+          translateY(12px)
+          rotate(var(--patch-rotation, 0deg));
       }
 
       to {
         opacity: 1;
-        transform: translateY(0);
+        transform:
+          translateY(0)
+          rotate(var(--patch-rotation, 0deg));
       }
     }
 
-    /* SEARCH RESULTS */
+    /* SEARCH */
 
     .patch.hidden {
       display: none;
@@ -165,6 +182,7 @@
     .poem-grid.searching .patch {
       width: min(520px, 100%);
       margin: 0 auto 25px;
+      transform: none;
       animation: none;
     }
 
@@ -202,37 +220,44 @@
 
     /* TABLET */
 
-    @media (max-width: 650px) {
+    @media (max-width: 750px) {
+
       .poem-grid {
-        grid-template-columns: repeat(6, minmax(0, 1fr));
-        column-gap: 12px;
-        row-gap: 30px;
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+        column-gap: 10px;
+        row-gap: 55px;
       }
 
       .patch {
-        grid-column: span var(--mobile-span, 5);
+        grid-column:
+          var(--mobile-start, 1) /
+          span var(--mobile-span, 7);
+
         margin-top: var(--mobile-offset, 0px);
       }
+
     }
 
     /* SMALL MOBILE */
 
     @media (max-width: 420px) {
+
       .poem-grid:not(.searching) {
         display: flex;
         flex-direction: column;
         align-items: stretch;
-        gap: 30px;
+        gap: 35px;
       }
 
       .poem-grid:not(.searching) .patch {
-        width: 90%;
+        width: var(--mobile-width, 88%);
         margin-top: 0;
       }
 
       .poem-grid:not(.searching) .patch:nth-child(even) {
         align-self: flex-end;
       }
+
     }
 
   </style>
@@ -274,13 +299,16 @@
 
     </div>
 
-    <!-- POEMS -->
+
+    <!-- =================================
+         PATCHES
+         Add new patches anywhere here.
+         ================================= -->
 
     <div class="poem-grid" id="poemGrid">
 
-      <!-- =================================
-           PATCH I
-           ================================= -->
+
+      <!-- I -->
 
       <div class="patch" data-number="I">
 
@@ -304,9 +332,7 @@ then sets the world asway.
       </div>
 
 
-      <!-- =================================
-           PATCH II
-           ================================= -->
+      <!-- II -->
 
       <div class="patch" data-number="II">
 
@@ -328,9 +354,7 @@ jotted on their teeth.
       </div>
 
 
-      <!-- =================================
-           PATCH III
-           ================================= -->
+      <!-- III -->
 
       <div class="patch" data-number="III">
 
@@ -352,9 +376,7 @@ by distance unforgotten.
       </div>
 
 
-      <!-- =================================
-           PATCH IV
-           ================================= -->
+      <!-- IV -->
 
       <div class="patch" data-number="IV">
 
@@ -371,9 +393,7 @@ by distance unforgotten.
       </div>
 
 
-      <!-- =================================
-           PATCH V
-           ================================= -->
+      <!-- V -->
 
       <div class="patch" data-number="V">
 
@@ -393,9 +413,7 @@ absolution.
       </div>
 
 
-      <!-- =================================
-           PATCH VI
-           ================================= -->
+      <!-- VI -->
 
       <div class="patch" data-number="VI">
 
@@ -418,74 +436,82 @@ interdiction.
       </div>
 
 
+      <!-- VII -->
+
+      <div class="patch" data-number="VII">
+
+        <div class="patch-number">VII.</div>
+
+        <p>
+The poets I feel much fondness towards: Paul Celan, Friedrich Hölderlin, Velimir Khlebnikov, Alejandra Pizarnik, Georg Trakl
+        </p>
+
+        <div class="patch-source">
+          — over the course of my life thus far
+        </div>
+
+      </div>
+
+
+      <!-- VIII -->
+
+      <div class="patch" data-number="VIII">
+
+        <div class="patch-number">VIII.</div>
+
+        <p>
+Phenomenology must be pursued for opening the true question concerning the method of philosophy. But I believe that such an aim is driven by an underlying insecurity in philosophy: first, the manifestation of instability in method itself; second, the urgency of supplying mere intuition with a structural augmentation; third, the persuasiveness of this endevour; fourth, that the flirtation of its theoretical completion as true positivism – all of this, is rather the after-effect of an underlining abyssal negativity, the out-pacing of a transcendental scarring whose mark had struck its founder and put him in a state of perpetual beginning. In other words – at a loss, played around with; someone whose every intention, however genuine, was subverted, whose every effort to reclarify left him further dependent on that very void he desired to fulfill.
+        </p>
+
+        <div class="patch-source">
+          — a note on my attitude towards phenomenology
+        </div>
+
+      </div>
+
+
+      <!-- IX -->
+
+      <div class="patch" data-number="IX">
+
+        <div class="patch-number">IX.</div>
+
+        <p>
+
+        </p>
+
+        <div class="patch-source">
+          — a note on my attitude towards phenomenology
+        </div>
+
+      </div>
+
+
       <!-- =================================
            ADD NEW PATCHES BELOW THIS LINE
 
-           Copy the template:
+           Copy the following template:
 
-           <div class="patch" data-number="VII">
+           <div class="patch" data-number="X">
 
-             <div class="patch-number">VII.</div>
+             <div class="patch-number">X.</div>
 
              <p>
-             YOUR TEXT HERE
+               YOUR TEXT HERE
              </p>
 
              <div class="patch-source">
-               YOUR DATE OR SOURCE
+               YOUR SOURCE OR DATE
              </div>
 
            </div>
 
-           Change the numeral and contents.
-           Nothing else needs to be changed.
+           No CSS or JS changes needed.
            ================================= -->
 
-       <div class="patch" data-number="VII">
-
-             <div class="patch-number">VII.</div>
-
-             <p>
-            The poets I feel much fondness towards: Paul Celan, Friedrich Hölderlin, Velimir Khlebnikov, Alejandra Pizarnik, Georg Trakl
-             </p>
-
-             <div class="patch-source">
-               - over the course of my life thus far
-             </div>
-
-           </div>
-
-        <div class="patch" data-number="VII">
-
-             <div class="patch-number">VIII.</div>
-
-             <p>
-                               Phenomenology must be pursued for opening the true question concerning the method of philosophy. But I believe that such an aim is driven by an underlying insecurity in philosophy: first, the manifestation of instability in method itself; second, the urgency of supplying mere intuition with a structural augmentation; third, the persuasiveness of this endevour; fourth, that the flirtation of its theoretical completion as true positivism – all of this, is rather the after-effect of an underlining abyssal negativity, the out-pacing of a transcendental scarring whose mark had struck its founder and put him in a state of perpetual beginning. In other words – at a loss, played around with; someone whose every intention, however genuine, was subverted, whose every effort to reclarify left him further dependent on that very void he desired to fulfill.
-             </p>
-
-             <div class="patch-source">
-               - a note on my attitude towards phenomenology
-             </div>
-
-           </div>
-
-
-       <div class="patch" data-number="VII">
-
-             <div class="patch-number">VIII.</div>
-
-             <p>
-              
-             </p>
-
-             <div class="patch-source">
-               - a note on my attitude towards phenomenology
-             </div>
-
-           </div>
-      
 
     </div>
+
 
     <div class="no-results" id="noResults">
       NO MATCHING POEM.
@@ -503,7 +529,7 @@ interdiction.
   <script>
 
     /* =====================================
-       AUTOMATIC PATCH ARRANGEMENT
+       PATCH ARRANGEMENT
        ===================================== */
 
     const grid = document.getElementById("poemGrid");
@@ -512,46 +538,116 @@ interdiction.
     const searchInput = document.getElementById("searchInput");
     const noResults = document.getElementById("noResults");
 
-    // Automatically retrieve every patch.
+
     function getPatches() {
-      return Array.from(grid.querySelectorAll(".patch"));
+      return Array.from(
+        grid.querySelectorAll(".patch")
+      );
     }
 
-    // Randomize patch widths and offsets.
-    function randomizePatches() {
 
-      const patches = getPatches();
+    /* SHUFFLE */
 
-      // Shuffle the order of patches.
-      const shuffled = [...patches];
+    function shuffle(array) {
 
-      for (let i = shuffled.length - 1; i > 0; i--) {
+      const result = [...array];
+
+      for (let i = result.length - 1; i > 0; i--) {
 
         const j = Math.floor(Math.random() * (i + 1));
 
-        [shuffled[i], shuffled[j]] =
-          [shuffled[j], shuffled[i]];
+        [result[i], result[j]] =
+          [result[j], result[i]];
 
       }
 
-      // Randomize each patch's geometry.
-      shuffled.forEach((patch, index) => {
+      return result;
+    }
 
-        const desktopSpan =
-          Math.floor(Math.random() * 3) + 4;
 
-        const mobileSpan =
-          Math.floor(Math.random() * 2) + 4;
+    /* RANDOM NUMBER */
 
-        const desktopOffset =
-          Math.floor(Math.random() * 85);
+    function randomBetween(min, max) {
+      return Math.floor(
+        Math.random() * (max - min + 1)
+      ) + min;
+    }
 
-        const mobileOffset =
-          Math.floor(Math.random() * 25);
+
+    /* RANDOMIZE PATCHES */
+
+    function randomizePatches() {
+
+      const patches = shuffle(getPatches());
+
+      patches.forEach(patch => {
+
+        /*
+          DESKTOP:
+          24 columns.
+          Each patch can start anywhere.
+          Width varies independently.
+        */
+
+        const desktopSpan = randomBetween(5, 13);
+
+        const desktopStart = randomBetween(
+          1,
+          25 - desktopSpan
+        );
+
+        /*
+          TABLET:
+          12 columns.
+        */
+
+        const mobileSpan = randomBetween(4, 9);
+
+        const mobileStart = randomBetween(
+          1,
+          13 - mobileSpan
+        );
+
+        /*
+          VERTICAL DISPLACEMENT:
+          Creates irregular spacing.
+        */
+
+        const desktopOffset = randomBetween(0, 110);
+
+        const mobileOffset = randomBetween(0, 45);
+
+        /*
+          SLIGHT ROTATION:
+          Avoids an overly rigid geometric appearance.
+        */
+
+        const rotation = (
+          (Math.random() * 1.2) - 0.6
+        ).toFixed(2) + "deg";
+
+        /*
+          SMALL MOBILE WIDTH
+        */
+
+        const mobileWidth = randomBetween(76, 96) + "%";
+
+
+        /* APPLY GEOMETRY */
+
+        patch.style.setProperty(
+          "--patch-start",
+          desktopStart
+        );
 
         patch.style.setProperty(
           "--patch-span",
           desktopSpan
+        );
+
+        patch.style.setProperty(
+          "--mobile-start",
+          mobileStart
         );
 
         patch.style.setProperty(
@@ -569,7 +665,17 @@ interdiction.
           mobileOffset + "px"
         );
 
-        // Append in randomized order.
+        patch.style.setProperty(
+          "--patch-rotation",
+          rotation
+        );
+
+        patch.style.setProperty(
+          "--mobile-width",
+          mobileWidth
+        );
+
+        // Randomized DOM order.
         grid.appendChild(patch);
 
       });
@@ -590,7 +696,6 @@ interdiction.
 
       const patches = getPatches();
 
-      // Empty search: restore all patches.
       if (query === "") {
 
         patches.forEach(patch => {
@@ -607,13 +712,13 @@ interdiction.
 
       }
 
-      // Find matching patches automatically.
       let found = false;
 
       patches.forEach(patch => {
 
-        const numeral =
-          patch.dataset.number.trim().toUpperCase();
+        const numeral = patch.dataset.number
+          .trim()
+          .toUpperCase();
 
         if (numeral === query) {
 
@@ -630,7 +735,6 @@ interdiction.
 
       grid.classList.add("searching");
 
-      // Show or hide the no-results message.
       if (found) {
 
         noResults.classList.remove("visible");
@@ -656,6 +760,7 @@ interdiction.
 
     });
 
+
     searchInput.addEventListener("input", function() {
 
       if (searchInput.value.trim() === "") {
@@ -668,7 +773,7 @@ interdiction.
 
 
     /* =====================================
-       INITIALIZE PAGE
+       INITIALIZE
        ===================================== */
 
     randomizePatches();
