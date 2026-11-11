@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -91,12 +92,12 @@
       color: #C8BFA8;
     }
 
-    /* PATCHWORK GRID */
+    /* AUTOMATIC PATCH GRID */
 
     .poem-grid {
       display: grid;
       grid-template-columns: repeat(12, minmax(0, 1fr));
-      grid-template-rows: auto auto auto;
+      grid-auto-flow: row;
       column-gap: 16px;
       row-gap: 55px;
       align-items: start;
@@ -105,10 +106,12 @@
     /* INDIVIDUAL PATCHES */
 
     .patch {
+      grid-column: span var(--patch-span, 5);
+      min-width: 0;
       border: 1px solid #000;
       padding: 15px 17px;
-      min-width: 0;
       background: transparent;
+      margin-top: var(--patch-offset, 0px);
       animation: patchAppear 0.55s ease both;
     }
 
@@ -135,44 +138,6 @@
       min-height: 14px;
     }
 
-    /* SIX ORIGINAL PATCH POSITIONS */
-
-    .patch.position-1 {
-      grid-column: 1 / span 5;
-      grid-row: 1;
-      margin-top: 0;
-    }
-
-    .patch.position-2 {
-      grid-column: 8 / span 5;
-      grid-row: 1;
-      margin-top: 75px;
-    }
-
-    .patch.position-3 {
-      grid-column: 4 / span 5;
-      grid-row: 2;
-      margin-top: 5px;
-    }
-
-    .patch.position-4 {
-      grid-column: 10 / span 3;
-      grid-row: 2;
-      margin-top: 90px;
-    }
-
-    .patch.position-5 {
-      grid-column: 1 / span 4;
-      grid-row: 3;
-      margin-top: 35px;
-    }
-
-    .patch.position-6 {
-      grid-column: 7 / span 5;
-      grid-row: 3;
-      margin-top: 0;
-    }
-
     /* ANIMATION */
 
     @keyframes patchAppear {
@@ -193,18 +158,14 @@
       display: none;
     }
 
-    /*
-      When searching, retain the original
-      width and dimensions of the selected box.
-    */
-
     .poem-grid.searching {
       display: block;
     }
 
     .poem-grid.searching .patch {
-      width: auto;
-      margin-top: 0;
+      width: min(520px, 100%);
+      margin: 0 auto 25px;
+      animation: none;
     }
 
     .no-results {
@@ -239,67 +200,34 @@
       color: #dae8e5;
     }
 
-    /* MOBILE */
+    /* TABLET */
 
     @media (max-width: 650px) {
-
       .poem-grid {
         grid-template-columns: repeat(6, minmax(0, 1fr));
-        grid-template-rows: auto;
+        column-gap: 12px;
         row-gap: 30px;
       }
 
-      .patch.position-1 {
-        grid-column: 1 / span 5;
-        grid-row: auto;
-        margin-top: 0;
-      }
-
-      .patch.position-2 {
-        grid-column: 2 / span 5;
-        grid-row: auto;
-        margin-top: 0;
-      }
-
-      .patch.position-3 {
-        grid-column: 1 / span 5;
-        grid-row: auto;
-        margin-top: 0;
-      }
-
-      .patch.position-4 {
-        grid-column: 3 / span 4;
-        grid-row: auto;
-        margin-top: 0;
-      }
-
-      .patch.position-5 {
-        grid-column: 1 / span 4;
-        grid-row: auto;
-        margin-top: 0;
-      }
-
-      .patch.position-6 {
-        grid-column: 2 / span 5;
-        grid-row: auto;
-        margin-top: 0;
-      }
-
-      .poem-grid.searching .patch {
-        width: 100%;
+      .patch {
+        grid-column: span var(--mobile-span, 5);
+        margin-top: var(--mobile-offset, 0px);
       }
     }
 
-    @media (max-width: 420px) {
+    /* SMALL MOBILE */
 
+    @media (max-width: 420px) {
       .poem-grid:not(.searching) {
         display: flex;
         flex-direction: column;
         align-items: stretch;
+        gap: 30px;
       }
 
       .poem-grid:not(.searching) .patch {
         width: 90%;
+        margin-top: 0;
       }
 
       .poem-grid:not(.searching) .patch:nth-child(even) {
@@ -350,9 +278,11 @@
 
     <div class="poem-grid" id="poemGrid">
 
-      <!-- I -->
+      <!-- =================================
+           PATCH I
+           ================================= -->
 
-      <div class="patch position-1" data-number="I">
+      <div class="patch" data-number="I">
 
         <div class="patch-number">I.</div>
 
@@ -373,9 +303,12 @@ then sets the world asway.
 
       </div>
 
-      <!-- II -->
 
-      <div class="patch position-2" data-number="II">
+      <!-- =================================
+           PATCH II
+           ================================= -->
+
+      <div class="patch" data-number="II">
 
         <div class="patch-number">II.</div>
 
@@ -394,9 +327,12 @@ jotted on their teeth.
 
       </div>
 
-      <!-- III -->
 
-      <div class="patch position-3" data-number="III">
+      <!-- =================================
+           PATCH III
+           ================================= -->
+
+      <div class="patch" data-number="III">
 
         <div class="patch-number">III.</div>
 
@@ -415,56 +351,95 @@ by distance unforgotten.
 
       </div>
 
-      <!-- IV -->
 
-      <div class="patch position-4" data-number="IV">
+      <!-- =================================
+           PATCH IV
+           ================================= -->
+
+      <div class="patch" data-number="IV">
 
         <div class="patch-number">IV.</div>
 
         <p>
-... and the fact that Hölderlin's madness irrupted upon his return to Germany from France, should be contrasted to Hegel's jubilation upon Napoleon's arrival in Jena. 
-      </p>
+... and the fact that Hölderlin's madness irrupted upon his return to Germany from France, should be contrasted to Hegel's jubilation upon Napoleon's arrival in Jena.
+        </p>
 
-        <div class="patch-source"></div>
-- November 10, 2026
+        <div class="patch-source">
+          — November 10, 2026
+        </div>
+
       </div>
 
-      <!-- V -->
 
-      <div class="patch position-5" data-number="V">
+      <!-- =================================
+           PATCH V
+           ================================= -->
+
+      <div class="patch" data-number="V">
 
         <div class="patch-number">V.</div>
 
         <p>
-          subterfuge:
-          a many-mouthed
-          yet not-one-named
-          absolution.
+subterfuge:
+a many-mouthed
+yet not-one-named
+absolution.
         </p>
 
-        <div class="patch-source"></div>
-          - sometime in October 2026
+        <div class="patch-source">
+          — sometime in October 2026
+        </div>
+
       </div>
 
-      <!-- VI -->
 
-      <div class="patch position-6" data-number="VI">
+      <!-- =================================
+           PATCH VI
+           ================================= -->
+
+      <div class="patch" data-number="VI">
 
         <div class="patch-number">VI.</div>
 
         <p>
-          a crevice of your
-          nullity outshone
-          the stone-tone within which
-          advanced the soldiers
-          of a de -
-          - fenced and fragile
-          interdiction.
+a crevice of your
+nullity outshone
+the stone-tone within which
+advanced the soldiers
+of a de -
+- fenced and fragile
+interdiction.
         </p>
 
-        <div class="patch-source"></div>
-          - sometime in October 2026
+        <div class="patch-source">
+          — sometime in October 2026
+        </div>
+
       </div>
+
+
+      <!-- =================================
+           ADD NEW PATCHES BELOW THIS LINE
+
+           Copy the template:
+
+           <div class="patch" data-number="VII">
+
+             <div class="patch-number">VII.</div>
+
+             <p>
+             YOUR TEXT HERE
+             </p>
+
+             <div class="patch-source">
+               YOUR DATE OR SOURCE
+             </div>
+
+           </div>
+
+           Change the numeral and contents.
+           Nothing else needs to be changed.
+           ================================= -->
 
     </div>
 
@@ -480,28 +455,31 @@ by distance unforgotten.
 
   </main>
 
+
   <script>
 
-    /* RANDOMIZE PATCH POSITIONS */
+    /* =====================================
+       AUTOMATIC PATCH ARRANGEMENT
+       ===================================== */
 
     const grid = document.getElementById("poemGrid");
 
-    const patches = Array.from(
-      grid.querySelectorAll(".patch")
-    );
+    const searchForm = document.getElementById("poemSearch");
+    const searchInput = document.getElementById("searchInput");
+    const noResults = document.getElementById("noResults");
 
-    const positions = [
-      "position-1",
-      "position-2",
-      "position-3",
-      "position-4",
-      "position-5",
-      "position-6"
-    ];
+    // Automatically retrieve every patch.
+    function getPatches() {
+      return Array.from(grid.querySelectorAll(".patch"));
+    }
 
-    function shuffle(array) {
+    // Randomize patch widths and offsets.
+    function randomizePatches() {
 
-      const shuffled = [...array];
+      const patches = getPatches();
+
+      // Shuffle the order of patches.
+      const shuffled = [...patches];
 
       for (let i = shuffled.length - 1; i > 0; i--) {
 
@@ -512,43 +490,52 @@ by distance unforgotten.
 
       }
 
-      return shuffled;
+      // Randomize each patch's geometry.
+      shuffled.forEach((patch, index) => {
 
-    }
+        const desktopSpan =
+          Math.floor(Math.random() * 3) + 4;
 
-    function randomizePatches() {
+        const mobileSpan =
+          Math.floor(Math.random() * 2) + 4;
 
-      const shuffledPositions = shuffle(positions);
+        const desktopOffset =
+          Math.floor(Math.random() * 85);
 
-      patches.forEach((patch, index) => {
+        const mobileOffset =
+          Math.floor(Math.random() * 25);
 
-        patch.classList.remove(...positions);
+        patch.style.setProperty(
+          "--patch-span",
+          desktopSpan
+        );
 
-        patch.classList.add(shuffledPositions[index]);
+        patch.style.setProperty(
+          "--mobile-span",
+          mobileSpan
+        );
 
+        patch.style.setProperty(
+          "--patch-offset",
+          desktopOffset + "px"
+        );
+
+        patch.style.setProperty(
+          "--mobile-offset",
+          mobileOffset + "px"
+        );
+
+        // Append in randomized order.
         grid.appendChild(patch);
 
       });
 
     }
 
-    randomizePatches();
 
-
-    /* SEARCH BY ROMAN NUMERAL */
-
-    const searchForm =
-      document.getElementById("poemSearch");
-
-    const searchInput =
-      document.getElementById("searchInput");
-
-    const noResults =
-      document.getElementById("noResults");
-
-    const validNumerals = [
-      "I", "II", "III", "IV", "V", "VI"
-    ];
+    /* =====================================
+       SEARCH BY ROMAN NUMERAL
+       ===================================== */
 
     function searchPoems() {
 
@@ -557,6 +544,9 @@ by distance unforgotten.
         .toUpperCase()
         .replace(/\.$/, "");
 
+      const patches = getPatches();
+
+      // Empty search: restore all patches.
       if (query === "") {
 
         patches.forEach(patch => {
@@ -573,27 +563,46 @@ by distance unforgotten.
 
       }
 
+      // Find matching patches automatically.
+      let found = false;
+
       patches.forEach(patch => {
 
-        const numeral = patch.dataset.number;
+        const numeral =
+          patch.dataset.number.trim().toUpperCase();
 
         if (numeral === query) {
+
           patch.classList.remove("hidden");
+          found = true;
+
         } else {
+
           patch.classList.add("hidden");
+
         }
 
       });
 
       grid.classList.add("searching");
 
-      if (validNumerals.includes(query)) {
+      // Show or hide the no-results message.
+      if (found) {
+
         noResults.classList.remove("visible");
+
       } else {
+
         noResults.classList.add("visible");
+
       }
 
     }
+
+
+    /* =====================================
+       SEARCH EVENTS
+       ===================================== */
 
     searchForm.addEventListener("submit", function(event) {
 
@@ -606,13 +615,21 @@ by distance unforgotten.
     searchInput.addEventListener("input", function() {
 
       if (searchInput.value.trim() === "") {
+
         searchPoems();
+
       }
 
     });
+
+
+    /* =====================================
+       INITIALIZE PAGE
+       ===================================== */
+
+    randomizePatches();
 
   </script>
 
 </body>
 </html>
-```
