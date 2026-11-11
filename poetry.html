@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -55,8 +54,8 @@
     .poem-search {
       display: flex;
       align-items: center;
-      border: 1px solid #000;
       width: 190px;
+      border: 1px solid #000;
       background: transparent;
     }
 
@@ -98,6 +97,7 @@
     .poem-grid {
       display: grid;
       grid-template-columns: repeat(12, minmax(0, 1fr));
+      grid-template-rows: auto auto auto;
       column-gap: 16px;
       row-gap: 55px;
       align-items: start;
@@ -126,7 +126,7 @@
       margin: 0;
     }
 
-    /* POEM SOURCE */
+    /* POEM ATTRIBUTION */
 
     .patch-source {
       text-align: right;
@@ -136,65 +136,76 @@
       min-height: 14px;
     }
 
-    /* RANDOMIZED POSITIONS */
+    /* SIX ORIGINAL PATCH POSITIONS */
 
     .patch.position-1 {
       grid-column: 1 / span 5;
+      grid-row: 1;
       margin-top: 0;
     }
 
     .patch.position-2 {
       grid-column: 8 / span 5;
+      grid-row: 1;
       margin-top: 75px;
     }
 
     .patch.position-3 {
       grid-column: 4 / span 5;
+      grid-row: 2;
       margin-top: 5px;
     }
 
     .patch.position-4 {
       grid-column: 10 / span 3;
+      grid-row: 2;
       margin-top: 90px;
     }
 
     .patch.position-5 {
       grid-column: 1 / span 4;
+      grid-row: 3;
       margin-top: 35px;
     }
 
     .patch.position-6 {
       grid-column: 7 / span 5;
+      grid-row: 3;
       margin-top: 0;
     }
 
-    /* APPEARANCE ANIMATION */
+    /* ANIMATION */
 
     @keyframes patchAppear {
       from {
         opacity: 0;
         transform: translateY(9px);
       }
+
       to {
         opacity: 1;
         transform: translateY(0);
       }
     }
 
-    /* SEARCH RESULT */
+    /* SEARCH RESULTS */
 
     .patch.hidden {
       display: none;
     }
 
+    /*
+      When searching, retain the original
+      width and dimensions of the selected box.
+    */
+
     .poem-grid.searching {
-      display: flex;
-      justify-content: center;
+      display: block;
     }
 
     .poem-grid.searching .patch {
-      width: min(500px, 100%);
-      margin: 0;
+      width: auto;
+      margin-top: 0;
     }
 
     .no-results {
@@ -232,43 +243,56 @@
     /* MOBILE */
 
     @media (max-width: 650px) {
+
       .poem-grid {
         grid-template-columns: repeat(6, minmax(0, 1fr));
+        grid-template-rows: auto;
         row-gap: 30px;
       }
 
       .patch.position-1 {
         grid-column: 1 / span 5;
+        grid-row: auto;
         margin-top: 0;
       }
 
       .patch.position-2 {
         grid-column: 2 / span 5;
+        grid-row: auto;
         margin-top: 0;
       }
 
       .patch.position-3 {
         grid-column: 1 / span 5;
+        grid-row: auto;
         margin-top: 0;
       }
 
       .patch.position-4 {
         grid-column: 3 / span 4;
+        grid-row: auto;
         margin-top: 0;
       }
 
       .patch.position-5 {
         grid-column: 1 / span 4;
+        grid-row: auto;
         margin-top: 0;
       }
 
       .patch.position-6 {
         grid-column: 2 / span 5;
+        grid-row: auto;
         margin-top: 0;
+      }
+
+      .poem-grid.searching .patch {
+        width: 100%;
       }
     }
 
     @media (max-width: 420px) {
+
       .poem-grid:not(.searching) {
         display: flex;
         flex-direction: column;
@@ -301,10 +325,12 @@
       P O E T R Y
     </div>
 
-    <!-- SEARCH FIELD -->
+    <!-- SEARCH -->
 
     <div class="search-container">
+
       <form class="poem-search" id="poemSearch">
+
         <input
           type="text"
           id="searchInput"
@@ -312,8 +338,13 @@
           autocomplete="off"
           aria-label="Search poems by Roman numeral"
         >
-        <button type="submit" aria-label="Search">⌕</button>
+
+        <button type="submit" aria-label="Search">
+          ⌕
+        </button>
+
       </form>
+
     </div>
 
     <!-- POEMS -->
@@ -322,7 +353,8 @@
 
       <!-- I -->
 
-      <div class="patch" data-number="I">
+      <div class="patch position-1" data-number="I">
+
         <div class="patch-number">I.</div>
 
         <p>
@@ -339,11 +371,13 @@ then sets the world asway.
         <div class="patch-source">
           — from my personal journals
         </div>
+
       </div>
 
       <!-- II -->
 
-      <div class="patch" data-number="II">
+      <div class="patch position-2" data-number="II">
+
         <div class="patch-number">II.</div>
 
         <p>
@@ -358,11 +392,13 @@ jotted on their teeth.
         <div class="patch-source">
           — from my personal journals
         </div>
+
       </div>
 
       <!-- III -->
 
-      <div class="patch" data-number="III">
+      <div class="patch position-3" data-number="III">
+
         <div class="patch-number">III.</div>
 
         <p>
@@ -377,11 +413,13 @@ by distance unforgotten.
         <div class="patch-source">
           — from my personal journals
         </div>
+
       </div>
 
       <!-- IV -->
 
-      <div class="patch" data-number="IV">
+      <div class="patch position-4" data-number="IV">
+
         <div class="patch-number">IV.</div>
 
         <p>
@@ -389,11 +427,13 @@ by distance unforgotten.
         </p>
 
         <div class="patch-source"></div>
+
       </div>
 
       <!-- V -->
 
-      <div class="patch" data-number="V">
+      <div class="patch position-5" data-number="V">
+
         <div class="patch-number">V.</div>
 
         <p>
@@ -401,11 +441,13 @@ by distance unforgotten.
         </p>
 
         <div class="patch-source"></div>
+
       </div>
 
       <!-- VI -->
 
-      <div class="patch" data-number="VI">
+      <div class="patch position-6" data-number="VI">
+
         <div class="patch-number">VI.</div>
 
         <p>
@@ -413,6 +455,7 @@ by distance unforgotten.
         </p>
 
         <div class="patch-source"></div>
+
       </div>
 
     </div>
@@ -431,9 +474,10 @@ by distance unforgotten.
 
   <script>
 
-    /* RANDOMIZE POEM POSITIONS */
+    /* RANDOMIZE PATCH POSITIONS */
 
     const grid = document.getElementById("poemGrid");
+
     const patches = Array.from(
       grid.querySelectorAll(".patch")
     );
@@ -448,16 +492,20 @@ by distance unforgotten.
     ];
 
     function shuffle(array) {
+
       const shuffled = [...array];
 
       for (let i = shuffled.length - 1; i > 0; i--) {
+
         const j = Math.floor(Math.random() * (i + 1));
 
         [shuffled[i], shuffled[j]] =
           [shuffled[j], shuffled[i]];
+
       }
 
       return shuffled;
+
     }
 
     function randomizePatches() {
@@ -466,13 +514,9 @@ by distance unforgotten.
 
       patches.forEach((patch, index) => {
 
-        patch.classList.remove(
-          ...positions
-        );
+        patch.classList.remove(...positions);
 
-        patch.classList.add(
-          shuffledPositions[index]
-        );
+        patch.classList.add(shuffledPositions[index]);
 
         grid.appendChild(patch);
 
@@ -485,9 +529,18 @@ by distance unforgotten.
 
     /* SEARCH BY ROMAN NUMERAL */
 
-    const searchForm = document.getElementById("poemSearch");
-    const searchInput = document.getElementById("searchInput");
-    const noResults = document.getElementById("noResults");
+    const searchForm =
+      document.getElementById("poemSearch");
+
+    const searchInput =
+      document.getElementById("searchInput");
+
+    const noResults =
+      document.getElementById("noResults");
+
+    const validNumerals = [
+      "I", "II", "III", "IV", "V", "VI"
+    ];
 
     function searchPoems() {
 
@@ -496,10 +549,6 @@ by distance unforgotten.
         .toUpperCase()
         .replace(/\.$/, "");
 
-      const validNumerals = [
-        "I", "II", "III", "IV", "V", "VI"
-      ];
-
       if (query === "") {
 
         patches.forEach(patch => {
@@ -507,11 +556,13 @@ by distance unforgotten.
         });
 
         grid.classList.remove("searching");
+
         noResults.classList.remove("visible");
 
         randomizePatches();
 
         return;
+
       }
 
       patches.forEach(patch => {
@@ -537,8 +588,11 @@ by distance unforgotten.
     }
 
     searchForm.addEventListener("submit", function(event) {
+
       event.preventDefault();
+
       searchPoems();
+
     });
 
     searchInput.addEventListener("input", function() {
