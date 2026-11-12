@@ -122,7 +122,6 @@
 
       margin-top: var(--patch-offset, 0px);
 
-      transform: rotate(var(--patch-rotation, 0deg));
 
       animation: patchAppear 0.55s ease both;
     }
@@ -156,16 +155,12 @@
     @keyframes patchAppear {
       from {
         opacity: 0;
-        transform:
-          translateY(12px)
-          rotate(var(--patch-rotation, 0deg));
+        transform: translateY(12px);
       }
 
       to {
         opacity: 1;
-        transform:
-          translateY(0)
-          rotate(var(--patch-rotation, 0deg));
+        transform: translateY(0);
       }
     }
 
@@ -625,15 +620,6 @@ Phenomenology must be pursued for opening the true question concerning the metho
         const mobileOffset = randomBetween(0, 45);
 
         /*
-          SLIGHT ROTATION:
-          Avoids an overly rigid geometric appearance.
-        */
-
-        const rotation = (
-          (Math.random() * 1.2) - 0.6
-        ).toFixed(2) + "deg";
-
-        /*
           SMALL MOBILE WIDTH
         */
 
@@ -670,11 +656,6 @@ Phenomenology must be pursued for opening the true question concerning the metho
         patch.style.setProperty(
           "--mobile-offset",
           mobileOffset + "px"
-        );
-
-        patch.style.setProperty(
-          "--patch-rotation",
-          rotation
         );
 
         patch.style.setProperty(
