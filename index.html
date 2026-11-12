@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CRAVETCHI</title>
+  <link rel="author" href="author.html">
 
   <style>
     * {
@@ -11,9 +12,10 @@
     }
 
     body {
-      background: #C8BFA8;
+      background: #1B1B1B;
+      color-scheme: dark;
       margin: 0;
-      color: #000;
+      color: #C8BFA8;
     }
 
     .page {
@@ -31,7 +33,7 @@
     .rule {
       width: 100%;
       border: 0;
-      border-top: 1px solid #000;
+      border-top: 1px solid #C8BFA8;
       margin: 12px 0;
     }
 
@@ -53,7 +55,7 @@
   height: auto;
   box-sizing: content-box;
   padding: 5px;
-  border: 1px solid #000;
+  border: 1px solid #C8BFA8;
   border-radius: 2px;
   margin-right: 7px;
 }
@@ -63,6 +65,20 @@
       font: 18px Garamond, serif;
       text-align: justify;
       line-height: 1.2;
+    }
+
+
+    /* Author name: keep its appearance unchanged until hovered or focused. */
+    .author-link {
+      color: inherit;
+      text-decoration: none;
+      text-underline-offset: 3px;
+    }
+
+    .author-link:hover,
+    .author-link:focus-visible {
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
     }
 
     /* Three-column index */
@@ -89,7 +105,7 @@
     .index-table td {
       height: 22px;
       padding: 4px 8px;
-      border: 1px solid #000;
+      border: 1px solid #C8BFA8;
       vertical-align: middle;
       font: 14px "Times New Roman", Times, serif;
       overflow-wrap: break-word;
@@ -97,7 +113,7 @@
 
     .index-table a {
       display: block;
-      color: #000;
+      color: #C8BFA8;
       text-decoration: none;
     }
     
@@ -117,8 +133,8 @@
       }
 
     .index-table a:hover {
-      background: #000;
-      color: #dae8e5;
+      background: #C8BFA8;
+      color: #1B1B1B;
     }
 
     .index-table .heading-cell {
@@ -183,7 +199,7 @@
           <br>
 
           <p>
-            My name is Maximilian Cravetchi. My philosophical interests lie in the exhaustion of 
+            My name is <a href="author.html" class="author-link">Maximilian Cravetchi</a>. My philosophical interests lie in the exhaustion of 
             the transcendental problematics concerning phenomenological ontology. At the moment I 
             am trying to relax the tensions of primitive phenomenological distinctions in order to 
             develop a way of interpreting the generation of manifolds - theory of theory. 
