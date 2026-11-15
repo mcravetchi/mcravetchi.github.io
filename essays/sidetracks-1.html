@@ -1,24 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-<meta name="description"
-content="Part I of Sidetracks: An Exploration of Logical Investigations by Maximilian Cravetchi. A philosophical exploration of Edmund Husserl's Logical Investigations.">
-
-<meta name="author" content="Maximilian Cravetchi">
-<link rel="author" href="../author.html">
-
-<meta name="robots" content="index, follow">
-
-<link rel="canonical"
-href="https://mcravetchi.github.io/essays/sidetracks-1.html">
-
-  
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SIDETRACKS - I - MAXIMILIAN CRAVETCHI </title>
-
+  <meta name="description" content="The first installment of Sidetracks follows Chapter 1 of Husserl’s First Logical Investigation. It explores articulation, indication, symbols, meaning, and the possibility of an a-logical hermeneutic.">
+  <meta name="author" content="Maximilian Cravetchi">
+  <meta name="robots" content="index, follow">
+  <link rel="author" href="../author.html">
+  <link rel="canonical" href="https://mcravetchi.github.io/essays/sidetracks-1.html">
+  <title>SIDETRACKS — PART I — MAXIMILIAN CRAVETCHI</title>
   <style>
+
     * {
       box-sizing: border-box;
     }
@@ -100,110 +92,117 @@ href="https://mcravetchi.github.io/essays/sidetracks-1.html">
       color: #1B1B1B;
     }
 
-    /* Borderless PDF viewer */
 
-    .paper-column {
-      min-width: 0;
-      margin-left: 10px;
-    }
 
-    .pdf-viewer {
+    /* Live HTML replaces the viewer, preserving its exact footprint and offset. */
+    .paper-column { min-width: 0; margin-left: 10px; }
+    .essay-text {
       display: block;
       width: 100%;
       height: calc(100vh - 155px);
       min-height: 650px;
-      border: none;
-      outline: none;
-      box-shadow: none;
+      overflow-y: auto;
+      overflow-x: hidden;
+      border: 1px solid #C8BFA8;
+      border-radius: 3px;
+      padding: 35px clamp(20px, 4.5vw, 52px) 52px;
       background: transparent;
+      font: 18px/1.62 Garamond, "EB Garamond", Georgia, serif;
+      scrollbar-color: #756E5F #1B1B1B;
     }
-
-    .pdf-fallback {
-      margin-top: 10px;
-      font: 13px "Times New Roman", Times, serif;
-    }
-
-    .pdf-fallback a {
-      color: #C8BFA8;
-      text-decoration: none;
-    }
-
-    .pdf-fallback a:hover {
-      text-decoration: underline;
-    }
-
+    .essay-text a { color: inherit; }
+    .essay-text a:hover { text-decoration-thickness: 2px; }
+    .essay-text p, .essay-text blockquote { overflow-wrap: anywhere; }
+    .essay-text .prose { margin: 0 0 1.05em; text-align: justify; text-indent: 1.5em; hyphens: auto; }
+    .essay-text .opening { text-indent: 0; margin: 2em 0 2.3em; }
+    .essay-text .question { margin: 1.5em 0 .1em 1.5em; }
+    .essay-text blockquote { margin: 1.2em 0 1.2em 1.8em; font: inherit; text-align: justify; }
+    .essay-text .enumerated { margin: .8em 0 .8em 1.3em; padding-left: .1em; text-indent: -1.05em; text-align: justify; }
+    .essay-text .citation-line { margin: 1.2em 0; padding-left: 1.5em; text-indent: -1.5em; }
+    .essay-text h2 { margin: 2.25em 0 .65em; font: normal 21px/1.3 Garamond, Georgia, serif; text-align: center; }
+    .essay-text h3 { margin: 1.55em 0 .75em; font: normal 19px/1.3 Garamond, Georgia, serif; text-align: center; }
+    .essay-text .cover { text-align: center; }
+    .essay-text .cover h1 { font: italic normal 26px/1.3 Garamond, Georgia, serif; margin: 0 0 .25em; }
+    .essay-text .cover p { font: 17px/1.35 Garamond, Georgia, serif; margin: 0; }
+    .essay-text .cover .exploration-of { margin-top: 1.55em; }
+    .essay-text .cover .work-name { margin-top: 1em; font-style: italic; }
+    .essay-text .cover .installment { margin: .25em 0 1.6em; }
+    .essay-text .manuscript-rule { display:block; width: 45%; border:0; border-top: 1px solid #C8BFA8; margin: 1.9em auto; opacity: .7; }
+    .essay-text .contents { margin: 1.75em 0 2.6em; }
+    .essay-text .contents h2 { margin: 0 0 .9em; }
+    .essay-text .contents ul { list-style: none; padding: 0; margin: 0; }
+    .essay-text .contents li { margin: .7em 0; font-size: 16px; }
+    .essay-text .contents li.minor { padding-left: 2.3em; }
+    .essay-text .contents a { text-decoration: none; }
+    .essay-text .contents a:hover { text-decoration: underline; }
+    .essay-text .passage-divider { text-align: center; margin: 1.25em 0; }
+    .essay-text .noteref { font-size: .69em; line-height: 0; vertical-align: super; padding-left: 1px; }
+    .essay-text .noteref a { text-decoration: none; }
+    .essay-text .notes { border-top: 1px solid #C8BFA8; margin-top: 2.5em; padding-top: .2em; }
+    .essay-text .notes ol { list-style: none; margin: 0; padding: 0; font-size: 14px; line-height: 1.55; }
+    .essay-text .notes li { padding-left: 1.75em; text-indent: -1.75em; margin: .5em 0; }
+    .essay-text .notes .backref { text-decoration: none; margin-right: .35em; }
+    .pdf-fallback { margin-top: 10px; font: 13px "Times New Roman", Times, serif; }
+    .pdf-fallback a { color: #C8BFA8; text-decoration: none; }
+    .pdf-fallback a:hover { text-decoration: underline; }
+    .essay-navigation { font: 14px/1.8 "Times New Roman", Times, serif; }
+    .essay-navigation .nav-sep { margin: 0 4px; }
     @media (max-width: 800px) {
-      .reader-layout {
-        grid-template-columns: 200px minmax(0, 1fr);
-        gap: 20px;
-        padding-left: 0;
-      }
-
-      .paper-column {
-        margin-left: 0;
-      }
+      .reader-layout { grid-template-columns: 200px minmax(0, 1fr); gap: 20px; padding-left: 0; }
+      .paper-column { margin-left: 0; }
+      .essay-text { padding: 26px 20px 38px; font-size: 17px; }
     }
-
     @media (max-width: 620px) {
-      .reader-layout {
-        display: block;
-      }
-
-      .description-column {
-        margin-bottom: 25px;
-      }
-
-      .pdf-viewer {
-        height: 75vh;
-        min-height: 550px;
-      }
+      .reader-shell { width: min(100% - 28px, 1260px); }
+      .reader-layout { display: block; }
+      .description-column { margin-bottom: 25px; }
+      .essay-text { height: auto; min-height: 0; overflow: visible; padding: 26px 18px 38px; font-size: 17px; line-height: 1.65; }
+      .essay-text .prose, .essay-text blockquote { text-align: left; hyphens: auto; }
+      .essay-text blockquote { margin-left: 1.1em; }
+      .essay-text .contents li.minor { padding-left: 1.35em; }
+      .site-title { font-size: 18px; letter-spacing: 3px; }
     }
+    @media (prefers-reduced-motion: no-preference) { .essay-text { scroll-behavior: smooth; } }
+    
   </style>
-
-
-<script type="application/ld+json">
-{
+  <script type="application/ld+json">{
   "@context": "https://schema.org",
-  "@type": "Article",
+  "@type": "ScholarlyArticle",
   "headline": "Sidetracks: An Exploration of Logical Investigations — Part I",
   "author": {
     "@type": "Person",
     "name": "Maximilian Cravetchi",
     "url": "https://mcravetchi.github.io/author.html"
-   },
+  },
+  "datePublished": "2026-11-02",
+  "isPartOf": {
+    "@type": "CreativeWorkSeries",
+    "name": "Sidetracks: An Exploration of Logical Investigations",
+    "url": "https://mcravetchi.github.io/sidetracks-map.html"
+  },
+  "position": 1,
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": "https://mcravetchi.github.io/essays/sidetracks-1.html"
+  },
+  "encodingFormat": "text/html",
+  "associatedMedia": {
+    "@type": "MediaObject",
+    "contentUrl": "https://mcravetchi.github.io/pdfs/sidetracks-1-cravetchi.pdf",
+    "encodingFormat": "application/pdf"
   }
-}
-</script>
+}</script>
 </head>
-
 <body>
-
   <main class="reader-shell">
-
-    <div class="site-title">
-      C R A V E T C H I
-    </div>
-
+    <div class="site-title">C R A V E T C H I</div>
     <hr class="rule">
-
-    <div class="paper-title">
-      SIDETRACKS: AN EXPLORATION OF LOGICAL INVESTIGATIONS
-    </div>
-
+    <div class="paper-title">SIDETRACKS: AN EXPLORATION OF LOGICAL INVESTIGATIONS</div>
     <div class="reader-layout">
-
-      <!-- LEFT-HAND DESCRIPTION COLUMN -->
-
       <aside class="description-column">
-
-        <h2>1/18</h2>
-
-        <h3>DESCRIPTION</h3>
-
-        <p>
+<h2>1/18</h2>
+<h3>DESCRIPTION</h3>
+<p>
           The first installment of
           <i>Sidetracks: An Exploration of Logical Investigations.</i>
 
@@ -215,42 +214,140 @@ href="https://mcravetchi.github.io/essays/sidetracks-1.html">
           Edits: N/A
 
         </p>
-
-        <p>
+<p>
          Following Chapter 1 of Husserl's Logical Investigations, Investigation I, the first installment of Sidetracks interrogates the phenomenological distinctions between indication, expression, and meaning-intention. The isolation of soliloquy is challenged through the figure of the listener, while the opposition between symbolic and epistemological determination is brought into question. Through an examination of intentional fulfillment, the text develops the notion of the cannot-be-without: an ontological, hypothetical, and non-propositional collection of unrealities that nevertheless participate in the determination of phenomenal experience.
           
         </p>
-        <br>
-        
-        <nav class="essay-navigation">
-            <a href="../index.html">RETURN TO INDEX</a>
-            |
-            <a href="sidetracks-2.html">NEXT INSTALLMENT →</a>
-        </nav>
-
-      </aside>
-
-      <!-- RIGHT-HAND PDF VIEWER -->
-
-      <section class="paper-column">
-
-        <iframe
-          class="pdf-viewer"
-          src="../pdfs/sidetracks-1-cravetchi.pdf#toolbar=1&navpanes=0&view=FitH"
-          title="Sidetracks — 1/18">
-        </iframe>
-
-        <div class="pdf-fallback">
-          <a href="../pdfs/sidetracks-1-cravetchi.pdf" target="_blank">
-            OPEN PDF IN SEPARATE TAB
-          </a>
-        </div>
-
+<br/>
+<nav class="essay-navigation"><a href="sidetracks-2.html">NEXT INSTALLMENT →</a><span class="nav-sep">|</span><a href="../sidetracks-map.html">CONCEPT MAP</a><span class="nav-sep">|</span><a href="../index.html">RETURN TO INDEX</a></nav>
+</aside>
+      <section class="paper-column" aria-label="Complete text of Sidetracks Part I">
+        <article class="essay-text" lang="en">
+          <header class="cover">
+            <h1>Sidetracks</h1>
+            <p>by Maximilian Cravetchi</p>
+            <p class="exploration-of">an exploration of…</p>
+            <p class="work-name">Logical Investigations</p>
+            <p>by Edmund Husserl</p>
+            <p class="installment">1/18</p>
+          </header>
+          <hr class="manuscript-rule">
+          <p class="prose opening">This is not a study of Husserl’s <em>Logical Investigations</em>. This is an exploration of the routes untraveled by this text, whether treated with enthusiasm or with banishment. The overarching effort of this exploration is the gradual cultivation of an a-logical hermeneutic. The <em>Logical Investigations</em> has been chosen due to its explicit task of developing an objective theory of knowledge; of the means through which experiences are analyzable through pure essential generality. By working out an a-logical hermeneutic, the description of any and all phenomenological state of affairs are not merely ‘displaced,’ but re-interpretable according to the generation of manifolds.</p>
+          <nav class="contents" aria-label="Contents">
+            <h2>Contents</h2>
+            <ul><li class="major"><a href="#preliminaries">Preliminaries</a></li>
+<li class="minor"><a href="#on-sidetracks">On ‘Sidetracks’</a></li>
+<li class="minor"><a href="#why-phenomenology">Why Phenomenology?</a></li>
+<li class="major"><a href="#exploration">Exploration</a></li>
+<li class="minor"><a href="#articulation-association-indicatives">Articulation, Association, Indicatives.</a></li>
+<li class="minor"><a href="#the-boundaries-of-phenomena">The Boundaries of Phenomena.</a></li>
+<li class="minor"><a href="#the-symbol-word-watcher">The Symbol. Word-Watcher.</a></li>
+<li class="minor"><a href="#meaning-and-meaninglessness">Meaning and Meaninglessness.</a></li>
+<li class="major"><a href="#recapitulation">Recapitulation</a></li></ul>
+          </nav>
+          <hr class="manuscript-rule">
+          <h2 id="preliminaries">Preliminaries</h2>
+<h3 id="on-sidetracks">On ‘Sidetracks’</h3>
+<p class="question"><em>Where do you think you are going?</em></p>
+<p class="prose">‘Sidetracks’ bears the connotation of steering something towards that which is less important. They are diversions from a matter endowed with marked importance.</p>
+<p class="prose">These sidetracks are devoted to such diversions. For the connotation implies a <em>logical structure</em>. It encircles a discourse around that which has been ascertained as extant. It inculcates a pathos of proximity to the matter, a unidirectional threshold whereby distance corresponds to delusion. Most importantly, it slights the generative antecedent that institutes the systematicity of the scheme.</p>
+<p class="prose">‘Sidetracks’ attempts to bring into contact the plenitude of a-logical schemes, through trial and tribulation, unto the generation of the ‘logical.’ But even such a connotation demonstrates how unfathomable of a possibility this is. Therefore, one tendency shall be illustrated for the sake of venturing on such a journey.</p>
+<p class="prose">Philosophy is founded upon the acceptance of the logical scheme as a <em>prime given</em> for the determination of entities. By way of this prime given, he then <em>projects</em> this logical scheme onto states of affairs, whereby meanings are included or excluded with respect to <em>his own </em>theoretical grasping. Whether traversed, conquered, or revealed, manifolds are discovered by means of incursion.</p>
+<p class="prose">Unlike the ilk of typical brotherhoods, philosophy goes great lengths in search of ways to temper this ineradicable seed of violence. It tries to teach how to eradicate the elements that prevent the grasping of logical reality – what and how it is for all. Since they originate from his own theoretical grasping, aberrations are said to originate from out of him. Such teaching is painful, as a fiction can, for instance, be added by the projector to prevent a confrontation with an otherwise deadly truth. To eliminate such fiction is congruent to an elimination of himself.</p>
+<p class="prose">For such unreasons, not many men are attracted to the theater of mathematics, for it brings forth a manifold whereupon the scientists like to think that their objects do not so easily admit the spectacle of fantasies. Or rather – the manifold curates fantasies in which the grasping of entities upon that manifold are indubitable to all as long as they get used to the script. Not only does such getting-used-to inculcate the virtue of temperance, but it also shows how manifolds can be cultivated by playing rather than pillaging.</p>
+<p class="prose">For Husserl, the casting of these roles is serious – it “demands a thoroughgoing division of labour here.”<sup class="noteref"><a id="ref-1" href="#note-1" aria-label="Footnote 1">1</a></sup> Such a division will be made as the difference between “essential insight” versus “scientific instinct.”<sup class="noteref"><a id="ref-2" href="#note-2" aria-label="Footnote 2">2</a></sup> Mathematicians specialize in the articulation of formal interconnections between mathematical objects. Philosophers, on the other hand, look towards the essence of a thing, an event, a theory.</p>
+<p class="prose">But is a manifold necessarily objectifiable? Is not a manifold that upon which objects are not merely rested but sensitively situated? How, then, is a “perfect, pure, genuine, theoretical knowledge” made synonymous with the philosopher’s “critique of knowledge?” in contradistinction to the mathematician’s “<em>ars inventiva</em>?”<sup class="noteref"><a id="ref-3" href="#note-3" aria-label="Footnote 3">3</a></sup> The manifold of philosophy makes it such that the philosopher seems to be threatened by the pointing of knowledge towards realms covered over. It situates the philosopher into a position of enacting <em>delimitation</em>. It allows the philosopher to say, ‘you cannot go there!,’ so that knowledge remains of him alone. From another standpoint, however, it is a self-soothing against the pangs of inadequacy that he cannot go there. ‘I feel that there is a truth in his words that I will not accept because I cannot go there myself.’ Moreover, there is nothing <em>necessarily</em> stopping, besides the philosophers, the inventions of the mathematician from <em>becoming </em>natural, becoming<em> being</em>. An instinct, perhaps, for an insight into something not yet sighted? Thus knowledge goes to the man who dares to know. It is time to get sidetracked and see – <em>where </em> <em>do you think your thinking is really going?</em></p>
+<h3 id="why-phenomenology">Why Phenomenology?</h3>
+<p class="prose">The decision of undoing the <em>Logical Investigations </em>by Edmund Husserl is spurred by a conversion of the seminal thrust of phenomenology.</p>
+<p class="prose">By way of illustration, it was an accomplishment of metaphysical idealism to realize that synthetic acts of cognition are later made into objective moments of the thing cognized. Such a realization is <em>logical</em> – it is concerned with an underlying <em>entity</em> that is acted upon by cognition that knows itself to be cognizing this determinate entity. Unlike this logical realization, the realization of phenomenology is <em>epistemological</em>. It is concerned with <em>how</em> <em>acts of cognition </em>give the entity <em>as</em> it <em>is</em> in the acts of cognition. Furthermore, it does not rest content with presuming the reality of these acts of thinking as would a psychology, but of indwelling in the sense endowed upon the essential generality of entities by any cognitive act whatsoever. While a metaphysical idealism tries to prove whether an act of synthesis actually inheres into the instantiation of an object, phenomenology emphasizes ‘life’ and ‘lived formulations,’ or the immanent description of how sense is given to entities as meant in this or that way. In other words, metaphysical idealism still has to prove whether the being of entities still belongs as determinately to this or that entity. Phenomenology, on the other hand, reflects upon the performance of the cognitive sequence through which the being of entities are given as they are found. The preliminary task of phenomenology, then, is to understand this phenomena of meaning.</p>
+<p class="prose">To do so requires a linguistic conformism to the Idea of ‘Pure Logic.’ That is what the <em>Logical Investigations</em> is devoted to. To comprehend this, the Idea of ‘Pure Logic’ is stratified across three intentions: (1) to fixate categories of linguistic meanings to categories of logic, (2) to expose the laws and theories which have their grounds in these categories, and (3) to <em>entertain</em> a “pure theory of manifolds.”<sup class="noteref"><a id="ref-4" href="#note-4" aria-label="Footnote 4">4</a></sup> For Husserl, phenomenology is always phenomenology of perception. Knowledge is decreed as the “unity of objectivity… and truth.”<sup class="noteref"><a id="ref-5" href="#note-5" aria-label="Footnote 5">5</a></sup> But objectivity is already a truth. Here, Husserl <em>interprets</em> truth as the interconnections of knowledge while objectivity is interpreted as the acts of truth which give that entity with respect to an already-established knowledge. Perceptively, any <em>judgement</em> of a state of affairs that is inwardly <em>evident</em> brings that state of affairs before our eyes. To reflect upon this judgement is to engage in an “ideational abstraction”<sup class="noteref"><a id="ref-6" href="#note-6" aria-label="Footnote 6">6</a></sup> through which the interconnections of the state of affairs are describable. But with science, there is an “extra-essential principle”<sup class="noteref"><a id="ref-7" href="#note-7" aria-label="Footnote 7">7</a></sup> wherein the field of science is brought into a constitutive mutual belongingness regarding common subject-matter. This entails that there are common acts of cognition that are performed in order to objectify that which science objectifies. However, as seen before, such technical inventions always presuppose the essential generality of the things in which they work around. If philosophy is to grasp these essential generalities and the acts of cognition which endow them sense, then there is a common theoretical matrix in which philosophers must come to perform common acts of cognition themselves. But these essential generalities are (and here admittedly metaphysically presumed) found to be in the knowledge of ‘pure’ logical laws. Thus, the way in which these acts of cognition are going to be objectified with respect to pure essential generalities is through an unnatural forceful adherence of the acts of thinking to the principial laws of logic. Only then can Husserl state that theory is an “all-embracing” unity, a pure unity, one which begins with the <em>critique </em>of knowledge as the delimiting adherence of knowledge, and hence any and all acts of thinking, <em>to </em>pure laws of logic in order for knowledge to <em>never lose sight of the </em> <em>essential generalities of things; of the things themselves</em>.</p>
+<p class="prose">Phenomenology describes the coming-into-knowledge, as coming-into a self-relation, of that which is sighted, that which is in-sight. Such is the seminal thrust that needs to be sidetracked. It is not without reason that phenomenology catches a glimpse of the theory of manifolds. In pursuit of this Idea of Pure Logic, the ground that is walked upon makes its heterogeneity heard. Yet these “fields of theory” are nevertheless glimpsed with respect to a construction “out of purely categorial concepts, many definite concepts” whose classes would “govern the legal connection, the transformation and the mutual interchange of these forms.”<sup class="noteref"><a id="ref-8" href="#note-8" aria-label="Footnote 8">8</a></sup> In a twist of dreams, this geopolitical thematic carries a detrimental ethos; the phenomenological residue of what is given to intuition, what is discovered by my in-sight, appropriated for my country. And this is not simply a rhetorical gesture – ‘Sidetracks’ is an-archic by philosophical necessity. The very imposition of a legal classification that mediates the transformations and interchanges between manifolds inculcates a technical-political motif that assumes the phenomenologist-king can get behind the totality of the manifold as though it were an object, as though it can get behind it logically without traversing the material. Such dubiousness is a patently false way to describe how to approach manifolds. The production of manifolds would be rendered totally predictable and calculable, ridden of its indigeneity.</p>
+<p class="prose">Ultimately, to explore the sidetracks of the <em>Logical Investigations</em> is to attempt an articulation of the <em>generation</em> of theoretical manifolds through the <em>integration</em> of a-logical schemes.</p>
+<h2 id="exploration">Exploration</h2>
+<h3 id="articulation-association-indicatives">Articulation, Association, Indicatives.</h3>
+<p class="prose">Phenomenology begins with its own extra-essential act. The common schemata of the placement of technics in service of language in service of thought is found in the <em>proposition</em>. Between the mathematical discipline and the philosopher lies a gulf as the difference between a “growing system of propositions having a naively factual validity” and the</p>
+<blockquote class="quotation">“essence of the modes of cognition which come into play in their utterance and in the ideal possibility of applying such propositions, together with all such conferments of sense and objective validities as are essentially constituted therein.”<sup class="noteref"><a id="ref-9" href="#note-9" aria-label="Footnote 9">9</a></sup></blockquote>
+<p class="prose">Conferment of sense and objective validities refer back to the material concatenations designating the scientificity of any science versus any other. What these sciences do not render transparent to themselves is the field of <em>significance</em> that modes of cognitions pass through in their <em>production</em>. But in this distinguishing example, the system of propositions is provided as available, as the ‘possibility of applying such propositions:’ the applicability of these propositions are ideally circumscribed and hence <em>present</em>. Therefore, significance is interpolated with respect to <em>signification</em>. The primary disposition of a subject is <em>to signify</em>. And out of the system of knowledge relevant to a certain objectivity, it is language which traverses all of them and is that out of which signification can occur.</p>
+<p class="prose">The Idea of Pure Logic must be instituted into the field of knowledge that is language – to ensure that the Ideas of logic are <em>constantly</em> operational in the acts of thinking; to ensure that the description of the modes of cognition are reduced to the logical and therefore essential signification of any perceived generality. Phenomenology will do so by rendering “self-evident in fully-fledged intuitions that what is here given in actually performed abstractions is what the word-meanings in our expression of the law really and truly stand for.”<sup class="noteref"><a id="ref-10" href="#note-10" aria-label="Footnote 10">10</a></sup> As elements of propositions, that a word is involved in a proposition formed in the reflection of a cognitive performance <em>indicates</em> an inflection of its concept, such that “by distinguishing among concepts confounded by us, and by suitably modifying our terminology, we then likewise achieve a desired ‘clearness and distinctness’ for our logical propositions.”<sup class="noteref"><a id="ref-11" href="#note-11" aria-label="Footnote 11">11</a></sup> Between these two statements stands a complicity between <em>completeness</em> of intuition and <em>confoundedness</em> of conceptuality. The plenitude of conceptual verbosity must be reduced according to the fitness of intuition. This reduction is declared in the following passage:</p>
+<blockquote class="quotation">“… we must rather practice ‘reflection,’ i.e. make these acts themselves, and their immanent meaning-content, our objects. When objects are intuited, thought of, theoretically pondered on, and thereby given to us as actualities in certain ontic modalities, we must direct our theoretical interest away from such objects, not posit them as realities as they appear or hold in the intentions of our acts. These acts, contrariwise, though hitherto not objective, must now be made objects of apprehension and theoretical assertion.”<sup class="noteref"><a id="ref-12" href="#note-12" aria-label="Footnote 12">12</a></sup></blockquote>
+<p class="prose">Meaning-content derives from conceptual confoundedness. Immanent meaning-content in the very act of cognition entails an underlying function of language in knowledge. The question arises: with what necessity does a meaning-content accompany any act of cognition? With what extra-theoretical glimpse is one enlightened of its feasibility? Phenomenology, of course, is not meant to answer this question; it, like any systematic philosophical. In a rather cryptic way, the central difficulty is once again interpolated with respect to the function of <em>signification</em>. To engage in signification of these objectifications, is “to allow phenomenological relations to work upon them in full purity.”<sup class="noteref"><a id="ref-13" href="#note-13" aria-label="Footnote 13">13</a></sup> Such a working-upon raises the question of <em>articulation</em>. To turn away from the entity in any act in which the entity is de-posited is to prevent any <em>proposition</em> pertaining to the entity’s existence as it is <em>found in the act</em> from <em>interfering</em> in the <em>auto-nomous </em> and<em> quasi-anonymous</em> articulation of act-recollection ushered in by a <em>reflective </em> <em>intention. </em>This reflective intention is an imperative of nihilative vigilance that clears the empty play-space in and for which articulation is nurtured and fulfilled unto logical efficacy. The primary aim of this reflective intention is to cast light upon the Idea of knowledge, the general whatness of knowledge and its essential laws.</p>
+<div class="passage-divider" aria-hidden="true">~</div>
+<p class="prose">When referring to the meaning-content of an act of cognition, words were described as <em>standing-for</em> something. This standing-for is a function of <em>indication</em>. What is involved is what is found in the series of articulations in which the reflective recollection finds that certain words are embedded in the operation of ideational abstraction. That such a word is found to be in such an act means an inflection of its concept is involved in the operations of knowledge pertaining to the acts in which a self-relation is constituted. It is observed “that ‘standing for’ will not count as the meaning which characterizes the expression. For signs in the sense of indications do not express anything unless they happen to fulfil a significant as well as an indicative function.”<sup class="noteref"><a id="ref-14" href="#note-14" aria-label="Footnote 14">14</a></sup> Since every sign indicates something, what will be elaborated upon is the fulfilment of a significant function. <em>Mere </em>indications do not signify anything. Words, as a mere <em>symbol</em>, as a mere fact of referral to that which the word signifies, are lacking in the clarification of why they are implicated in any reflection upon any performed ideational abstraction. But when it is described how words, as symbolic standing-for, must be interpreted with respect to what they ‘truly’ stand for, this truth will always be towards a this <em>rather than</em> that – its sensitivity to this phenomenological state of affairs rather than that state of affairs. The question arises – who is the guarantor of this ‘true’ standing-for versus the ‘untrue’ standing-for? Is not the ‘true’ obtained via a decision of selection among ‘untruths?’ To recapitulate - first, phenomenology raises the question, here, of word-<em>meanings</em> and what they truly stand-for – expressing a law of knowledge. Standing-for is an indicative relation. Hence, this is a <em>non-empirical </em>indication. A hermeneutic that is adherent to logical laws must intervene in order to describe the performance of the present act of cognition – for example, what is given in intuition. Word-meanings already fulfill a significant and indicative role, on the basis of signs. But then there is an <em>extra-essential</em> ‘indication,’ as to what law they indicate within a given objectified act of cognition. Or, more aptly put – how the law directs these otherwise an-archic non-empirical indications towards a reflection of itself. As for right now, the present distinctions of indications are put for the sake of establishing that a sign has a meaning – that it is a word, that it has an intimated significance, that it is there in the intent to signify.</p>
+<p class="prose">Indications are that in which a “belief in the reality of the one [state of affairs] as motivating a belief or surmise in the reality of the other [state of affairs].”<sup class="noteref"><a id="ref-15" href="#note-15" aria-label="Footnote 15">15</a></sup> It is rather clear that indications are made with reference to empirical existents, that their role in the fruition of ‘belief’ and ‘motivation’ is how they rather ingratiate knowledge to perform an act of drawing the boundaries of significance in which proper acts are to be performed. Such an evaluation of indication rather serves as the intermediary between two parts. One is concerned with the evaluation of indications as existing things. What is important is the distinction that is made between <em>deliberate</em> production and <em>deliberate</em> “artificial bringing-about.”<sup class="noteref"><a id="ref-16" href="#note-16" aria-label="Footnote 16">16</a></sup> Logical situations are pre-dated by a <em>production</em>, a natural technic, versus a <em>bringing-about</em>, an artificiality. With production it is not simply a matter of the indicative relation of standing-for. All signs stand for something. Rather – an existent that is produced to “serve as such indications,” as being in the place for, is a full sign “whether they exercise this function or not.”<sup class="noteref"><a id="ref-17" href="#note-17" aria-label="Footnote 17">17</a></sup> A pair of glasses, as suited for restoring eye-sight, will always indicate that someone has poor eyesight, regardless of whether they are worn by the owner or lying on a table. But a pair of glasses used by someone in the moment to point towards a thing is an artificial bringing-about. What is essential to recognize out of this example is that a ‘natural technic’ or production is a made entity that compensates for an <em>essencelessness </em> whose possibility of corruption is a <em>constant</em> possibility. Without this constant possibility of corruption, any deliberate bringing-about remains purely relegated to the contingent use of its standing-for. The designation of deliberateness extends to its essential unity: “a thing is only properly an indication if and where it in fact serves to indicate something to some thinking being.”<sup class="noteref"><a id="ref-18" href="#note-18" aria-label="Footnote 18">18</a></sup> As though this ‘where’ is unaffected by how the entity that is serving as an indication is constituted. For how is one to understand motivation as itself a unity of judgement when indications are relegated to a logical essence in the form of “this ‘since,’ … is the objective correlate of ‘motivation’ taken as a descriptively peculiar way of combining acts of judgement into a single act of judgement.”<sup class="noteref"><a id="ref-19" href="#note-19" aria-label="Footnote 19">19</a></sup> The ‘since’ is chosen selectively; it is a grammatical word as seized in the reflection of logical indication to gesture towards a unity of otherwise <em>individual </em>acts of existential cognizance, acts of judgement through indication of what is included in a state of affairs. Perhaps a deeper ‘indication’ lurks here, when it is further digressed that this since, as a way of unification otherwise individual propositions, operates in the association of ideas. It “operates creatively, and produces descriptive characters and forms of unity.”<sup class="noteref"><a id="ref-20" href="#note-20" aria-label="Footnote 20">20</a></sup> Despite the denunciation of a word as symbol, there is a symbolic characterization in the indicative association itself, as when A summons B into consciousness, vague characterizations are produced here to describe such an manifestation as “feel their connection forcing itself upon us.” In fact, the serving-for of a <em>produced</em> indication upholds the “<em>constant</em> result of associative functioning… they no longer count separately, but help to present an object different form themselves.”<sup class="noteref"><a id="ref-21" href="#note-21" aria-label="Footnote 21">21</a></sup> Associative functioning seem to operate on a symbolic level, whose working back and forth are admitted as responsible for the creation of “additional phenomenological characters and unities” untethered from the empirical experience as such.<sup class="noteref"><a id="ref-22" href="#note-22" aria-label="Footnote 22">22</a></sup></p>
+<h3 id="the-boundaries-of-phenomena">The Boundaries of Phenomena</h3>
+<p class="prose">If the ‘since’ is somehow the grammatical word that solicits a unity of acts of judgement, it is misleading. For phenomenological purposes, it amounts to “<em>just</em> this: that certain things may or must exist, since other things have been given.”<sup class="noteref"><a id="ref-23" href="#note-23" aria-label="Footnote 23">23</a></sup> Such a formulation seems to exhaust the totality of hypothetical reality on the basis of what is seen. However, these are not strict boundaries. In fact, can the bordering in which existents are included in the instantiation of any phenomenological state of affairs ever be truly closed? The invocation of ‘since’ is a mere appeal to a logical demand upon grammar that does not think into the combining of acts of judgement, the association of propositions. Encompassing this ‘since,’ guiding its directionality, is truly a look into the role of a hypothesized reality. For it is not <em>just </em>this: indications amply demonstrate that any such belief or motivation in a state of affairs calls into attention that: <em>there </em> <em>exists that which </em><strong>cannot exist without</strong> (…). Before elucidating this necessary attachment, what is noticed in the grammatical instance of the ‘since’ is that it stands for not an entity, but a correlate of a motivation. It stands for a movement of knowledge. The ‘cannot exist without,’ then, is the collected backdrop around which a correlate of motivation is regionalized, is that through which the motivation wades through. Thus, it seems peculiarly rash when it is said that the motivation of unifying acts of judgement, or a collection of intuited propositions, itself has the character of a judgement or a proposition. For can there ever be a single ‘is’ for something that is not simply an act but an incessant <em>activity</em>? An autonomous one at that? Without the cannot-exist-without, there is no motivation or association – there is no knowledge. The unity of judgement presumed to be of motivation is buttressed by an attachment that is non-propositional. We must come to grips, with all the gravity that this implies, that the live carrying-out of and within a phenomenological state of affairs <em>also</em> spurs the neither-alive-nor-dead (un)carrying-out of this a-phenomenological collection that the phenomenological state of affairs necessarily refers to. Existence in service of non-existence. Unrealities exerting a force from a null-space that may never arrive.</p>
+<p class="prose">And so, for instance, we must then empathize that if a <em>human being</em> is included in this collection that is referenced to by a phenomenological state of affairs, then by carrying out the phenomenological state of affairs, a peculiar quasi-meaning <em>casts over</em> the human being involved – whether actually there or not. The Earth is just a three-dimensional playing-ground for these manifolds. And we mortals refuse to unfold them for fears of being flattened.</p>
+<h3 id="the-symbol-word-watcher">The Symbol. Word-Watcher.</h3>
+<p class="prose">Such pre-phenomenological drawing of boundaries depends on an ontological <em>hypothetic</em>. For the cannot-exist-without is just as binding as it is conjectural. Its gradual working-through entails the enrichment and/or impoverishment of the phenomenological state of affairs. Thus, that which is beyond the present phenomenological situation but must be brought in, means the gradual formation of a <em>symbolism</em>. Proper symbols do not just include or exclude an exteriorized entity from partaking in a phenomenological state of affairs. Through their forward and backwards movement, they entail that any phenomenological working-upon any state of affairs at once works upon the excluded, in a way that sensitive phenomenological contents can be exchanged without harming the sanctity of any state of affairs as this phenomenological situatedness. For (1) the same content can be subject to alternate intentional unities and (2) these unities are not delimited by a conceptual inherency. Thus, if mere signifying indication is what motivates a belief in the inclusion of existents in a single phenomenological state of affairs, then a symbolic scheme of indicatives ushers in the transversal deepening of a state of affairs being phenomenologically worked-through.</p>
+<p class="prose">The aim of elucidating indication towards logical ends is to draw in entities, and in science, the collection of relevant propositions attained through acts of judgement upon given objectivities, culminating in a ‘pure logic,’ as the field out of which the sciences draws from. With <em>expressions</em>, it is not just about an inclusion of existents but a inclusion of possible meanings. Hence it refers back to the ideal possibilities of applying <em>propositions that are already in a knowledge, </em> and are already applicable. Such a presumption of the applicable has a logical intent, for at the moment it is about a reduction to the logical signification of any constituted objectivity. These distinctions will have two steps whose order of priority is not at all inconsequential: first, expressions in communication, and second, expressions in soliloquy.</p>
+<p class="prose">The priority of communication is hard to avoid, for the sense or meaning of an expression is defined as the “certain sequence of mental states, associatively linked with the expression, which make it be the expression of something.”<sup class="noteref"><a id="ref-24" href="#note-24" aria-label="Footnote 24">24</a></sup> Hence, it is not so much about concrete meanings, but whether an association of mental acts and the sense made therein belongs to an indicated existent. Expressions have their unavoidable origination in communication. However, the reduction to pure logic must in a sense presuppose an interpretation of what this <em>being-in-communication</em> means. With the positing of expression as inextricably bound to a process of associative mental linkage, there is in some way a meaning-nexus that is hoisted into the interiority of a subject. What is common between this interpretation of communication and this interpretation of soliloquy is that they are both posed with respect to the priority <em>to signify</em>.</p>
+<p class="prose">There must, in a sense, begin a first hermeneutic of the symbolic scheme of indicatives that <em>establish communication and soliloquy</em> prior to the logical description. To do so, there must be an attendance to the <em>listeners</em>.</p>
+<p class="prose">For all that the logical reduction grasps is that there must be a mutuality. Such a declaration is frankly tautological. In order to tip these scales, or to inculcate the minimal a-logicism necessary for the reduction, a speaker “produces” the expression; “he must endow it with a sense in certain acts of mind, a sense he desires to share with his auditors.”<sup class="noteref"><a id="ref-25" href="#note-25" aria-label="Footnote 25">25</a></sup> It is <em>desire</em> wherein one must <em>lose himself</em> for the sake of the logical in order to <em>regain himself</em> at the precipice of his expression’s exasperation. The invocation of production is doing much work here, for, when it was seen that production refers to a serving-for in which the thing serves to stand-in-for an essencelessness whose possibility of corruption is constant. But is this serving-to-stand-in-for not the position of the listener? Is there not an essencelessness spurring in the speaker, that which would give him the desire? It will be then admitted that:</p>
+<blockquote class="quotation">“He does this inasmuch as he takes the speaker to be a person, who is not merely uttering sounds but speaking to him, who is accompanying those sounds with certain sense-giving acts, which the sounds reveal to the hearer, or whose sense they seek to communicate to him. What first makes mental commerce possible, and turns connected speech into discourse, lies in the correlation among the corresponding physical and mental experiences of communicating persons which is effected by the physical side of speech. Speaking and hearing, intimation of mental states through speaking and reception thereof in hearing, are mutually correlated.”<sup class="noteref"><a id="ref-26" href="#note-26" aria-label="Footnote 26">26</a></sup></blockquote>
+<p class="prose">These are mainly pre-logical givens that are set to establish that there is indeed communication there. Reifying the signifying priority, it is this intimation that will see bare actuality in communication, and <em>ideal possibility</em> in soliloquy, with all that this ideality entails desirously. One, then, has to be felt as though one is being spoken to. Moreover, that who is spoken to is spoken to insofar as they are <em>capable</em> of speaking. This is not a material physicality of simply hearing word-combinations. It is an ideal physicality, a manifold. Thus, the effected physical side of speech can no longer simply refer to the sign as indication but symbol as indicative. There is a symbolic formation in the formulation of expressions. And these indicatives are not indications of existential belonging, such as the intimation function being a moment in which a sense is expressed to someone, but of meanings that can be attributed to and <em>possibly experienced</em>. There is this space, then, through the cannot-exist-without, that these unrealities spurred by the symbolic, are vied over in the life-and-death in communication. If done properly, communication can raise things from the dead. Such a tension can only be broached logically in the unexplained admittance that “mutual understanding demands a certain correlation among the mental acts mutually unfolded in intimation and in the receipt of such intimation, but not at all their exact resemblance.”<sup class="noteref"><a id="ref-27" href="#note-27" aria-label="Footnote 27">27</a></sup> In a way, there is no absolute closure for any phenomenological state of affairs until it has <em>totally passed away</em>. Perhaps even – that which it cannot-exist-without has been made extinct. For the word ‘certain’ in all of these logical investigations are the indications of a product of a reflection. In other words, ‘certain’ entails a phenomenological intervention whose meaning in the present instantiation is that <em>some unity of acts of cognition </em> <em>persists here</em>. But it must be pressed: the <em>polarity</em> between affirmation and denial of resemblance must be an <em>enduring being-without-essence</em>. Moreover, it must be an enduring <em>being-without-essence</em> with no final solution. What serves as a produced thing, a symbol, is only a temporary covering-over of a being-without-essence, one that allows communication to pass towards what has not yet been communicated. Internalizing this means there is no such thing as a stable phenomenological state of affairs. The <em>logical</em> is only a necessary response to the <em>tearing-forth </em> of this being-without-essence that communication crops up to amend. Symbols, then, must be formed, for otherwise there would be no making-up-for this tearing-forth. In fact, everything serves a symbolic purpose, since this enduring otherwise-than-being is without-death.</p>
+<p class="prose">With this in mind, to transition into soliloquy is to first understand that nothing of any concrete meaning is involved here. An expression has a certain association of mental acts to it. The functional difference between expressions in communication and expressions in solitary life is that the latter is claimed to be without indication. “The existence of the sign neither ‘motivates’ the existence of the meaning, nor, properly expressed, our belief in the meaning’s existence.”<sup class="noteref"><a id="ref-28" href="#note-28" aria-label="Footnote 28">28</a></sup> The center of this re-establishes the logical situation that communication cannot ever guarantee: that to use as an indication, as a line along which a possible expression is made, is that it must be perceived. The locus of the situation is entrapped in the subject as that which primarily signifies. Hence, the logical retreat to soliloquy is the ultimate a-logicism: to bathe in the whisper of the meaning of the words that are alive, working upon the solitary soliloquist in his own self-incubating retreat. For what is the are expressions trying to do? They are trying to gesture towards a certain existence of associated mental acts. Expressions were framed originally as inextricably fulfilling its communicative function. Without the context of being-in-communication, there is no expression. Hence, when it is said that expressions still operate in soliloquy, there is a transversal expectation of some kind of signifying parallelism. In other words – it <em>omits </em>the soliloquy of the listener. Soliloquy-in-listening – hereby named the <em>word-watcher</em> – is the epitome of the relationship between knowledge, language, and the cognitive act. There is no expression without a listener in mind: the association and <em>motivation</em> of various cognitive acts, especially with respect to the intersubjective validity of scientific propositions, are tied with respect to the desire to address another.</p>
+<p class="prose">Part of that which is aimed at in this investigation is the logical re-cognition of the <em>fact</em> that an expression has meaning. Expressions function in communication insofar as they are <em>intimating</em>. The intimating function of expressions are ultimately aimed towards the wider sense of “all acts that a hearer may introject into a speaker on the basis of what he says.”<sup class="noteref"><a id="ref-29" href="#note-29" aria-label="Footnote 29">29</a></sup> The threat of this <em>introjection</em> is an enduring, constant threat of essencelessness. But natural technics, production, is that which always stands in for the constant possibility of an essencelessness as a restoration from essencelessness.</p>
+<p class="prose">We must understand now that when the listener is invoked in communication, the imagination is invoked in soliloquy to make up for that essencelessness that the listener, in a sense, counter-achieves. Introjection, for one, prevents there from the situation wherein the “hearer perceives the speaker as manifesting certain inner experiences, and to that extent he also perceives these experiences.”<sup class="noteref"><a id="ref-30" href="#note-30" aria-label="Footnote 30">30</a></sup> In this model, the hearer is rendered to a state of pure passivity. In fact, they are excluded from the interior life of these rendered mental experiences. “he does not, however, himself experience them, he has not an ‘inner’ but an ‘outer’ percept of them.”<sup class="noteref"><a id="ref-31" href="#note-31" aria-label="Footnote 31">31</a></sup> Such is the attitude that must be fostered if one is to have an objective glance, of the necessary distance for a subject to perceive an entity in its objectness. That is after all the goal of these <em>Logical Investigations</em>. But what this move essentially does is <em>nullify</em> the <em>potency</em> of <em>introjection</em>. This is the ultimate a-logicism of logic. The speaker is rendered an unabating seat of adequate intuition – they have an unequivocal right to the totalizing act of conceiving their mental acts as totally their own. By contrast, the hearer is rendered an enduring seat of inadequacy. Nevertheless, the listener is in effect nullified by finding a surrogate in soliloquy. By the existence of the expression and its meaning, when our interest ceases at giving it meaning, there is the mere sound. When we however “live in the understanding of a word, it expresses something and the same thing, whether we address it to anyone or not.”<sup class="noteref"><a id="ref-32" href="#note-32" aria-label="Footnote 32">32</a></sup> But remember – expressions are in a propositional form. This is one of the guiding assumptions of knowledge. Thus, what we lost in a propositional expression to a listener, we reduce down to the word in soliloquy. But once again, the assumption of the subject as primarily signifying essentially generates this structure: that the <em>elements of propositional thinking are lived wholly in me. The </em> <em>production of propositional thinking, the very restoration of the constant possibility of </em> <em>corruption, is always in the hands of the one who signifies. </em>It is this very logical imposition that inculcates the stammer of submission, as though the model of a listener is one who is obediently silent. Or rather – that a listener who is silent after hearing his proposition is the ideal symbol of a <em>conquered introjection</em>, that the forces of evil potent in the listener have been quelled, that I am once again allowed to retreat and gorge on the fruits stuffed within my sanctity.</p>
+<p class="prose">And this is seen in a very subtle moment, when the imagination of a “vocalized” expression is encapsulated and ridden of its existential residue towards a listener. “The imagined verbal sound, or the imagined printed word, does not exist, only its imaginative presentation does so.”<sup class="noteref"><a id="ref-33" href="#note-33" aria-label="Footnote 33">33</a></sup> It is imagined, it is occurrent, but it has no existential weight. Yet why is this the <em>primary</em> imagination? Why is the so-called ‘flaw’ put ahead of an possession? Because it is a soliloquial re-enactment. That there is an imagination of the physical in the <em>primary act of imaginative presentation</em>, its denial of an existential status is <em>a symbolic </em> <em>indicative</em>, a symbolic act. By necessity, there then must be a <em>formless listener</em>. Whomever is imagined as one’s own symbolic whisperer, is the figure around which motivation and association derives from. It is them-as-symbol, either being-with-form or being-without-form, either in the flesh or in the mind, where entire logical unities are spun around and in fact spun around as objective, if they rally the fantasies of the masses well enough. The imagination of the whisperer is not a signifying act. It precedes imagination insofar as it is this watchword, in its being-without-form, that spurs imagination, for fact of not being given in the flesh. It precedes imagination and enters into ones own mind from with and without. The soliloquy-in-listening can only usher in from a voice that is not totally ones own, a voice that in fact prevents there from what is being heard from entertaining any completeness. A voice that labors both with and without oneself. In fact, an a-symbolic being-without-form in which signs are transfigured into a word, as possible element of meaningful expression. Hence meaning is extrapolatable and circumfixal in the very instantiation of communication: the word <em>scheme</em> underlies this. When you are in the midst of expression, there is that introjective glare pointed not merely at your physical body, but in your head. And that listener you imagine and that listener they imagine, they speak between each other as watchwords, ensuring that what is spoken has significance and that the proper intentions are grown to facilitate that essencelessness which forever surges forth.</p>
+<h3 id="meaning-and-meaninglessness">Meaning and Meaninglessness</h3>
+<p class="prose">A subject that is primed to signify reaches the reduction of expressions themselves: “whether they occur in dialogue or soliloquy, two things seem to be left over: the expressions themselves, and what they express as their meaning or sense.”<sup class="noteref"><a id="ref-34" href="#note-34" aria-label="Footnote 34">34</a></sup> What had taken place in that discussion between communication and soliloquy is the <em>parallelism </em> of a signifying equivocation. Both the communication of propositions and the construction of the propositions are meant to exhaust the expression in its isolable objectness. Under the idea of Pure Logic, meaning is related to what is objective. When an expression is broken apart into its components, the question now beholds whether that meaning <em>expresses </em>a meaning that is <em>obtainable</em> from out of that object to which it is related to. Obtainability is the background through which the Idea of expression or meaning is up against. “But if the object is not intuitively before one, and so not before one as a named or meant object, mere meaning is all there is to it. If the originally <em>empty </em>meaning-intention is now fulfilled, the relation to an object is realized, the naming becomes an actual, conscious relation between name and object named.”<sup class="noteref"><a id="ref-35" href="#note-35" aria-label="Footnote 35">35</a></sup> There is a curious inversion that is at play here. That which was reduced by the establishment of the signifying function of the subject is now the authenticator of its meaning-intention in <em>knowledge</em>. There is a vacillation between these elementary manifolds and a logical, almost dialectical, upheaval whereby the signifying substratum of expressions are isolated and then brought up to be tested by the realm of knowledge. In a sense, the signifying function <em>does not cease</em> until a fulfillment is realized. The signifying function of the expression is a <em>tear in the fabric of knowledge</em>. Thus, when the fulfilling act is introduced, it “is not essential to the expression as such”<sup class="noteref"><a id="ref-36" href="#note-36" aria-label="Footnote 36">36</a></sup> because it is essential for the expression’s initiation as a component of knowledge: “these acts, which become fused with the meaning-conferring acts in the unity of knowledge or fulfillment, we call the meaning-fulfilling acts.”<sup class="noteref"><a id="ref-37" href="#note-37" aria-label="Footnote 37">37</a></sup> Such a ‘more or less’ is institutive of the meaning-fulfillment. The “empty intuition” is merely posed with respect to a relation to objects as things. It is merely posed with respect to obtainability as intuitability. However, with respect to the obtainability of meanings themselves as such those from complex state of affairs, there could be no ‘intuition.’ In fact, the ontological hypothetic of the cannot-be-without means that the meaning-intention a striving-for-fulfillment. Yet the meaning-fulfillment itself cannot be articulated with respect to the meaning-intention. Hence, there is already an <em>introjective cutting-away-at the </em> <em>meaning-intention</em> in the striving-for-fulfillment of the intention: the inexistence of the word-watcher. And this fulfilling act appears as the act “expressed by the complete expression.”<sup class="noteref"><a id="ref-38" href="#note-38" aria-label="Footnote 38">38</a></sup> Such an expression would find completeness if it were felt beforehand its obtainability. That is why when we “yield ourselves to enacting the meaning-intention and its further fulfillment, our whole interest centres upon the object intended in our intention.”<sup class="noteref"><a id="ref-39" href="#note-39" aria-label="Footnote 39">39</a></sup> The flashing of this curious inversion strikes again, when isolating the elements of propositions by living in the sense of the imagined word, our direction now emphasizes the <em>world</em>. From word to world does knowledge compel us to learn through.</p>
+<p class="prose">Otherwise, there is a loss of stamina here. Besides some various elaborations on the connection between meaning to ideal reference, there is reached a limit: “to characterize the various acts in which the relevant ideal unities are constituted, and to throw some light on the essence of their actual ‘coincidence’ in knowledge,” will not be achieved in the manner of expression. For expressions, “even when they function outside of knowledge must, as symbolic intentions, point to categorially formed unities.”<sup class="noteref"><a id="ref-40" href="#note-40" aria-label="Footnote 40">40</a></sup> This standpoint is the essential limitation of the logical reduction of knowledge.</p>
+<p class="prose">Then there is a distinction between expressions and meaningless expressions. Akin to the equivalence between knowledge and true knowledge, a meaningless expression is “no expression at all.”<sup class="noteref"><a id="ref-41" href="#note-41" aria-label="Footnote 41">41</a></sup> Nevertheless – why the introjection of a <em>meaninglessness</em>? It depends on what it is that meaning is identified with. Thus an expression in this area of the world may be meaningless for that area of the world. Nevertheless, since it is towards a common object, there is a necessity of <em>overdetermination</em>. Overdetermination must generate, through a symbolic modification of indicatives, that which allows the other speaker to speak forth – to give back the gift of speaking.</p>
+<h2 id="recapitulation">Recapitulation</h2>
+<p class="prose">The non-empirical indication that was unearthed is named an <strong>indicative</strong>. An indicative is a directive of possible intention. Indicatives allow for the constant operating of associative functioning perpetuating any unity of acts of cognition.</p>
+<p class="prose">Indicatives are based upon an <em>ontological hypothetic</em>. Since it is a-logical, it is more adequately formulated as an <em>onto-hypo-thetic</em>. The designation of ‘hypothetic’ means that it is at once conjectural as it is self-evident. Otherwise named the <strong>cannot-be-without</strong>, every given real state of affairs makes reference to an unreal state of affairs connected by an ontological necessity. If X cannot-be-without Y, then any phenomenological state of affairs involving X will play out a reference to Y whether or not Y is in the state of affairs as X is. These references are indicatives. If mere indications motivate the inclusion of existents within a self-same phenomenological instantiation, indicatives scheme possible ways of directing intentions, such that the cannot-be-without establishes a <strong>counter-indicative</strong> between which the present reality and the non-present unreality make phenomenal boundaries. The cannot-be-without is non-propositional: it refers to a collection of conjectured and certain entities that establishes the <strong>symbolic exchange</strong> between membrane-like borders of phenomenal significance.</p>
+<p class="prose">The <strong>symbol</strong> is that which indicatives attach to. Yet there is also an <strong>a-</strong> <strong>symbolic formation</strong> that breaks down the phenomenological instance to another. When a symbol is exchanged, there is a passing-over of indicatives in which the instances surrounding these phenomenological instantiations are logically invoked as <em>communication</em> and <em>soliloquy</em>. Since the logical reduction cannot avoid the fact of soliloquy-in-communication, that there is always a cannot-be-without in soliloquy, the logical reduction has to necessarily suppress or render the listener silent. As an onto-hypo-thetic, this listener is a-symbolic – it is a <strong>word-watcher</strong>. The word-watcher is with-and-without form. It is prior to imagination, as that ideal figure that imagination has the possibility to direct toward. It is not ‘given’ but is always in anticipation of a concrete listener, and is the aggregation of listeners that word-watches over the total sphere of communication. Phenomenology must be at once denounced and rewritten for treating the symbolic and the epistemological as a simple opposition, and thus as one that is isomorphic to the opposition between object and subject respectively.</p>
+<p class="prose">With respect to the connection between meaning and objective reference, there are suddenly many horizons which spur meaning-intention. Meaning-intentions were first rewritten as <strong>striving-for-fulfillment</strong>. Meaning-fulfillment must force an <strong>overdetermination</strong> in every expression, since it is striving-towards obtaining what has been unobtained. This indicative meaninglessness is a symbolic diaphaneity of the just-obtained. Thus the other sees it as well as it from their standpoint. <strong>Underdetermination</strong>, on the other hand, occurs in an expression that has no understood meaning. Knowledge will undo meaning so as to prevent the possibility of any total objectification, for example, in the instance where further fulfillment is shown to be obtainable, dis-objectifying the intentionality.</p>
+<h2 id="works-cited">Works Cited</h2>
+<p class="citation-line">Husserl, Edmund. Logical Investigations, vol. 1. Translated by J. N. Findlay. London: Routledge, 2001.</p>
+          <section class="notes" aria-label="Notes">
+            <h2 id="notes">Notes</h2>
+            <ol><li id="note-1"><a class="backref" href="#ref-1" aria-label="Back to note 1">1.</a> Logical Investigations, 158.</li>
+<li id="note-2"><a class="backref" href="#ref-2" aria-label="Back to note 2">2.</a> Ibid. 159.</li>
+<li id="note-3"><a class="backref" href="#ref-3" aria-label="Back to note 3">3.</a> Ibid. 160.</li>
+<li id="note-4"><a class="backref" href="#ref-4" aria-label="Back to note 4">4.</a> Ibid. 155.</li>
+<li id="note-5"><a class="backref" href="#ref-5" aria-label="Back to note 5">5.</a> Ibid. 145.</li>
+<li id="note-6"><a class="backref" href="#ref-6" aria-label="Back to note 6">6.</a> Ibid.</li>
+<li id="note-7"><a class="backref" href="#ref-7" aria-label="Back to note 7">7.</a> Ibid. 149.</li>
+<li id="note-8"><a class="backref" href="#ref-8" aria-label="Back to note 8">8.</a> Ibid. 155.</li>
+<li id="note-9"><a class="backref" href="#ref-9" aria-label="Back to note 9">9.</a> Ibid. 165.</li>
+<li id="note-10"><a class="backref" href="#ref-10" aria-label="Back to note 10">10.</a> Ibid. 168.</li>
+<li id="note-11"><a class="backref" href="#ref-11" aria-label="Back to note 11">11.</a> Ibid.</li>
+<li id="note-12"><a class="backref" href="#ref-12" aria-label="Back to note 12">12.</a> Ibid. 170.</li>
+<li id="note-13"><a class="backref" href="#ref-13" aria-label="Back to note 13">13.</a> Ibid. 171.</li>
+<li id="note-14"><a class="backref" href="#ref-14" aria-label="Back to note 14">14.</a> Ibid. 183.</li>
+<li id="note-15"><a class="backref" href="#ref-15" aria-label="Back to note 15">15.</a> Ibid. 184.</li>
+<li id="note-16"><a class="backref" href="#ref-16" aria-label="Back to note 16">16.</a> Ibid.</li>
+<li id="note-17"><a class="backref" href="#ref-17" aria-label="Back to note 17">17.</a> Ibid.</li>
+<li id="note-18"><a class="backref" href="#ref-18" aria-label="Back to note 18">18.</a> Ibid.</li>
+<li id="note-19"><a class="backref" href="#ref-19" aria-label="Back to note 19">19.</a> Ibid.</li>
+<li id="note-20"><a class="backref" href="#ref-20" aria-label="Back to note 20">20.</a> Ibid. 187.</li>
+<li id="note-21"><a class="backref" href="#ref-21" aria-label="Back to note 21">21.</a> Ibid.</li>
+<li id="note-22"><a class="backref" href="#ref-22" aria-label="Back to note 22">22.</a> Ibid.</li>
+<li id="note-23"><a class="backref" href="#ref-23" aria-label="Back to note 23">23.</a> Ibid. 184.</li>
+<li id="note-24"><a class="backref" href="#ref-24" aria-label="Back to note 24">24.</a> Ibid. 188.</li>
+<li id="note-25"><a class="backref" href="#ref-25" aria-label="Back to note 25">25.</a> Ibid. 189.</li>
+<li id="note-26"><a class="backref" href="#ref-26" aria-label="Back to note 26">26.</a> Ibid.</li>
+<li id="note-27"><a class="backref" href="#ref-27" aria-label="Back to note 27">27.</a> Ibid. 190.</li>
+<li id="note-28"><a class="backref" href="#ref-28" aria-label="Back to note 28">28.</a> Ibid. 191.</li>
+<li id="note-29"><a class="backref" href="#ref-29" aria-label="Back to note 29">29.</a> Ibid. 189.</li>
+<li id="note-30"><a class="backref" href="#ref-30" aria-label="Back to note 30">30.</a> Ibid. 190.</li>
+<li id="note-31"><a class="backref" href="#ref-31" aria-label="Back to note 31">31.</a> Ibid.</li>
+<li id="note-32"><a class="backref" href="#ref-32" aria-label="Back to note 32">32.</a> Ibid.</li>
+<li id="note-33"><a class="backref" href="#ref-33" aria-label="Back to note 33">33.</a> Ibid. 191.</li>
+<li id="note-34"><a class="backref" href="#ref-34" aria-label="Back to note 34">34.</a> Ibid.</li>
+<li id="note-35"><a class="backref" href="#ref-35" aria-label="Back to note 35">35.</a> Ibid. 192.</li>
+<li id="note-36"><a class="backref" href="#ref-36" aria-label="Back to note 36">36.</a> Ibid.</li>
+<li id="note-37"><a class="backref" href="#ref-37" aria-label="Back to note 37">37.</a> Ibid.</li>
+<li id="note-38"><a class="backref" href="#ref-38" aria-label="Back to note 38">38.</a> Ibid.</li>
+<li id="note-39"><a class="backref" href="#ref-39" aria-label="Back to note 39">39.</a> Ibid. 193.</li>
+<li id="note-40"><a class="backref" href="#ref-40" aria-label="Back to note 40">40.</a> Ibid. 199.</li>
+<li id="note-41"><a class="backref" href="#ref-41" aria-label="Back to note 41">41.</a> Ibid. 201.</li></ol>
+          </section>
+        </article>
+        <div class="pdf-fallback"><a href="../pdfs/sidetracks-1-cravetchi.pdf" download>DOWNLOAD ORIGINAL PDF</a></div>
       </section>
-
     </div>
-
   </main>
-
 </body>
 </html>
