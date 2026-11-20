@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,9 +36,9 @@
 
     .rule {
       width: 100%;
+      margin: 12px 0;
       border: 0;
       border-top: 1px solid var(--ink);
-      margin: 12px 0;
     }
 
     .intro-table {
@@ -67,9 +66,8 @@
 
     p {
       margin: 5px 0;
-      font: 18px Garamond, serif;
+      font: 18px/1.2 Garamond, serif;
       text-align: justify;
-      line-height: 1.2;
     }
 
     .author-link {
@@ -80,9 +78,7 @@
       text-decoration-thickness: 1px;
     }
 
-    .author-link:hover {
-      text-decoration-thickness: 2px;
-    }
+    .author-link:hover { text-decoration-thickness: 2px; }
 
     .poetry-image {
       display: inline-block;
@@ -91,59 +87,52 @@
     }
 
     .poetry-image img {
-      transition: transform 0.25s ease, filter 0.25s ease;
+      transition: transform .25s ease, filter .25s ease;
     }
 
     .poetry-image:hover img {
       transform: scale(1.025);
-      filter: brightness(0.82);
+      filter: brightness(.82);
     }
 
-    /* THE TABLET */
+    /* The HTML list remains readable even when JavaScript is disabled. */
     .tablet {
       position: relative;
       width: 100%;
       margin: 17px auto 18px;
-      overflow: hidden;
       isolation: isolate;
     }
 
     .tablet-source {
       display: grid;
-      grid-template-columns:
-        minmax(0, 58fr)
-        minmax(0, 25fr)
-        minmax(0, 17fr);
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
       align-items: start;
-      width: 100%;
     }
 
-    .tablet-column {
-      min-width: 0;
-    }
+    .tablet-project { min-width: 0; }
 
     .tablet-entry {
-      min-width: 0;
-      min-height: 32px;
-      padding: 7px 10px;
-      border: 1px solid var(--ink);
-      font: 14px/1.15 "Times New Roman", Times, serif;
-      overflow-wrap: anywhere;
       display: flex;
       align-items: center;
+      min-height: 44px;
+      min-width: 0;
+      padding: 9px 11px;
+      border: 1px solid var(--ink);
       color: var(--ink);
+      font: 14px/1.26 "Times New Roman", Times, serif;
+      overflow-wrap: anywhere;
     }
 
-    .tablet-entry.series,
-    .tablet-entry.heading {
+    .tablet-entry.title {
+      min-height: 68px;
       font-weight: bold;
     }
 
     .tablet-entry a {
-      color: inherit;
-      text-decoration: none;
       display: block;
       width: 100%;
+      color: inherit;
+      text-decoration: none;
     }
 
     .tablet-entry a:hover,
@@ -154,9 +143,8 @@
       outline-offset: 1px;
     }
 
-    .tablet.is-enhanced .tablet-source {
-      display: none;
-    }
+    /* JavaScript draws the tablet, without changing the original source. */
+    .tablet.is-enhanced .tablet-source { display: none; }
 
     .tablet-drawing,
     .tablet-placements {
@@ -168,35 +156,27 @@
 
     .tablet-drawing {
       z-index: 0;
-      overflow: visible;
       pointer-events: none;
+      overflow: visible;
     }
 
-    .tablet-drawing path {
-      fill: none;
+    .tablet-drawing .stone {
+      fill: var(--charcoal);
       stroke: var(--ink);
-      stroke-width: 1;
-      stroke-linecap: butt;
+      stroke-width: 1.1;
       stroke-linejoin: miter;
       vector-effect: non-scaling-stroke;
     }
 
-    .tablet-drawing path.outer {
-      stroke-width: 1.3;
-    }
-
-    .tablet-placements {
-      z-index: 1;
-    }
+    .tablet-placements { z-index: 1; }
 
     .tablet-placements .tablet-entry {
       position: absolute;
-      margin: 0;
-      border: 0;
       min-height: 0;
+      margin: 0;
       padding: 0;
+      border: 0;
       background: transparent;
-      overflow: hidden;
     }
 
     @media (max-width: 620px) {
@@ -213,28 +193,13 @@
         margin: 0 auto 12px;
       }
 
-      .tablet-source {
-        grid-template-columns: minmax(0, 1fr);
-      }
-
-      .tablet-entry {
-        font-size: 12px;
-      }
-
-      .tablet {
-        margin-top: 15px;
-      }
+      .tablet-entry { font-size: 12px; }
     }
   </style>
 </head>
-
 <body>
   <main class="page">
-
-    <div class="site-title">
-      C R A V E T C H I
-    </div>
-
+    <div class="site-title">C R A V E T C H I</div>
     <hr class="rule">
 
     <table class="intro-table">
@@ -244,7 +209,6 @@
             <img src="picturereal.jpg" alt="">
           </a>
         </td>
-
         <td>
           <p>
             "...an anarch in space, a metahistorian in time -
@@ -252,9 +216,7 @@
             and also open and potent in any direction."
             <i>~E. Jünger</i>
           </p>
-
           <br>
-
           <p>
             My name is <a href="author.html" class="author-link">Maximilian Cravetchi</a>.
             My philosophical interests lie in the exhaustion of
@@ -269,74 +231,61 @@
 
     <hr class="rule">
 
-    <!--
-      ADD OR CHANGE BOXES HERE.
+    <!-- ================================================================
+         EDIT PROJECTS HERE. NO PLACEHOLDER ROWS ARE REQUIRED.
 
-      Add one <div class="tablet-entry"> to any column.
+         ADD AN INSTALLMENT: put another <div class="tablet-entry"> with
+         an <a href="..."> inside that project's section.
 
-      For a new Sidetracks installment, insert:
+         ADD A NEW PROJECT COLUMN: copy this whole section, change title,
+         and add as many linked installments as you have:
 
-        <div class="tablet-entry">
-          <a href="essays/sidetracks-3.html">
-            3/18 - DATE HERE
-          </a>
-        </div>
+         <section class="tablet-project">
+           <div class="tablet-entry title">PROJECT NAME</div>
+           <div class="tablet-entry">
+             <a href="essays/project-1.html">1 - DATE OR LABEL</a>
+           </div>
+         </section>
 
-      The tablet has 18 reserved installment rows.
-      Its outline regenerates on every page refresh.
-    -->
+         The title stays plain text unless YOU put a link inside it.
+         Projects automatically arrange into columns; extra projects
+         wrap below at a comfortable width. There are NO blank rows.
+         Every reload produces a substantially new tablet morphology.
+         ================================================================ -->
 
-    <section id="tablet"
-             class="tablet"
-             aria-label="Writings index">
-
+    <section id="tablet" class="tablet" aria-label="Writings index">
       <div id="tablet-source" class="tablet-source">
 
-        <!-- FIRST COLUMN -->
-        <div class="tablet-column" data-column="0">
-
-          <!-- SIDETRACKS TITLE - NO HYPERLINK -->
-          <div class="tablet-entry series">
+        <!-- PROJECT 1: SIDETRACKS -->
+        <section class="tablet-project">
+          <div class="tablet-entry title">
             SIDETRACKS: AN EXPLORATION OF LOGICAL INVESTIGATIONS
           </div>
-
           <div class="tablet-entry">
-            <a href="essays/sidetracks-1.html">
-              1/18 - 02 NOVEMBER 2026
-            </a>
+            <a href="essays/sidetracks-1.html">1/18 - 02 NOVEMBER 2026</a>
           </div>
-
           <div class="tablet-entry">
-            <a href="essays/sidetracks-2.html">
-              2/18 - 10 NOVEMBER 2026
-            </a>
+            <a href="essays/sidetracks-2.html">2/18 - 10 NOVEMBER 2026</a>
           </div>
+        </section>
 
-        </div>
+        <!-- PROJECT 2: change the heading and add entries when ready. -->
+        <section class="tablet-project">
+          <div class="tablet-entry title">TO BE FULFILLED</div>
+        </section>
 
-        <!-- SECOND COLUMN -->
-        <div class="tablet-column" data-column="1">
-          <div class="tablet-entry heading">
-            TO BE FULFILLED
-          </div>
-        </div>
-
-        <!-- THIRD COLUMN -->
-        <div class="tablet-column" data-column="2">
-          <div class="tablet-entry heading">
-            TO BE FULFILLED
-          </div>
-        </div>
+        <!-- PROJECT 3: change the heading and add entries when ready. -->
+        <section class="tablet-project">
+          <div class="tablet-entry title">TO BE FULFILLED</div>
+        </section>
 
       </div>
 
       <svg class="tablet-drawing" aria-hidden="true"></svg>
       <div class="tablet-placements"></div>
-
     </section>
 
     <hr class="rule">
-
   </main>
 
   <script>
@@ -344,390 +293,318 @@
       'use strict';
 
       const tablet = document.getElementById('tablet');
-      const source = tablet.querySelector('.tablet-source');
+      const source = document.getElementById('tablet-source');
       const svg = tablet.querySelector('.tablet-drawing');
       const placements = tablet.querySelector('.tablet-placements');
+      const NS = 'http://www.w3.org/2000/svg';
 
-      const columns = Array.from(
-        source.querySelectorAll('.tablet-column'),
-        col => Array.from(col.querySelectorAll('.tablet-entry'))
-      );
+      // Six different families: not merely a different wobble on one shape.
+      const families = ['delta', 'reverse', 'terraces', 'hourglass', 'shard', 'basalt'];
+      let family = 'delta';
+      let seed = 0;
+      let scheduled = false;
 
-      // New random seed on each refresh.
-      const seed = (Math.random() * 4294967296) >>> 0;
-
-      const randomGenerator = n => () => {
-        n |= 0;
-        n = n + 0x6D2B79F5 | 0;
-
-        let t = Math.imul(n ^ n >>> 15, 1 | n);
-        t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
-
-        return ((t ^ t >>> 14) >>> 0) / 4294967296;
-      };
-
-      const randBetween = (rand, lo, hi) =>
-        lo + (hi - lo) * rand();
-
-      const fmt = x => x.toFixed(1);
-      const svgNS = 'http://www.w3.org/2000/svg';
-
-      // Draw a jagged connection between two points.
-      function jaggedLine(rand, a, b, jag = 3.5, segments = 5) {
-        let d = '';
-
-        const dx = b.x - a.x;
-        const dy = b.y - a.y;
-        const len = Math.hypot(dx, dy) || 1;
-        const nx = -dy / len;
-        const ny = dx / len;
-
-        for (let s = 1; s <= segments; s++) {
-          const t = s / segments;
-
-          const wobble = s === segments
-            ? 0
-            : randBetween(rand, -jag, jag);
-
-          d += ` L ${fmt(a.x + dx * t + nx * wobble)} ${fmt(a.y + dy * t + ny * wobble)}`;
+      function freshSeed() {
+        if (window.crypto && crypto.getRandomValues) {
+          const a = new Uint32Array(1);
+          crypto.getRandomValues(a);
+          return a[0];
         }
-
-        return d;
+        return Math.floor(Math.random() * 4294967296);
       }
 
-      function appendPath(d, cssClass = '') {
-        const path = document.createElementNS(svgNS, 'path');
-
-        path.setAttribute('d', d);
-
-        if (cssClass) {
-          path.setAttribute('class', cssClass);
+      function chooseNewShape() {
+        seed = freshSeed();
+        let previous = -1;
+        try {
+          const stored = sessionStorage.getItem('cravetchi-last-stone');
+          previous = stored === null ? -1 : Number(stored);
         }
-
-        svg.appendChild(path);
+        catch (_) { /* Session storage may be disabled. */ }
+        if (!Number.isInteger(previous) || previous < 0 || previous >= families.length) {
+          previous = -1;
+        }
+        const index = previous < 0
+          ? seed % families.length
+          : (previous + 1 + (seed % (families.length - 1))) % families.length;
+        family = families[index];
+        try { sessionStorage.setItem('cravetchi-last-stone', String(index)); }
+        catch (_) { /* Still randomizes without storage. */ }
       }
 
-      // Asymmetric outer contour.
-      function edgeProfile(t) {
-        const points = [
-          [0,    .075, .915],
-          [.10,  .030, .960],
-          [.22,  .045, .925],
-          [.39,  .105, .830],
-          [.58,  .162, .760],
-          [.78,  .242, .700],
-          [1,    .300, .652]
-        ];
-
-        for (let i = 1; i < points.length; i++) {
-          if (t <= points[i][0]) {
-            const a = points[i - 1];
-            const b = points[i];
-
-            const f =
-              (t - a[0]) / (b[0] - a[0]);
-
-            return [
-              a[1] + (b[1] - a[1]) * f,
-              a[2] + (b[2] - a[2]) * f
-            ];
-          }
-        }
-
-        return points[points.length - 1].slice(1);
+      // Deterministic local randomness: resizing doesn't change the shape.
+      function hash(a, b = 0, c = 0) {
+        let x = (seed ^ Math.imul(a + 1009, 374761393) ^
+                 Math.imul(b + 1103, 668265263) ^
+                 Math.imul(c + 1201, 2246822519)) >>> 0;
+        x = Math.imul(x ^ (x >>> 13), 1274126177);
+        x ^= x >>> 16;
+        return (x >>> 0) / 4294967296;
       }
 
-      // Determine the number and arrangement of rows.
-      function makeRows(mobile, rand) {
-        const count = Math.max(
-          19,
-          ...columns.map(col => col.length)
-        );
+      const between = (a, b, u) => a + (b - a) * u;
+      const clamp = (n, a, b) => Math.max(a, Math.min(b, n));
+      const f = n => n.toFixed(2);
 
-        const rows = [];
+      function projects() {
+        return Array.from(source.querySelectorAll(':scope > .tablet-project'))
+          .map(project => Array.from(project.children)
+            .filter(child => child.classList.contains('tablet-entry')))
+          .filter(entries => entries.length > 0);
+      }
 
-        for (let r = 0; r < count; r++) {
-          const cells = columns.map(
-            col => col[r] || null
-          );
+      // Offscreen measurement means long new project titles can wrap safely.
+      function measuredHeight(entry, width) {
+        const probe = entry.cloneNode(true);
+        probe.style.cssText =
+          `position:absolute;visibility:hidden;pointer-events:none;` +
+          `display:block;width:${Math.max(42, width)}px;` +
+          `height:auto;min-height:0;padding:0;border:0;inset:auto;`;
+        placements.appendChild(probe);
+        const textHeight = probe.scrollHeight;
+        probe.remove();
+        const title = entry.classList.contains('title');
+        return Math.max(title ? 70 : 44, textHeight + 29);
+      }
 
-          if (mobile) {
-            rows.push({
-              items: [cells[0]],
-              type: r === 0 ? 'title' : 'normal'
-            });
+      // The main families have distinct side contours and different corner cuts.
+      function morphology(t, boundary, lastBoundary, extent) {
+        const left = boundary === 0;
+        const right = boundary === lastBoundary;
+        const s = Math.sin(Math.PI * t);
+        let amount = 0;
 
-            if (cells[1] || cells[2]) {
-              rows.push({
-                items: [cells[1], cells[2]].filter(Boolean),
-                type: 'side'
-              });
-            }
-          } else {
-            let n =
-              (r === 0 || r === 1) ? 3 :
-              r === 2 ? 2 :
-              r < 8 ? 2 : 1;
-
-            if (r >= 8 && !cells[0] && rand() < .50) {
-              n = 2;
-            }
-
-            if (cells[2]) {
-              n = 3;
-            } else if (cells[1]) {
-              n = Math.max(n, 2);
-            }
-
-            rows.push({
-              items: cells.slice(0, n),
-              count: n,
-              type: r === 0 ? 'title' : 'normal'
-            });
-          }
+        switch (family) {
+          case 'delta':
+            amount = left ? 7 + 55 * t * t : right ? -44 * t * t : -33 * t * t;
+            break;
+          case 'reverse':
+            amount = left ? 48 * (1 - t) - 19 * t : right ? -46 * (1 - t) + 23 * t : 25 * t;
+            break;
+          case 'terraces':
+            amount = left ? (t > .70 ? 42 : t > .35 ? -13 : 23)
+                          : right ? (t > .68 ? -41 : t > .26 ? 18 : -8)
+                                  : (t > .52 ? -31 : 17);
+            break;
+          case 'hourglass':
+            amount = left ? 41 * s : right ? -41 * s : -21 * s;
+            break;
+          case 'shard':
+            amount = left ? (t < .24 ? 37 * t : t < .59 ? 9 - 60 * (t - .24) : -12 + 105 * (t - .59))
+                          : right ? (t < .32 ? -39 * t : t < .76 ? -13 + 71 * (t - .32) : 18 - 100 * (t - .76))
+                                  : -27 * Math.sin(1.5 * Math.PI * t);
+            break;
+          case 'basalt':
+            amount = left ? 18 - 30 * t + 23 * Math.sin(3 * Math.PI * t)
+                          : right ? -13 - 24 * t + 25 * Math.sin(4 * Math.PI * t)
+                                  : 23 * Math.sin(3 * Math.PI * t + .9);
+            break;
         }
-
-        return rows;
+        // On small screens keep all edges safely inside the viewport.
+        return amount * extent;
       }
 
       function render() {
-        const w = Math.round(
-          tablet.getBoundingClientRect().width
-        );
+        const w = Math.round(tablet.getBoundingClientRect().width);
+        if (w <= 0) return;
 
-        if (!w) return;
-
-        const mobile = w < 570;
-
-        const rand = randomGenerator(
-          seed ^ (mobile ? 0x1A2B3C : 0x4D5E6F)
-        );
-
-        const rows = makeRows(mobile, rand);
-
-        const h0 = mobile ? 58 : 60;
-        const baseH = mobile ? 36 : 33;
-
-        const heights = rows.map(row =>
-          row.type === 'title' ? h0 :
-          row.type === 'side' ? 41 :
-          baseH + Math.round(randBetween(rand, -2, 3))
-        );
-
-        const y = [7];
-
-        for (const height of heights) {
-          y.push(y[y.length - 1] + height);
+        const data = projects();
+        if (!data.length) {
+          svg.replaceChildren();
+          placements.replaceChildren();
+          tablet.style.height = '0';
+          return;
         }
 
-        const totalHeight = y[y.length - 1] + 7;
-
-        tablet.style.height = `${totalHeight}px`;
-
-        svg.setAttribute(
-          'viewBox',
-          `0 0 ${w} ${totalHeight}`
-        );
-
-        svg.setAttribute('preserveAspectRatio', 'none');
+        // A fourth/fifth project wraps into another band, not a tiny column.
+        const perBand = w < 540 ? 1 : w < 690 ? 2 : 3;
+        const groups = [];
+        for (let i = 0; i < data.length; i += perBand) {
+          groups.push(data.slice(i, i + perBand));
+        }
 
         svg.replaceChildren();
         placements.replaceChildren();
+        let top = 9;
 
-        const left = [];
-        const right = [];
-        const count = rows.length;
+        groups.forEach((group, groupIndex) => {
+          const n = group.length;
+          const margin = Math.max(11, Math.min(24, w * .027));
+          const available = w - 2 * margin;
 
-        // Generate outer edges.
-        for (let s = 0; s <= count; s++) {
-          let [l, r] = edgeProfile(s / count);
-
-          if (mobile) {
-            l = .035 + (l - .035) * .17;
-            r = .965 - (.965 - r) * .17;
+          // Six markedly different column proportions for each morphology.
+          // All proportions remain within readable limits; excess projects wrap.
+          const proportions = {
+            delta:     [0.49, 0.27, 0.24],
+            reverse:   [0.57, 0.22, 0.21],
+            terraces:  [0.50, 0.29, 0.21],
+            hourglass: [0.54, 0.21, 0.25],
+            shard:     [0.56, 0.23, 0.21],
+            basalt:    [0.47, 0.23, 0.30]
+          };
+          const weights = n === 3 ? proportions[family]
+            : n === 2 ? [family === 'reverse' ? .65 : .56, family === 'reverse' ? .35 : .44]
+            : [1];
+          const sum = weights.reduce((a, b) => a + b, 0);
+          const bounds = [margin];
+          for (let j = 0; j < n; j++) {
+            bounds.push(bounds[j] + available * weights[j] / sum);
           }
 
-          const delta = mobile ? .011 : .012;
-
-          left.push(
-            w * (l + randBetween(rand, -delta, delta))
-          );
-
-          right.push(
-            w * (r + randBetween(rand, -delta, delta))
-          );
-        }
-
-        // Draw one continuous outside border.
-        let outer = `M ${fmt(left[0])} ${fmt(y[0])}`;
-
-        outer += jaggedLine(
-          rand,
-          { x: left[0], y: y[0] },
-          { x: right[0], y: y[0] },
-          2.8,
-          8
-        );
-
-        for (let i = 0; i < count; i++) {
-          outer += jaggedLine(
-            rand,
-            { x: right[i], y: y[i] },
-            { x: right[i + 1], y: y[i + 1] },
-            4.5,
-            3
-          );
-        }
-
-        outer += jaggedLine(
-          rand,
-          { x: right[count], y: y[count] },
-          { x: left[count], y: y[count] },
-          3.5,
-          4
-        );
-
-        for (let i = count; i > 0; i--) {
-          outer += jaggedLine(
-            rand,
-            { x: left[i], y: y[i] },
-            { x: left[i - 1], y: y[i - 1] },
-            4.5,
-            3
-          );
-        }
-
-        appendPath(outer + ' Z', 'outer');
-
-        // Horizontal internal seams.
-        for (let i = 1; i < count; i++) {
-          const a = {
-            x: left[i],
-            y: y[i]
+          // Whole-body silhouettes can be wide, narrow, left-leaning, or chipped.
+          const mobile = perBand === 1;
+          const compact = mobile ? .45 : 1;
+          const stagger = {
+            delta: [0, 17, 34],
+            reverse: [33, 17, 0],
+            terraces: [0, 31, 7],
+            hourglass: [8, 0, 19],
+            shard: [17, 0, 34],
+            basalt: [28, 0, 13]
           };
-
-          const b = {
-            x: right[i],
-            y: y[i]
-          };
-
-          appendPath(
-            `M ${fmt(a.x)} ${fmt(a.y)}` +
-            jaggedLine(rand, a, b, 2.8, 6)
+          const startOffsets = group.map((_, j) =>
+            stagger[family][j] + 5 * hash(groupIndex, j, 8)
           );
-        }
 
-        // Vertical divisions and text placements.
-        rows.forEach((row, i) => {
-          const n = mobile
-            ? row.items.length
-            : row.count;
-
-          const fractions = n === 3
-            ? [
-                .575 + randBetween(rand, -.014, .014),
-                .795 + randBetween(rand, -.012, .012)
-              ]
-            : n === 2
-              ? [.64 + randBetween(rand, -.07, .07)]
-              : [];
-
-          const boundsTop = [
-            left[i],
-            ...fractions.map(
-              f => left[i] + (right[i] - left[i]) * f
-            ),
-            right[i]
-          ];
-
-          const boundsBottom = [
-            left[i + 1],
-            ...fractions.map(
-              f => left[i + 1] + (right[i + 1] - left[i + 1]) * f
-            ),
-            right[i + 1]
-          ];
-
-          fractions.forEach((fraction, j) => {
-            const a = {
-              x: boundsTop[j + 1],
-              y: y[i]
-            };
-
-            const b = {
-              x: boundsBottom[j + 1],
-              y: y[i + 1]
-            };
-
-            appendPath(
-              `M ${fmt(a.x)} ${fmt(a.y)}` +
-              jaggedLine(rand, a, b, 3.5, 4)
+          // Work out the actual number of tiles in each project: no blanks.
+          const heights = group.map((entries, j) => {
+            const safeWidth = (bounds[j + 1] - bounds[j]) - 62;
+            return entries.map((entry, k) =>
+              measuredHeight(entry, safeWidth) + Math.round(3 + 7 * hash(groupIndex, j, k))
             );
           });
+          const bottoms = heights.map((rows, j) =>
+            top + startOffsets[j] + rows.reduce((a, b) => a + b, 0)
+          );
+          const groupBottom = Math.max(...bottoms);
+          const groupHeight = groupBottom - top;
 
-          row.items.forEach((entry, j) => {
-            if (!entry) return;
+          // Edges are shared by neighbouring tiles, even with unequal heights.
+          function edgeX(edge, y) {
+            const t = clamp((y - top) / Math.max(1, groupHeight), 0, 1);
+            const shape = morphology(t, edge, n, compact);
+            const u = y / 17;
+            const low = Math.floor(u);
+            const mix = u - low;
+            const jitter = between(
+              hash(groupIndex * 10 + edge, low, 30) - .5,
+              hash(groupIndex * 10 + edge, low + 1, 30) - .5,
+              mix
+            ) * (edge === 0 || edge === n ? 13 : 9);
+            return clamp(bounds[edge] + shape + jitter, 6, w - 6);
+          }
 
-            const inset = n === 3 && j > 0
-              ? 7
-              : 11;
+          // Return an edge segment with shared knots at every 17 pixels.
+          function sidePoints(edge, y0, y1) {
+            const points = [{x: edgeX(edge, y0), y: y0}];
+            for (let y = (Math.floor(y0 / 17) + 1) * 17; y < y1; y += 17) {
+              points.push({x: edgeX(edge, y), y});
+            }
+            points.push({x: edgeX(edge, y1), y: y1});
+            return points;
+          }
 
-            const x0 =
-              Math.max(boundsTop[j], boundsBottom[j]) + inset;
+          // Horizontal cracks share the same knot heights along a given seam.
+          function horizontalPoints(x0, x1, y) {
+            const points = [{x: x0, y}];
+            const sign = Math.sign(x1 - x0) || 1;
+            const from = Math.min(x0, x1);
+            const to = Math.max(x0, x1);
+            const knots = [];
+            for (let x = (Math.floor(from / 17) + 1) * 17; x < to; x += 17) {
+              knots.push({
+                x,
+                y: y + (hash(groupIndex + 61, Math.round(y), Math.round(x)) - .5) * 6
+              });
+            }
+            if (sign < 0) knots.reverse();
+            points.push(...knots, {x: x1, y});
+            return points;
+          }
 
-            const x1 =
-              Math.min(boundsTop[j + 1], boundsBottom[j + 1]) - inset;
+          function stonePath(j, y0, y1) {
+            const lt = edgeX(j, y0), rt = edgeX(j + 1, y0);
+            const lb = edgeX(j, y1), rb = edgeX(j + 1, y1);
+            const points = [
+              ...horizontalPoints(lt, rt, y0),
+              ...sidePoints(j + 1, y0, y1).slice(1),
+              ...horizontalPoints(rb, lb, y1).slice(1),
+              ...sidePoints(j, y0, y1).reverse().slice(1)
+            ];
+            return points.map((p, k) =>
+              `${k === 0 ? 'M' : 'L'} ${f(p.x)} ${f(p.y)}`
+            ).join(' ') + ' Z';
+          }
 
-            const top = y[i] + 7;
-            const bottom = y[i + 1] - 7;
+          group.forEach((entries, j) => {
+            let y = top + startOffsets[j];
 
-            entry.style.left = `${x0}px`;
-            entry.style.top = `${top}px`;
+            entries.forEach((entry, k) => {
+              const bottom = y + heights[j][k];
+              const path = document.createElementNS(NS, 'path');
+              path.setAttribute('class', 'stone');
+              path.setAttribute('d', stonePath(j, y, bottom));
+              svg.appendChild(path);
 
-            entry.style.width =
-              `${Math.max(0, x1 - x0)}px`;
-
-            entry.style.height =
-              `${Math.max(0, bottom - top)}px`;
-
-            placements.appendChild(entry);
+              const inset = 15;
+              const safeLeft = Math.max(edgeX(j, y), edgeX(j, bottom), edgeX(j, (y + bottom) / 2)) + inset;
+              const safeRight = Math.min(edgeX(j + 1, y), edgeX(j + 1, bottom), edgeX(j + 1, (y + bottom) / 2)) - inset;
+              const clone = entry.cloneNode(true);
+              clone.style.left = `${safeLeft}px`;
+              clone.style.top = `${y + 9}px`;
+              clone.style.width = `${Math.max(32, safeRight - safeLeft)}px`;
+              clone.style.height = `${Math.max(24, bottom - y - 18)}px`;
+              placements.appendChild(clone);
+              y = bottom;
+            });
           });
+
+          top = groupBottom + (groups.length > 1 ? 18 : 0);
+        });
+
+        const h = Math.ceil(top + 10);
+        tablet.style.height = `${h}px`;
+        svg.setAttribute('viewBox', `0 0 ${w} ${h}`);
+        svg.setAttribute('preserveAspectRatio', 'none');
+      }
+
+      function scheduleRender(newPattern) {
+        if (newPattern) chooseNewShape();
+        if (scheduled) return;
+        scheduled = true;
+        requestAnimationFrame(() => {
+          scheduled = false;
+          render();
         });
       }
 
+      chooseNewShape();
       tablet.classList.add('is-enhanced');
       render();
 
-      // Preserve pattern during resize.
-      let lastWidth = Math.round(
-        tablet.getBoundingClientRect().width
-      );
+      // If a project or installment is inserted dynamically, redraw too.
+      new MutationObserver(() => scheduleRender(true)).observe(source, {
+        subtree: true,
+        childList: true,
+        characterData: true,
+        attributes: true,
+        attributeFilter: ['href']
+      });
 
-      if ('ResizeObserver' in window) {
-        new ResizeObserver(() => {
-          const newWidth = Math.round(
-            tablet.getBoundingClientRect().width
-          );
-
-          if (newWidth !== lastWidth) {
-            lastWidth = newWidth;
-            render();
-          }
-        }).observe(tablet);
+      let oldWidth = Math.round(tablet.getBoundingClientRect().width);
+      function onWidthChange() {
+        const newWidth = Math.round(tablet.getBoundingClientRect().width);
+        if (newWidth !== oldWidth) {
+          oldWidth = newWidth;
+          scheduleRender(false);
+        }
+      }
+      if (typeof ResizeObserver !== 'undefined') {
+        new ResizeObserver(onWidthChange).observe(tablet);
       } else {
-        window.addEventListener('resize', () => {
-          const newWidth = Math.round(
-            tablet.getBoundingClientRect().width
-          );
-
-          if (newWidth !== lastWidth) {
-            lastWidth = newWidth;
-            render();
-          }
-        });
+        window.addEventListener('resize', onWidthChange);
       }
     })();
   </script>
-
 </body>
 </html>
