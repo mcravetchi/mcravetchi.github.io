@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,15 +9,18 @@
   <link rel="author" href="author.html">
 
   <style>
-    * {
-      box-sizing: border-box;
+    * { box-sizing: border-box; }
+
+    :root {
+      --ink: #C8BFA8;
+      --charcoal: #1B1B1B;
     }
 
     body {
-      background: #1B1B1B;
-      color-scheme: dark;
       margin: 0;
-      color: #C8BFA8;
+      background: var(--charcoal);
+      color: var(--ink);
+      color-scheme: dark;
     }
 
     .page {
@@ -25,23 +29,23 @@
     }
 
     .site-title {
+      margin-bottom: 12px;
       text-align: center;
       font: 22px "Times New Roman", Times, serif;
       letter-spacing: 5px;
-      margin-bottom: 12px;
     }
 
     .rule {
       width: 100%;
       border: 0;
-      border-top: 1px solid #C8BFA8;
+      border-top: 1px solid var(--ink);
       margin: 12px 0;
     }
 
     .intro-table {
       width: 100%;
-      border-collapse: collapse;
       margin: 10px 0;
+      border-collapse: collapse;
     }
 
     .intro-table td {
@@ -50,16 +54,16 @@
     }
 
     .intro-table img {
-  display: block;
-  max-width: 200px;
-  width: auto;
-  height: auto;
-  box-sizing: content-box;
-  padding: 5px;
-  border: 1px solid #C8BFA8;
-  border-radius: 2px;
-  margin-right: 7px;
-}
+      display: block;
+      max-width: 200px;
+      width: auto;
+      height: auto;
+      box-sizing: content-box;
+      padding: 5px;
+      border: 1px solid var(--ink);
+      border-radius: 2px;
+      margin-right: 7px;
+    }
 
     p {
       margin: 5px 0;
@@ -68,77 +72,131 @@
       line-height: 1.2;
     }
 
-
-    /* Author name: keep its appearance unchanged until hovered or focused. */
     .author-link {
-  color: inherit;
-  text-decoration: underline;
-  text-decoration-color: #C8BFA8;
-  text-underline-offset: 4px;
-  text-decoration-thickness: 1px;
-}
+      color: inherit;
+      text-decoration: underline;
+      text-decoration-color: var(--ink);
+      text-underline-offset: 4px;
+      text-decoration-thickness: 1px;
+    }
 
-.author-link:hover {
-  text-decoration-thickness: 2px;
-}
-    /* Three-column index */
+    .author-link:hover {
+      text-decoration-thickness: 2px;
+    }
 
-    .index-table {
+    .poetry-image {
+      display: inline-block;
+      line-height: 0;
+      cursor: pointer;
+    }
+
+    .poetry-image img {
+      transition: transform 0.25s ease, filter 0.25s ease;
+    }
+
+    .poetry-image:hover img {
+      transform: scale(1.025);
+      filter: brightness(0.82);
+    }
+
+    /* THE TABLET */
+    .tablet {
+      position: relative;
       width: 100%;
-      table-layout: fixed;
-      border-collapse: collapse;
-      margin: 16px 0;
+      margin: 17px auto 18px;
+      overflow: hidden;
+      isolation: isolate;
     }
 
-    .index-table col:nth-child(1) {
-      width: 58%;
+    .tablet-source {
+      display: grid;
+      grid-template-columns:
+        minmax(0, 58fr)
+        minmax(0, 25fr)
+        minmax(0, 17fr);
+      align-items: start;
+      width: 100%;
     }
 
-    .index-table col:nth-child(2) {
-      width: 25%;
+    .tablet-column {
+      min-width: 0;
     }
 
-    .index-table col:nth-child(3) {
-      width: 17%;
+    .tablet-entry {
+      min-width: 0;
+      min-height: 32px;
+      padding: 7px 10px;
+      border: 1px solid var(--ink);
+      font: 14px/1.15 "Times New Roman", Times, serif;
+      overflow-wrap: anywhere;
+      display: flex;
+      align-items: center;
+      color: var(--ink);
     }
 
-    .index-table td {
-      height: 22px;
-      padding: 4px 8px;
-      border: 1px solid #C8BFA8;
-      vertical-align: middle;
-      font: 14px "Times New Roman", Times, serif;
-      overflow-wrap: break-word;
-    }
-
-    .index-table a {
-      display: block;
-      color: #C8BFA8;
-      text-decoration: none;
-    }
-    
-          .poetry-image {
-        display: inline-block;
-        line-height: 0;
-        cursor: pointer;
-      }
-      
-      .poetry-image img {
-        transition: transform 0.25s ease, filter 0.25s ease;
-      }
-      
-      .poetry-image:hover img {
-        transform: scale(1.025);
-        filter: brightness(0.82);
-      }
-
-    .index-table a:hover {
-      background: #C8BFA8;
-      color: #1B1B1B;
-    }
-
-    .index-table .heading-cell {
+    .tablet-entry.series,
+    .tablet-entry.heading {
       font-weight: bold;
+    }
+
+    .tablet-entry a {
+      color: inherit;
+      text-decoration: none;
+      display: block;
+      width: 100%;
+    }
+
+    .tablet-entry a:hover,
+    .tablet-entry a:focus-visible {
+      color: var(--charcoal);
+      background: var(--ink);
+      outline: 1px solid var(--ink);
+      outline-offset: 1px;
+    }
+
+    .tablet.is-enhanced .tablet-source {
+      display: none;
+    }
+
+    .tablet-drawing,
+    .tablet-placements {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .tablet-drawing {
+      z-index: 0;
+      overflow: visible;
+      pointer-events: none;
+    }
+
+    .tablet-drawing path {
+      fill: none;
+      stroke: var(--ink);
+      stroke-width: 1;
+      stroke-linecap: butt;
+      stroke-linejoin: miter;
+      vector-effect: non-scaling-stroke;
+    }
+
+    .tablet-drawing path.outer {
+      stroke-width: 1.3;
+    }
+
+    .tablet-placements {
+      z-index: 1;
+    }
+
+    .tablet-placements .tablet-entry {
+      position: absolute;
+      margin: 0;
+      border: 0;
+      min-height: 0;
+      padding: 0;
+      background: transparent;
+      overflow: hidden;
     }
 
     @media (max-width: 620px) {
@@ -150,25 +208,27 @@
         width: 100%;
       }
 
-     .intro-table img {
-  max-width: 200px;
-  margin: 0 auto 12px;
-}
+      .intro-table img {
+        max-width: 200px;
+        margin: 0 auto 12px;
+      }
 
-      .index-wrap {
-  position: relative;
-}
+      .tablet-source {
+        grid-template-columns: minmax(0, 1fr);
+      }
 
-      .index-table td {
-        padding: 4px;
+      .tablet-entry {
         font-size: 12px;
+      }
+
+      .tablet {
+        margin-top: 15px;
       }
     }
   </style>
 </head>
 
 <body>
-
   <main class="page">
 
     <div class="site-title">
@@ -180,12 +240,9 @@
     <table class="intro-table">
       <tr>
         <td>
-
-      <a href="poetry.html" class="poetry-image">
-          <img src="picturereal.jpg" alt="">
-      </a>
-
-          
+          <a href="poetry.html" class="poetry-image">
+            <img src="picturereal.jpg" alt="">
+          </a>
         </td>
 
         <td>
@@ -199,11 +256,12 @@
           <br>
 
           <p>
-            My name is <a href="author.html" class="author-link">Maximilian Cravetchi</a>. My philosophical interests lie in the exhaustion of 
-            the transcendental problematics concerning phenomenological ontology. At the moment I 
-            am trying to relax the tensions of primitive phenomenological distinctions in order to 
-            develop a way of interpreting the generation of manifolds - theory of theory. 
-            
+            My name is <a href="author.html" class="author-link">Maximilian Cravetchi</a>.
+            My philosophical interests lie in the exhaustion of
+            the transcendental problematics concerning phenomenological ontology.
+            At the moment I am trying to relax the tensions of primitive
+            phenomenological distinctions in order to develop a way of
+            interpreting the generation of manifolds - theory of theory.
           </p>
         </td>
       </tr>
@@ -211,66 +269,465 @@
 
     <hr class="rule">
 
-    <!-- INDEX TABLE: 19 rows, 4 rows, and 2 rows -->
-    <table class="index-table">
-      <colgroup>
-        <col>
-        <col>
-        <col>
-      </colgroup>
+    <!--
+      ADD OR CHANGE BOXES HERE.
 
-      <tbody>
+      Add one <div class="tablet-entry"> to any column.
 
-        <!-- Row 1: first row of all three columns -->
-        <tr>
-          <td class="heading-cell">
+      For a new Sidetracks installment, insert:
+
+        <div class="tablet-entry">
+          <a href="essays/sidetracks-3.html">
+            3/18 - DATE HERE
+          </a>
+        </div>
+
+      The tablet has 18 reserved installment rows.
+      Its outline regenerates on every page refresh.
+    -->
+
+    <section id="tablet"
+             class="tablet"
+             aria-label="Writings index">
+
+      <div id="tablet-source" class="tablet-source">
+
+        <!-- FIRST COLUMN -->
+        <div class="tablet-column" data-column="0">
+
+          <!-- SIDETRACKS TITLE - NO HYPERLINK -->
+          <div class="tablet-entry series">
             SIDETRACKS: AN EXPLORATION OF LOGICAL INVESTIGATIONS
-          </td>
-          <td class="heading-cell">TO BE FULFILLED</td>
-          <td class="heading-cell">TO BE FULFILLED</td>
-        </tr>
+          </div>
 
-        <!-- Row 2: second row of all three columns -->
-        <tr>
-          <td><a href="essays/sidetracks-1.html">1/18 - 02 NOVEMBER 2026</a></td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-        </tr>
+          <div class="tablet-entry">
+            <a href="essays/sidetracks-1.html">
+              1/18 - 02 NOVEMBER 2026
+            </a>
+          </div>
 
-        <!-- Rows 3 and 4: first and second columns only -->
-        <tr>
-          <td><a href="essays/sidetracks-2.html">2/18 - 10 NOVEMBER 2026</a></td>
-          <td>&nbsp;</td>
-        </tr>
+          <div class="tablet-entry">
+            <a href="essays/sidetracks-2.html">
+              2/18 - 10 NOVEMBER 2026
+            </a>
+          </div>
 
-        <tr>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-        </tr>
+        </div>
 
-        <!-- Rows 5–19: first column only -->
-        <tr><td>&nbsp;</td></tr>
-        <tr><td>&nbsp;</td></tr>
-        <tr><td>&nbsp;</td></tr>
-        <tr><td>&nbsp;</td></tr>
-        <tr><td>&nbsp;</td></tr>
-        <tr><td>&nbsp;</td></tr>
-        <tr><td>&nbsp;</td></tr>
-        <tr><td>&nbsp;</td></tr>
-        <tr><td>&nbsp;</td></tr>
-        <tr><td>&nbsp;</td></tr>
-        <tr><td>&nbsp;</td></tr>
-        <tr><td>&nbsp;</td></tr>
-        <tr><td>&nbsp;</td></tr>
-        <tr><td>&nbsp;</td></tr>
-        <tr><td>&nbsp;</td></tr>
+        <!-- SECOND COLUMN -->
+        <div class="tablet-column" data-column="1">
+          <div class="tablet-entry heading">
+            TO BE FULFILLED
+          </div>
+        </div>
 
-      </tbody>
-    </table>
+        <!-- THIRD COLUMN -->
+        <div class="tablet-column" data-column="2">
+          <div class="tablet-entry heading">
+            TO BE FULFILLED
+          </div>
+        </div>
+
+      </div>
+
+      <svg class="tablet-drawing" aria-hidden="true"></svg>
+      <div class="tablet-placements"></div>
+
+    </section>
 
     <hr class="rule">
 
   </main>
+
+  <script>
+    (() => {
+      'use strict';
+
+      const tablet = document.getElementById('tablet');
+      const source = tablet.querySelector('.tablet-source');
+      const svg = tablet.querySelector('.tablet-drawing');
+      const placements = tablet.querySelector('.tablet-placements');
+
+      const columns = Array.from(
+        source.querySelectorAll('.tablet-column'),
+        col => Array.from(col.querySelectorAll('.tablet-entry'))
+      );
+
+      // New random seed on each refresh.
+      const seed = (Math.random() * 4294967296) >>> 0;
+
+      const randomGenerator = n => () => {
+        n |= 0;
+        n = n + 0x6D2B79F5 | 0;
+
+        let t = Math.imul(n ^ n >>> 15, 1 | n);
+        t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+
+        return ((t ^ t >>> 14) >>> 0) / 4294967296;
+      };
+
+      const randBetween = (rand, lo, hi) =>
+        lo + (hi - lo) * rand();
+
+      const fmt = x => x.toFixed(1);
+      const svgNS = 'http://www.w3.org/2000/svg';
+
+      // Draw a jagged connection between two points.
+      function jaggedLine(rand, a, b, jag = 3.5, segments = 5) {
+        let d = '';
+
+        const dx = b.x - a.x;
+        const dy = b.y - a.y;
+        const len = Math.hypot(dx, dy) || 1;
+        const nx = -dy / len;
+        const ny = dx / len;
+
+        for (let s = 1; s <= segments; s++) {
+          const t = s / segments;
+
+          const wobble = s === segments
+            ? 0
+            : randBetween(rand, -jag, jag);
+
+          d += ` L ${fmt(a.x + dx * t + nx * wobble)} ${fmt(a.y + dy * t + ny * wobble)}`;
+        }
+
+        return d;
+      }
+
+      function appendPath(d, cssClass = '') {
+        const path = document.createElementNS(svgNS, 'path');
+
+        path.setAttribute('d', d);
+
+        if (cssClass) {
+          path.setAttribute('class', cssClass);
+        }
+
+        svg.appendChild(path);
+      }
+
+      // Asymmetric outer contour.
+      function edgeProfile(t) {
+        const points = [
+          [0,    .075, .915],
+          [.10,  .030, .960],
+          [.22,  .045, .925],
+          [.39,  .105, .830],
+          [.58,  .162, .760],
+          [.78,  .242, .700],
+          [1,    .300, .652]
+        ];
+
+        for (let i = 1; i < points.length; i++) {
+          if (t <= points[i][0]) {
+            const a = points[i - 1];
+            const b = points[i];
+
+            const f =
+              (t - a[0]) / (b[0] - a[0]);
+
+            return [
+              a[1] + (b[1] - a[1]) * f,
+              a[2] + (b[2] - a[2]) * f
+            ];
+          }
+        }
+
+        return points[points.length - 1].slice(1);
+      }
+
+      // Determine the number and arrangement of rows.
+      function makeRows(mobile, rand) {
+        const count = Math.max(
+          19,
+          ...columns.map(col => col.length)
+        );
+
+        const rows = [];
+
+        for (let r = 0; r < count; r++) {
+          const cells = columns.map(
+            col => col[r] || null
+          );
+
+          if (mobile) {
+            rows.push({
+              items: [cells[0]],
+              type: r === 0 ? 'title' : 'normal'
+            });
+
+            if (cells[1] || cells[2]) {
+              rows.push({
+                items: [cells[1], cells[2]].filter(Boolean),
+                type: 'side'
+              });
+            }
+          } else {
+            let n =
+              (r === 0 || r === 1) ? 3 :
+              r === 2 ? 2 :
+              r < 8 ? 2 : 1;
+
+            if (r >= 8 && !cells[0] && rand() < .50) {
+              n = 2;
+            }
+
+            if (cells[2]) {
+              n = 3;
+            } else if (cells[1]) {
+              n = Math.max(n, 2);
+            }
+
+            rows.push({
+              items: cells.slice(0, n),
+              count: n,
+              type: r === 0 ? 'title' : 'normal'
+            });
+          }
+        }
+
+        return rows;
+      }
+
+      function render() {
+        const w = Math.round(
+          tablet.getBoundingClientRect().width
+        );
+
+        if (!w) return;
+
+        const mobile = w < 570;
+
+        const rand = randomGenerator(
+          seed ^ (mobile ? 0x1A2B3C : 0x4D5E6F)
+        );
+
+        const rows = makeRows(mobile, rand);
+
+        const h0 = mobile ? 58 : 60;
+        const baseH = mobile ? 36 : 33;
+
+        const heights = rows.map(row =>
+          row.type === 'title' ? h0 :
+          row.type === 'side' ? 41 :
+          baseH + Math.round(randBetween(rand, -2, 3))
+        );
+
+        const y = [7];
+
+        for (const height of heights) {
+          y.push(y[y.length - 1] + height);
+        }
+
+        const totalHeight = y[y.length - 1] + 7;
+
+        tablet.style.height = `${totalHeight}px`;
+
+        svg.setAttribute(
+          'viewBox',
+          `0 0 ${w} ${totalHeight}`
+        );
+
+        svg.setAttribute('preserveAspectRatio', 'none');
+
+        svg.replaceChildren();
+        placements.replaceChildren();
+
+        const left = [];
+        const right = [];
+        const count = rows.length;
+
+        // Generate outer edges.
+        for (let s = 0; s <= count; s++) {
+          let [l, r] = edgeProfile(s / count);
+
+          if (mobile) {
+            l = .035 + (l - .035) * .17;
+            r = .965 - (.965 - r) * .17;
+          }
+
+          const delta = mobile ? .011 : .012;
+
+          left.push(
+            w * (l + randBetween(rand, -delta, delta))
+          );
+
+          right.push(
+            w * (r + randBetween(rand, -delta, delta))
+          );
+        }
+
+        // Draw one continuous outside border.
+        let outer = `M ${fmt(left[0])} ${fmt(y[0])}`;
+
+        outer += jaggedLine(
+          rand,
+          { x: left[0], y: y[0] },
+          { x: right[0], y: y[0] },
+          2.8,
+          8
+        );
+
+        for (let i = 0; i < count; i++) {
+          outer += jaggedLine(
+            rand,
+            { x: right[i], y: y[i] },
+            { x: right[i + 1], y: y[i + 1] },
+            4.5,
+            3
+          );
+        }
+
+        outer += jaggedLine(
+          rand,
+          { x: right[count], y: y[count] },
+          { x: left[count], y: y[count] },
+          3.5,
+          4
+        );
+
+        for (let i = count; i > 0; i--) {
+          outer += jaggedLine(
+            rand,
+            { x: left[i], y: y[i] },
+            { x: left[i - 1], y: y[i - 1] },
+            4.5,
+            3
+          );
+        }
+
+        appendPath(outer + ' Z', 'outer');
+
+        // Horizontal internal seams.
+        for (let i = 1; i < count; i++) {
+          const a = {
+            x: left[i],
+            y: y[i]
+          };
+
+          const b = {
+            x: right[i],
+            y: y[i]
+          };
+
+          appendPath(
+            `M ${fmt(a.x)} ${fmt(a.y)}` +
+            jaggedLine(rand, a, b, 2.8, 6)
+          );
+        }
+
+        // Vertical divisions and text placements.
+        rows.forEach((row, i) => {
+          const n = mobile
+            ? row.items.length
+            : row.count;
+
+          const fractions = n === 3
+            ? [
+                .575 + randBetween(rand, -.014, .014),
+                .795 + randBetween(rand, -.012, .012)
+              ]
+            : n === 2
+              ? [.64 + randBetween(rand, -.07, .07)]
+              : [];
+
+          const boundsTop = [
+            left[i],
+            ...fractions.map(
+              f => left[i] + (right[i] - left[i]) * f
+            ),
+            right[i]
+          ];
+
+          const boundsBottom = [
+            left[i + 1],
+            ...fractions.map(
+              f => left[i + 1] + (right[i + 1] - left[i + 1]) * f
+            ),
+            right[i + 1]
+          ];
+
+          fractions.forEach((fraction, j) => {
+            const a = {
+              x: boundsTop[j + 1],
+              y: y[i]
+            };
+
+            const b = {
+              x: boundsBottom[j + 1],
+              y: y[i + 1]
+            };
+
+            appendPath(
+              `M ${fmt(a.x)} ${fmt(a.y)}` +
+              jaggedLine(rand, a, b, 3.5, 4)
+            );
+          });
+
+          row.items.forEach((entry, j) => {
+            if (!entry) return;
+
+            const inset = n === 3 && j > 0
+              ? 7
+              : 11;
+
+            const x0 =
+              Math.max(boundsTop[j], boundsBottom[j]) + inset;
+
+            const x1 =
+              Math.min(boundsTop[j + 1], boundsBottom[j + 1]) - inset;
+
+            const top = y[i] + 7;
+            const bottom = y[i + 1] - 7;
+
+            entry.style.left = `${x0}px`;
+            entry.style.top = `${top}px`;
+
+            entry.style.width =
+              `${Math.max(0, x1 - x0)}px`;
+
+            entry.style.height =
+              `${Math.max(0, bottom - top)}px`;
+
+            placements.appendChild(entry);
+          });
+        });
+      }
+
+      tablet.classList.add('is-enhanced');
+      render();
+
+      // Preserve pattern during resize.
+      let lastWidth = Math.round(
+        tablet.getBoundingClientRect().width
+      );
+
+      if ('ResizeObserver' in window) {
+        new ResizeObserver(() => {
+          const newWidth = Math.round(
+            tablet.getBoundingClientRect().width
+          );
+
+          if (newWidth !== lastWidth) {
+            lastWidth = newWidth;
+            render();
+          }
+        }).observe(tablet);
+      } else {
+        window.addEventListener('resize', () => {
+          const newWidth = Math.round(
+            tablet.getBoundingClientRect().width
+          );
+
+          if (newWidth !== lastWidth) {
+            lastWidth = newWidth;
+            render();
+          }
+        });
+      }
+    })();
+  </script>
 
 </body>
 </html>
