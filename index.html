@@ -95,88 +95,63 @@
       filter: brightness(.82);
     }
 
-    /* The HTML list remains readable even when JavaScript is disabled. */
-    .tablet {
-      position: relative;
+    /* Plain HTML table: add a <th> for another project column,
+       or a <td> in a new <tr> for another installment. */
+    .writings-table {
       width: 100%;
-      margin: 17px auto 18px;
-      isolation: isolate;
+      margin: 17px 0 18px;
+      border-collapse: collapse;
+      font: 14px/1.3 "Times New Roman", Times, serif;
     }
 
-    .tablet-source {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
-      align-items: start;
-    }
-
-    .tablet-project { min-width: 0; }
-
-    .tablet-entry {
-      display: flex;
-      align-items: center;
-      min-height: 44px;
-      min-width: 0;
-      padding: 9px 11px;
+    .writings-table th,
+    .writings-table td {
       border: 1px solid var(--ink);
-      color: var(--ink);
-      font: 14px/1.26 "Times New Roman", Times, serif;
+      text-align: left;
       overflow-wrap: anywhere;
     }
 
-    .tablet-entry.title {
-      min-height: 68px;
+    .writings-table th {
+      padding: 11px 12px;
       font-weight: bold;
     }
 
-    .tablet-entry a {
+    .writings-table td { padding: 0; }
+
+    .writings-table a {
       display: block;
-      width: 100%;
-      color: inherit;
+      padding: 11px 12px;
+      color: var(--ink);
       text-decoration: none;
     }
 
-    .tablet-entry a:hover,
-    .tablet-entry a:focus-visible {
+    .writings-table a:hover,
+    .writings-table a:focus-visible {
       color: var(--charcoal);
       background: var(--ink);
-      outline: 1px solid var(--ink);
-      outline-offset: 1px;
+      outline: none;
     }
 
-    /* JavaScript draws the tablet, without changing the original source. */
-    .tablet.is-enhanced .tablet-source { display: none; }
-
-    .tablet-drawing,
-    .tablet-placements {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
+    .updates {
+      margin-top: 20px;
     }
 
-    .tablet-drawing {
-      z-index: 0;
-      pointer-events: none;
-      overflow: visible;
+    .updates h2 {
+      margin: 0 0 12px;
+      font: bold 16px "Times New Roman", Times, serif;
+      text-align: center;
     }
 
-    .tablet-drawing .stone {
-      fill: var(--charcoal);
-      stroke: var(--ink);
-      stroke-width: 1.1;
-      stroke-linejoin: miter;
-      vector-effect: non-scaling-stroke;
+    .updates p {
+      margin: 0 0 15px;
+      font: 16px/1.4 Garamond, serif;
+      text-align: left;
     }
 
-    .tablet-placements { z-index: 1; }
-
-    .tablet-placements .tablet-entry {
-      position: absolute;
-      min-height: 0;
-      margin: 0;
-      padding: 0;
-      border: 0;
-      background: transparent;
+    .update-icon {
+      display: inline-block;
+      margin-right: 8px;
+      font: 15px "Times New Roman", Times, serif;
     }
 
     @media (max-width: 620px) {
@@ -192,8 +167,6 @@
         max-width: 200px;
         margin: 0 auto 12px;
       }
-
-      .tablet-entry { font-size: 12px; }
     }
   </style>
 </head>
@@ -231,376 +204,30 @@
 
     <hr class="rule">
 
-    <!-- ================================================================
-         EDIT PROJECTS HERE. NO PLACEHOLDER ROWS ARE REQUIRED.
-
-         ADD AN INSTALLMENT: put another <div class="tablet-entry"> with
-         an <a href="..."> inside that project's section.
-
-         ADD A NEW PROJECT COLUMN: copy this whole section, change title,
-         and add as many linked installments as you have:
-
-         <section class="tablet-project">
-           <div class="tablet-entry title">PROJECT NAME</div>
-           <div class="tablet-entry">
-             <a href="essays/project-1.html">1 - DATE OR LABEL</a>
-           </div>
-         </section>
-
-         The title stays plain text unless YOU put a link inside it.
-         Projects automatically arrange into columns; extra projects
-         wrap below at a comfortable width. There are NO blank rows.
-         Every reload produces a substantially new tablet morphology.
-         ================================================================ -->
-
-    <section id="tablet" class="tablet" aria-label="Writings index">
-      <div id="tablet-source" class="tablet-source">
-
-        <!-- PROJECT 1: SIDETRACKS -->
-        <section class="tablet-project">
-          <div class="tablet-entry title">
-            SIDETRACKS: AN EXPLORATION OF LOGICAL INVESTIGATIONS
-          </div>
-          <div class="tablet-entry">
-            <a href="essays/sidetracks-1.html">1/18 - 02 NOVEMBER 2026</a>
-          </div>
-          <div class="tablet-entry">
-            <a href="essays/sidetracks-2.html">2/18 - 10 NOVEMBER 2026</a>
-          </div>
-        </section>
-
-        <!-- PROJECT 2: change the heading and add entries when ready. -->
-       
-
-        <!-- PROJECT 3: change the heading and add entries when ready. -->
-        
-
-      </div>
-
-      <svg class="tablet-drawing" aria-hidden="true"></svg>
-      <div class="tablet-placements"></div>
-    </section>
+    <!-- WRITINGS: add installment rows below the existing ones as needed. -->
+    <table class="writings-table" aria-label="Writings index">
+      <thead>
+        <tr>
+          <th scope="col">SIDETRACKS: AN EXPLORATION OF LOGICAL INVESTIGATIONS</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a href="essays/sidetracks-1.html">1/18 - 02 NOVEMBER 2026</a></td>
+        </tr>
+        <tr>
+          <td><a href="essays/sidetracks-2.html">2/18 - 10 NOVEMBER 2026</a></td>
+        </tr>
+      </tbody>
+    </table>
 
     <hr class="rule">
+
+    <section class="updates" aria-labelledby="updates-heading">
+      <h2 id="updates-heading">UPDATES</h2>
+      <p><span class="update-icon" aria-hidden="true">&#9633;</span>22 November 2026: Part III of <i>Sidetracks</i> in development.</p>
+      <!-- Add future updates as separate <p>...</p> elements. -->
+    </section>
   </main>
-
-  <script>
-    (() => {
-      'use strict';
-
-      const tablet = document.getElementById('tablet');
-      const source = document.getElementById('tablet-source');
-      const svg = tablet.querySelector('.tablet-drawing');
-      const placements = tablet.querySelector('.tablet-placements');
-      const NS = 'http://www.w3.org/2000/svg';
-
-      // Six different families: not merely a different wobble on one shape.
-      const families = ['delta', 'reverse', 'terraces', 'hourglass', 'shard', 'basalt'];
-      let family = 'delta';
-      let seed = 0;
-      let scheduled = false;
-
-      function freshSeed() {
-        if (window.crypto && crypto.getRandomValues) {
-          const a = new Uint32Array(1);
-          crypto.getRandomValues(a);
-          return a[0];
-        }
-        return Math.floor(Math.random() * 4294967296);
-      }
-
-      function chooseNewShape() {
-        seed = freshSeed();
-        let previous = -1;
-        try {
-          const stored = sessionStorage.getItem('cravetchi-last-stone');
-          previous = stored === null ? -1 : Number(stored);
-        }
-        catch (_) { /* Session storage may be disabled. */ }
-        if (!Number.isInteger(previous) || previous < 0 || previous >= families.length) {
-          previous = -1;
-        }
-        const index = previous < 0
-          ? seed % families.length
-          : (previous + 1 + (seed % (families.length - 1))) % families.length;
-        family = families[index];
-        try { sessionStorage.setItem('cravetchi-last-stone', String(index)); }
-        catch (_) { /* Still randomizes without storage. */ }
-      }
-
-      // Deterministic local randomness: resizing doesn't change the shape.
-      function hash(a, b = 0, c = 0) {
-        let x = (seed ^ Math.imul(a + 1009, 374761393) ^
-                 Math.imul(b + 1103, 668265263) ^
-                 Math.imul(c + 1201, 2246822519)) >>> 0;
-        x = Math.imul(x ^ (x >>> 13), 1274126177);
-        x ^= x >>> 16;
-        return (x >>> 0) / 4294967296;
-      }
-
-      const between = (a, b, u) => a + (b - a) * u;
-      const clamp = (n, a, b) => Math.max(a, Math.min(b, n));
-      const f = n => n.toFixed(2);
-
-      function projects() {
-        return Array.from(source.querySelectorAll(':scope > .tablet-project'))
-          .map(project => Array.from(project.children)
-            .filter(child => child.classList.contains('tablet-entry')))
-          .filter(entries => entries.length > 0);
-      }
-
-      // Offscreen measurement means long new project titles can wrap safely.
-      function measuredHeight(entry, width) {
-        const probe = entry.cloneNode(true);
-        probe.style.cssText =
-          `position:absolute;visibility:hidden;pointer-events:none;` +
-          `display:block;width:${Math.max(42, width)}px;` +
-          `height:auto;min-height:0;padding:0;border:0;inset:auto;`;
-        placements.appendChild(probe);
-        const textHeight = probe.scrollHeight;
-        probe.remove();
-        const title = entry.classList.contains('title');
-        return Math.max(title ? 70 : 44, textHeight + 29);
-      }
-
-      // The main families have distinct side contours and different corner cuts.
-      function morphology(t, boundary, lastBoundary, extent) {
-        const left = boundary === 0;
-        const right = boundary === lastBoundary;
-        const s = Math.sin(Math.PI * t);
-        let amount = 0;
-
-        switch (family) {
-          case 'delta':
-            amount = left ? 7 + 55 * t * t : right ? -44 * t * t : -33 * t * t;
-            break;
-          case 'reverse':
-            amount = left ? 48 * (1 - t) - 19 * t : right ? -46 * (1 - t) + 23 * t : 25 * t;
-            break;
-          case 'terraces':
-            amount = left ? (t > .70 ? 42 : t > .35 ? -13 : 23)
-                          : right ? (t > .68 ? -41 : t > .26 ? 18 : -8)
-                                  : (t > .52 ? -31 : 17);
-            break;
-          case 'hourglass':
-            amount = left ? 41 * s : right ? -41 * s : -21 * s;
-            break;
-          case 'shard':
-            amount = left ? (t < .24 ? 37 * t : t < .59 ? 9 - 60 * (t - .24) : -12 + 105 * (t - .59))
-                          : right ? (t < .32 ? -39 * t : t < .76 ? -13 + 71 * (t - .32) : 18 - 100 * (t - .76))
-                                  : -27 * Math.sin(1.5 * Math.PI * t);
-            break;
-          case 'basalt':
-            amount = left ? 18 - 30 * t + 23 * Math.sin(3 * Math.PI * t)
-                          : right ? -13 - 24 * t + 25 * Math.sin(4 * Math.PI * t)
-                                  : 23 * Math.sin(3 * Math.PI * t + .9);
-            break;
-        }
-        // On small screens keep all edges safely inside the viewport.
-        return amount * extent;
-      }
-
-      function render() {
-        const w = Math.round(tablet.getBoundingClientRect().width);
-        if (w <= 0) return;
-
-        const data = projects();
-        if (!data.length) {
-          svg.replaceChildren();
-          placements.replaceChildren();
-          tablet.style.height = '0';
-          return;
-        }
-
-        // A fourth/fifth project wraps into another band, not a tiny column.
-        const perBand = w < 540 ? 1 : w < 690 ? 2 : 3;
-        const groups = [];
-        for (let i = 0; i < data.length; i += perBand) {
-          groups.push(data.slice(i, i + perBand));
-        }
-
-        svg.replaceChildren();
-        placements.replaceChildren();
-        let top = 9;
-
-        groups.forEach((group, groupIndex) => {
-          const n = group.length;
-          const margin = Math.max(11, Math.min(24, w * .027));
-          const available = w - 2 * margin;
-
-          // Six markedly different column proportions for each morphology.
-          // All proportions remain within readable limits; excess projects wrap.
-          const proportions = {
-            delta:     [0.49, 0.27, 0.24],
-            reverse:   [0.57, 0.22, 0.21],
-            terraces:  [0.50, 0.29, 0.21],
-            hourglass: [0.54, 0.21, 0.25],
-            shard:     [0.56, 0.23, 0.21],
-            basalt:    [0.47, 0.23, 0.30]
-          };
-          const weights = n === 3 ? proportions[family]
-            : n === 2 ? [family === 'reverse' ? .65 : .56, family === 'reverse' ? .35 : .44]
-            : [1];
-          const sum = weights.reduce((a, b) => a + b, 0);
-          const bounds = [margin];
-          for (let j = 0; j < n; j++) {
-            bounds.push(bounds[j] + available * weights[j] / sum);
-          }
-
-          // Whole-body silhouettes can be wide, narrow, left-leaning, or chipped.
-          const mobile = perBand === 1;
-          const compact = mobile ? .45 : 1;
-          const stagger = {
-            delta: [0, 17, 34],
-            reverse: [33, 17, 0],
-            terraces: [0, 31, 7],
-            hourglass: [8, 0, 19],
-            shard: [17, 0, 34],
-            basalt: [28, 0, 13]
-          };
-          const startOffsets = group.map((_, j) =>
-            stagger[family][j] + 5 * hash(groupIndex, j, 8)
-          );
-
-          // Work out the actual number of tiles in each project: no blanks.
-          const heights = group.map((entries, j) => {
-            const safeWidth = (bounds[j + 1] - bounds[j]) - 62;
-            return entries.map((entry, k) =>
-              measuredHeight(entry, safeWidth) + Math.round(3 + 7 * hash(groupIndex, j, k))
-            );
-          });
-          const bottoms = heights.map((rows, j) =>
-            top + startOffsets[j] + rows.reduce((a, b) => a + b, 0)
-          );
-          const groupBottom = Math.max(...bottoms);
-          const groupHeight = groupBottom - top;
-
-          // Edges are shared by neighbouring tiles, even with unequal heights.
-          function edgeX(edge, y) {
-            const t = clamp((y - top) / Math.max(1, groupHeight), 0, 1);
-            const shape = morphology(t, edge, n, compact);
-            const u = y / 17;
-            const low = Math.floor(u);
-            const mix = u - low;
-            const jitter = between(
-              hash(groupIndex * 10 + edge, low, 30) - .5,
-              hash(groupIndex * 10 + edge, low + 1, 30) - .5,
-              mix
-            ) * (edge === 0 || edge === n ? 13 : 9);
-            return clamp(bounds[edge] + shape + jitter, 6, w - 6);
-          }
-
-          // Return an edge segment with shared knots at every 17 pixels.
-          function sidePoints(edge, y0, y1) {
-            const points = [{x: edgeX(edge, y0), y: y0}];
-            for (let y = (Math.floor(y0 / 17) + 1) * 17; y < y1; y += 17) {
-              points.push({x: edgeX(edge, y), y});
-            }
-            points.push({x: edgeX(edge, y1), y: y1});
-            return points;
-          }
-
-          // Horizontal cracks share the same knot heights along a given seam.
-          function horizontalPoints(x0, x1, y) {
-            const points = [{x: x0, y}];
-            const sign = Math.sign(x1 - x0) || 1;
-            const from = Math.min(x0, x1);
-            const to = Math.max(x0, x1);
-            const knots = [];
-            for (let x = (Math.floor(from / 17) + 1) * 17; x < to; x += 17) {
-              knots.push({
-                x,
-                y: y + (hash(groupIndex + 61, Math.round(y), Math.round(x)) - .5) * 6
-              });
-            }
-            if (sign < 0) knots.reverse();
-            points.push(...knots, {x: x1, y});
-            return points;
-          }
-
-          function stonePath(j, y0, y1) {
-            const lt = edgeX(j, y0), rt = edgeX(j + 1, y0);
-            const lb = edgeX(j, y1), rb = edgeX(j + 1, y1);
-            const points = [
-              ...horizontalPoints(lt, rt, y0),
-              ...sidePoints(j + 1, y0, y1).slice(1),
-              ...horizontalPoints(rb, lb, y1).slice(1),
-              ...sidePoints(j, y0, y1).reverse().slice(1)
-            ];
-            return points.map((p, k) =>
-              `${k === 0 ? 'M' : 'L'} ${f(p.x)} ${f(p.y)}`
-            ).join(' ') + ' Z';
-          }
-
-          group.forEach((entries, j) => {
-            let y = top + startOffsets[j];
-
-            entries.forEach((entry, k) => {
-              const bottom = y + heights[j][k];
-              const path = document.createElementNS(NS, 'path');
-              path.setAttribute('class', 'stone');
-              path.setAttribute('d', stonePath(j, y, bottom));
-              svg.appendChild(path);
-
-              const inset = 15;
-              const safeLeft = Math.max(edgeX(j, y), edgeX(j, bottom), edgeX(j, (y + bottom) / 2)) + inset;
-              const safeRight = Math.min(edgeX(j + 1, y), edgeX(j + 1, bottom), edgeX(j + 1, (y + bottom) / 2)) - inset;
-              const clone = entry.cloneNode(true);
-              clone.style.left = `${safeLeft}px`;
-              clone.style.top = `${y + 9}px`;
-              clone.style.width = `${Math.max(32, safeRight - safeLeft)}px`;
-              clone.style.height = `${Math.max(24, bottom - y - 18)}px`;
-              placements.appendChild(clone);
-              y = bottom;
-            });
-          });
-
-          top = groupBottom + (groups.length > 1 ? 18 : 0);
-        });
-
-        const h = Math.ceil(top + 10);
-        tablet.style.height = `${h}px`;
-        svg.setAttribute('viewBox', `0 0 ${w} ${h}`);
-        svg.setAttribute('preserveAspectRatio', 'none');
-      }
-
-      function scheduleRender(newPattern) {
-        if (newPattern) chooseNewShape();
-        if (scheduled) return;
-        scheduled = true;
-        requestAnimationFrame(() => {
-          scheduled = false;
-          render();
-        });
-      }
-
-      chooseNewShape();
-      tablet.classList.add('is-enhanced');
-      render();
-
-      // If a project or installment is inserted dynamically, redraw too.
-      new MutationObserver(() => scheduleRender(true)).observe(source, {
-        subtree: true,
-        childList: true,
-        characterData: true,
-        attributes: true,
-        attributeFilter: ['href']
-      });
-
-      let oldWidth = Math.round(tablet.getBoundingClientRect().width);
-      function onWidthChange() {
-        const newWidth = Math.round(tablet.getBoundingClientRect().width);
-        if (newWidth !== oldWidth) {
-          oldWidth = newWidth;
-          scheduleRender(false);
-        }
-      }
-      if (typeof ResizeObserver !== 'undefined') {
-        new ResizeObserver(onWidthChange).observe(tablet);
-      } else {
-        window.addEventListener('resize', onWidthChange);
-      }
-    })();
-  </script>
 </body>
 </html>
