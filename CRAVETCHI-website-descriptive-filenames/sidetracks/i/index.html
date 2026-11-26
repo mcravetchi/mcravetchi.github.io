@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Installment I of Sidetracks: An Exploration of Logical Investigations by Maximilian Cravetchi.">
+  <meta name="author" content="Maximilian Cravetchi">
+  <link rel="author" href="../../author.html">
+  <link rel="canonical" href="https://mcravetchi.github.io/sidetracks/i/">
+  <title>SIDETRACKS — I — MAXIMILIAN CRAVETCHI</title>
+  <style>
+    * { box-sizing: border-box; }
+    :root { --ink: #C8BFA8; --charcoal: #1B1B1B; }
+    body {
+      margin: 0;
+      background: var(--charcoal);
+      color: var(--ink);
+      color-scheme: dark;
+      font: 16px/1.4 "Times New Roman", Times, serif;
+    }
+    .page { width: min(800px, calc(100% - 32px)); margin: 25px auto 35px; }
+    a { color: inherit; }
+    a:hover, a:focus-visible { background: var(--ink); color: var(--charcoal); }
+    .site-title { text-align: center; font-size: 22px; letter-spacing: 5px; margin-bottom: 12px; }
+    .site-title a { text-decoration: none; padding: 2px 5px; }
+    hr { border: 0; border-top: 1px solid var(--ink); margin: 12px 0; }
+    .work { text-align: center; padding: 16px 0 20px; }
+    .work h1 { font-size: 22px; font-weight: normal; letter-spacing: 1px; margin: 0; }
+    .subtitle { font: 19px Garamond, Georgia, serif; margin: 5px 0 20px; }
+    .installment { font-size: 30px; margin: 0 0 12px; }
+    .byline { font: 17px Garamond, Georgia, serif; margin: 0; }
+    .byline a { text-underline-offset: 3px; }
+    .document-links { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 10px; justify-content: center; }
+    .document-links a, .return-link { padding: 7px 12px; text-decoration: none; font-size: 13px; letter-spacing: .5px; }
+    .document-links a { border: 1px solid var(--ink); }
+    .pdf-viewer { display: block; width: 100%; height: 78vh; min-height: 520px; border: 1px solid var(--ink); }
+    .manuscript-text { margin: 24px 0; border: 1px solid var(--ink); padding: 22px clamp(14px, 4vw, 38px); }
+    .manuscript-text h2 { text-align: center; font-size: 16px; font-weight: normal; letter-spacing: 1px; margin: 0 0 22px; }
+    .manuscript-body { font: 19px/1.5 Garamond, Georgia, serif; white-space: pre-wrap; overflow-wrap: break-word; }
+    .notice { border: 1px solid var(--ink); padding: 38px 16px; text-align: center; font: 18px/1.4 Garamond, Georgia, serif; }
+    .navigation { margin: 22px 0 0; }
+    .navigation table { width: 100%; table-layout: fixed; border-collapse: collapse; text-align: center; }
+    .navigation th, .navigation td { border: 1px solid var(--ink); padding: 0; }
+    .navigation th { font-weight: normal; font-size: 13px; letter-spacing: .5px; padding: 9px; }
+    .navigation td a, .navigation td span { display: block; padding: 13px 4px; font-size: 19px; text-decoration: none; }
+    .navigation .current { box-shadow: inset 0 -3px var(--ink); }
+    .back { text-align: center; margin: 14px 0 0; }
+    @media (max-width: 620px) {
+      .site-title { font-size: 18px; letter-spacing: 3px; }
+      .pdf-viewer { display: none; }
+      .document-links a { text-align: center; }
+    }
+    [hidden] { display: none !important; }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="site-title"><a href="../../">C R A V E T C H I</a></header>
+    <hr>
+
+    <header class="work">
+      <h1>SIDETRACKS</h1>
+      <p class="subtitle">An Exploration of Logical Investigations</p>
+      <p class="installment" aria-label="Installment I">I</p>
+      <p class="byline"><a href="../../author.html">Maximilian Cravetchi</a></p>
+    </header>
+
+    <section aria-label="Manuscript">
+      <!-- Add Cravetchi-Sidetracks-I.pdf and manuscript.txt to this directory. -->
+      <p id="notice" class="notice" role="status">The manuscript is forthcoming.</p>
+      <div id="document-links" class="document-links" hidden>
+        <a id="read-pdf" href="Cravetchi-Sidetracks-I.pdf" target="_blank" rel="noopener" hidden>OPEN PDF</a>
+        <a id="download-pdf" href="Cravetchi-Sidetracks-I.pdf" download hidden>DOWNLOAD PDF</a>
+        <a id="read-text" href="#text" hidden>READ TEXT</a>
+        <a id="download-text" href="manuscript.txt" download hidden>DOWNLOAD TEXT</a>
+      </div>
+      <object id="viewer" class="pdf-viewer" type="application/pdf" aria-label="Installment I manuscript PDF" hidden>
+        <p><a href="Cravetchi-Sidetracks-I.pdf">Open the manuscript PDF.</a></p>
+      </object>
+      <section id="text" class="manuscript-text" aria-labelledby="text-heading" hidden>
+        <h2 id="text-heading">TEXT</h2>
+        <div id="manuscript-body" class="manuscript-body"></div>
+      </section>
+      <noscript><p>JavaScript is disabled. After publication, the files are available directly: <a href="Cravetchi-Sidetracks-I.pdf">PDF</a> and <a href="manuscript.txt">text</a>.</p></noscript>
+    </section>
+
+    <nav class="navigation" aria-label="Sidetracks installments">
+      <table>
+        <thead><tr><th colspan="4">SIDETRACKS</th></tr></thead>
+        <tbody><tr>
+          <td><span class="current" aria-current="page" aria-label="Installment I, current">I</span></td>
+          <td><span aria-label="Installment II, not published">?</span></td>
+          <td><span aria-label="Installment III, not published">?</span></td>
+          <td><span aria-label="Installment IV, not published">?</span></td>
+        </tr></tbody>
+      </table>
+      <p class="back"><a class="return-link" href="../../#sidetracks">RETURN TO INDEX</a></p>
+    </nav>
+  </main>
+
+  <script>
+    // Files are optional and independent. No HTML changes are needed to publish.
+    const show = id => { document.getElementById(id).hidden = false; };
+    function published() {
+      show('document-links');
+      document.getElementById('notice').hidden = true;
+    }
+    fetch('Cravetchi-Sidetracks-I.pdf', { method: 'HEAD', cache: 'no-cache' })
+      .then(response => {
+        if (!response.ok || !(response.headers.get('content-type') || '').includes('application/pdf')) return;
+        if (response.headers.get('content-length') === '0') return;
+        document.getElementById('viewer').data = 'Cravetchi-Sidetracks-I.pdf';
+        show('viewer');
+        show('read-pdf');
+        show('download-pdf');
+        published();
+      })
+      .catch(() => {});
+
+    fetch('manuscript.txt', { cache: 'no-cache' })
+      .then(response => {
+        if (!response.ok || !(response.headers.get('content-type') || '').includes('text/plain')) return '';
+        return response.text();
+      })
+      .then(text => {
+        if (!text.trim()) return;
+        document.getElementById('manuscript-body').textContent = text;
+        show('text');
+        show('read-text');
+        show('download-text');
+        published();
+      })
+      .catch(() => {});
+  </script>
+</body>
+</html>
