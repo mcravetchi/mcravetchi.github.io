@@ -1,26 +1,34 @@
 # CRAVETCHI — website
 
-Static GitHub Pages website of Maximilian Cravetchi. Upload the **contents** of this folder into the existing `mcravetchi.github.io` repository. Its GitHub Pages settings and existing essay URLs do not need to change.
+This is a static GitHub Pages site. The homepage is the index of the four installments of Sidetracks. Installment I has its own permanent page at `/sidetracks/i/`.
 
-## Site files
+## Publish Installment I
 
-- `index.html` — homepage and chronological publication index
-- `essays/sidetracks-1.html` — complete HTML edition of Part I
-- `essays/sidetracks-2.html` — complete HTML edition of Part II
-- `pdfs/` — original PDF editions, unchanged
-- `author.html`, `poetry.html`, `picturereal.jpg` — other pages and image
-- `sidetracks-1.html`, `sidetracks-2.html` — root-level redirects preserving original essay URLs
-- `sitemap.xml` — sitemap containing current website pages
-- `google2009f9917201d575.html` — Google site verification
+Put both complete versions of the installment in the existing directory:
 
-## Reading editions
+```
+sidetracks/i/
+    index.html       (already prepared; leave unchanged)
+    Cravetchi-Sidetracks-I.pdf   (add your finished PDF)
+    manuscript.txt   (replace the empty file with your full text)
+```
 
-The essays are selectable/searchable HTML rather than embedded PDF viewers. Each preserves the former two-column arrangement and right-hand reading panel on desktop, with a bordered, full-height reading layout on smaller screens. Section headings, paragraph divisions, emphasis, quotations, bibliographies and numbered notes are retained. Original PDFs remain available for download and are authoritative for original pagination.
+Use exactly these case-sensitive filenames. Save the text as UTF-8 plain text, with blank lines between paragraphs. In Word, use Save As > Plain Text (.txt), and select UTF-8 encoding if prompted. The web page preserves line breaks and paragraphs but does not reproduce Word typography, italics, footnote formatting or pagination; the PDF remains the formatted edition. Both files are detected independently. The PDF appears with open/download links and a desktop viewer; the text appears as selectable, searchable on-page prose with a direct download and a jump link. On phones the PDF uses direct links rather than an embedded viewer. The empty text file and missing PDF are intentionally not shown. No HTML editing is needed for publication.
 
-## Search visibility
+Upload the whole extracted folder contents (not the ZIP itself) to the root of your GitHub Pages repository, preserving the paths. The direct addresses after publication are:
 
-The essays retain their canonical `/essays/` URLs, author metadata, and ScholarlyArticle structured data. The series metadata now points to the publication index at the website homepage. The sitemap lists only the live pages included with the website.
+- https://mcravetchi.github.io/sidetracks/i/
+- https://mcravetchi.github.io/sidetracks/i/Cravetchi-Sidetracks-I.pdf
+- https://mcravetchi.github.io/sidetracks/i/manuscript.txt
 
-## Deployment
+For local testing, serve the repository root using `python -m http.server 8000` and visit `http://localhost:8000/sidetracks/i/`. Opening the HTML directly from disk may prevent file detection. No external scripts, build step or framework is used.
 
-Upload these files to the repository root. GitHub does **not** delete previously hosted files merely because they are missing from a new upload: explicitly delete any older pages you no longer want published from the repository when deploying.
+## Replace the existing website
+
+Upload the contents of this ZIP to the root of the existing repository, replacing the matching files. **Explicitly delete** `essays/`, `pdfs/`, `sidetracks-1.html`, `sidetracks-2.html`, and any old segment PDFs in `sidetracks/i/` from the existing repository. Delete the prior `EDIT_NOTES.md` if present. Uploading replacement files alone does not delete old files on GitHub. Old essay and PDF URLs will intentionally stop working; previous commits may still contain them.
+
+## Add future installments
+
+Copy `sidetracks/i/index.html` into `sidetracks/ii/index.html` (then `iii`, `iv`). Adjust the title, description, canonical URL, installment numeral and current navigation cell. Use `Cravetchi-Sidetracks-II.pdf`, `Cravetchi-Sidetracks-III.pdf`, or `Cravetchi-Sidetracks-IV.pdf` for the respective PDF. In each copied HTML file, replace every occurrence of `Cravetchi-Sidetracks-I.pdf` with the corresponding filename. Keep the UTF-8 text file named `manuscript.txt`. On the homepage replace the corresponding `?` with `<a href="sidetracks/ii/" aria-label="Installment II">II</a>`. In each existing installment navigation, replace that placeholder with `<a href="../ii/">II</a>` (except on Installment II itself, where it is the current span). Add each new page URL to `sitemap.xml`.
+
+The sitemap, author links and Google site verification remain intact. The old update describing three parts has been removed to avoid confusing it with the current four-installment structure.
