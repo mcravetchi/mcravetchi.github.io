@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://mcravetchi.github.io/</loc></url>
-  <url><loc>https://mcravetchi.github.io/author.html</loc></url>
-  <url><loc>https://mcravetchi.github.io/poetry.html</loc></url>
+  <url><loc>https://mcravetchi.github.io/author/</loc></url>
+  <url><loc>https://mcravetchi.github.io/poetry/</loc></url>
   <url><loc>https://mcravetchi.github.io/sidetracks/i/</loc></url>
-  <url><loc>https://mcravetchi.github.io/sidetracks/i/manuscript.html</loc></url>
+  <url><loc>https://mcravetchi.github.io/sidetracks/i/manuscript/</loc></url>
 </urlset>

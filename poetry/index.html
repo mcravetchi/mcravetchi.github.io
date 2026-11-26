@@ -1,0 +1,774 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="canonical" href="https://mcravetchi.github.io/poetry/">
+  <title>CRAVETCHI — POETRY</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #1B1B1B;
+      color-scheme: dark;
+      margin: 0;
+      color: #C8BFA8;
+    }
+
+    .page {
+      width: min(1100px, calc(100% - 40px));
+      margin: 25px auto 50px;
+    }
+
+    .site-title {
+      text-align: center;
+      font: 22px "Times New Roman", serif;
+      letter-spacing: 5px;
+      margin-bottom: 12px;
+    }
+
+    .rule {
+      width: 100%;
+      border: 0;
+      border-top: 1px solid #C8BFA8;
+      margin: 12px 0;
+    }
+
+    .page-heading {
+      text-align: center;
+      font: 17px "Times New Roman", serif;
+      letter-spacing: 3px;
+      margin: 28px 0 25px;
+    }
+
+    /* SEARCH */
+
+    .search-container {
+      display: flex;
+      justify-content: center;
+      margin: 0 auto 65px;
+    }
+
+    .poem-search {
+      display: flex;
+      align-items: center;
+      width: 190px;
+      border: 1px solid #C8BFA8;
+      background: transparent;
+    }
+
+    .poem-search input {
+      width: 100%;
+      min-width: 0;
+      padding: 7px 9px;
+      border: none;
+      outline: none;
+      background: transparent;
+      color: #C8BFA8;
+      font: 13px "Times New Roman", serif;
+      letter-spacing: 1px;
+      text-align: center;
+    }
+
+    .poem-search input::placeholder {
+      color: #A99F88;
+      opacity: 1;
+    }
+
+    .poem-search button {
+      border: none;
+      border-left: 1px solid #C8BFA8;
+      background: transparent;
+      color: #C8BFA8;
+      padding: 7px 10px;
+      cursor: pointer;
+      font: 14px "Times New Roman", serif;
+    }
+
+    .poem-search button:hover {
+      background: #C8BFA8;
+      color: #1B1B1B;
+    }
+
+    /* SPORADIC PATCH GRID */
+
+    .poem-grid {
+      display: grid;
+
+      /* More precise horizontal positioning */
+      grid-template-columns: repeat(24, minmax(0, 1fr));
+
+      grid-auto-flow: row;
+      column-gap: 9px;
+      row-gap: 85px;
+      align-items: start;
+    }
+
+    /* INDIVIDUAL PATCHES */
+
+    .patch {
+      grid-column:
+        var(--patch-start, 1) /
+        span var(--patch-span, 10);
+
+      min-width: 0;
+
+      border: 1px solid #C8BFA8;
+      padding: 15px 17px;
+
+      background: transparent;
+
+      margin-top: var(--patch-offset, 0px);
+
+
+      animation: patchAppear 0.55s ease both;
+    }
+
+    .patch-number {
+      font: 12px "Times New Roman", serif;
+      margin-bottom: 15px;
+    }
+
+    .patch p {
+      font: 18px Garamond, serif;
+      line-height: 1.35;
+      text-align: left;
+      white-space: pre-line;
+      overflow-wrap: anywhere;
+      margin: 0;
+    }
+
+    /* ATTRIBUTION */
+
+    .patch-source {
+      text-align: right;
+      font: 12px "Times New Roman", serif;
+      margin-top: 20px;
+      letter-spacing: 0.3px;
+      min-height: 14px;
+    }
+
+    /* ANIMATION */
+
+    @keyframes patchAppear {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* SEARCH */
+
+    .patch.hidden {
+      display: none;
+    }
+
+    .poem-grid.searching {
+      display: block;
+    }
+
+    .poem-grid.searching .patch {
+      width: min(520px, 100%);
+      margin: 0 auto 25px;
+      transform: none;
+      animation: none;
+    }
+
+    .no-results {
+      display: none;
+      text-align: center;
+      font: 14px "Times New Roman", serif;
+      margin: 35px 0;
+    }
+
+    .no-results.visible {
+      display: block;
+    }
+
+    /* RETURN LINK */
+
+    .return-link {
+      display: inline-block;
+      margin-top: 65px;
+      border: 1px solid #C8BFA8;
+    }
+
+    .return-link {
+      padding: 6px 20px;
+      color: #C8BFA8;
+      font: 14px "Times New Roman", serif;
+      text-decoration: none;
+    }
+
+    .return-link:hover,
+    .return-link:focus-visible {
+      background: #C8BFA8;
+      color: #1B1B1B;
+    }
+
+    /* TABLET */
+
+    @media (max-width: 750px) {
+
+      .poem-grid {
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+        column-gap: 10px;
+        row-gap: 55px;
+      }
+
+      .patch {
+        grid-column:
+          var(--mobile-start, 1) /
+          span var(--mobile-span, 7);
+
+        margin-top: var(--mobile-offset, 0px);
+      }
+
+    }
+
+    /* SMALL MOBILE */
+
+    @media (max-width: 420px) {
+
+      .poem-grid:not(.searching) {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 35px;
+      }
+
+      .poem-grid:not(.searching) .patch {
+        width: var(--mobile-width, 88%);
+        margin-top: 0;
+      }
+
+      .poem-grid:not(.searching) .patch:nth-child(even) {
+        align-self: flex-end;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <main class="page">
+
+    <div class="site-title">
+      C R A V E T C H I
+    </div>
+
+    <hr class="rule">
+
+    <div class="page-heading">
+      P O E T R Y
+    </div>
+
+    <!-- SEARCH -->
+
+    <div class="search-container">
+
+      <form class="poem-search" id="poemSearch">
+
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="ROMAN NUMERAL"
+          autocomplete="off"
+          aria-label="Search poems by Roman numeral"
+        >
+
+        <button type="submit" aria-label="Search">
+          ⌕
+        </button>
+
+      </form>
+
+    </div>
+
+
+    <!-- =================================
+         PATCHES
+         Add new patches anywhere here.
+         ================================= -->
+
+    <div class="poem-grid" id="poemGrid">
+
+
+      <!-- I -->
+
+      <div class="patch" data-number="I">
+
+        <div class="patch-number">I.</div>
+
+        <p>
+she churned a gods away
+from trees to trials to treasures
+but not without a bite
+then branches and a kiss
+that is not for those without a fight
+for the sight that sees her wish
+that she withholds, withal pressures
+then sets the world asway.
+        </p>
+
+        <div class="patch-source">
+          — from my personal journals
+        </div>
+
+      </div>
+
+
+      <!-- II -->
+
+      <div class="patch" data-number="II">
+
+        <div class="patch-number">II.</div>
+
+        <p>
+to wrench the hearts of timids
+and to wrench hearter
+those who dare a nearing
+when the time-space bends
+towards a thought or two
+jotted on their teeth.
+        </p>
+
+        <div class="patch-source">
+          — from my personal journals
+        </div>
+
+      </div>
+
+
+      <!-- III -->
+
+      <div class="patch" data-number="III">
+
+        <div class="patch-number">III.</div>
+
+        <p>
+transcription of the tablets
+molded, by a maiden
+kneeling counter-wise at the tombstone
+she caresses the pendant
+with a cold memory made warm
+by distance unforgotten.
+        </p>
+
+        <div class="patch-source">
+          — from my personal journals
+        </div>
+
+      </div>
+
+
+      <!-- IV -->
+
+      <div class="patch" data-number="IV">
+
+        <div class="patch-number">IV.</div>
+
+        <p>
+... and the fact that Hölderlin's madness irrupted upon his return to Germany from France, should be contrasted to Hegel's jubilation upon Napoleon's arrival in Jena.
+        </p>
+
+        <div class="patch-source">
+          — November 10, 2026
+        </div>
+
+      </div>
+
+
+      <!-- V -->
+
+      <div class="patch" data-number="V">
+
+        <div class="patch-number">V.</div>
+
+        <p>
+subterfuge:
+a many-mouthed
+yet not-one-named
+absolution.
+        </p>
+
+        <div class="patch-source">
+          — sometime in October 2026
+        </div>
+
+      </div>
+
+
+      <!-- VI -->
+
+      <div class="patch" data-number="VI">
+
+        <div class="patch-number">VI.</div>
+
+        <p>
+a crevice of your
+nullity outshone
+the stone-tone within which
+advanced the soldiers
+of a de -
+- fenced and fragile
+interdiction.
+        </p>
+
+        <div class="patch-source">
+          — sometime in October 2026
+        </div>
+
+      </div>
+
+
+      <!-- VII -->
+
+      <div class="patch" data-number="VII">
+
+        <div class="patch-number">VII.</div>
+
+        <p>
+The poets I feel much fondness for: Paul Celan, Friedrich Hölderlin, Velimir Khlebnikov, Alejandra Pizarnik, Georg Trakl
+        </p>
+
+        <div class="patch-source">
+          — over the course of my life thus far
+        </div>
+
+      </div>
+
+
+      <!-- VIII -->
+
+      <div class="patch" data-number="VIII">
+
+        <div class="patch-number">VIII.</div>
+
+        <p>
+Phenomenology must be pursued for opening the true question concerning the method of philosophy. But I believe that such an aim is driven by an underlying insecurity in philosophy: first, the manifestation of instability in method itself; second, the urgency of supplying mere intuition with a structural augmentation; third, the persuasiveness of this endevour; fourth, that the flirtation of its theoretical completion as true positivism – all of this, is rather the after-effect of an underlining abyssal negativity, the out-pacing of a transcendental scarring whose mark had struck its founder and put him in a state of perpetual beginning. In other words – at a loss, played around with; someone whose every intention, however genuine, was subverted, whose every effort to reclarify left him further dependent on that very void he desired to fulfill.
+        </p>
+
+        <div class="patch-source">
+          — a note on my attitude towards phenomenology
+        </div>
+
+      </div>
+
+
+      <!-- IX -->
+
+      <div class="patch" data-number="IX">
+
+        <div class="patch-number">IX.</div>
+
+        <p>
+          many were in attendance, although
+          seated are a few beholders of intrigue
+          for whom he imbued his words
+          with an obliviousness insufficient
+          when it sanctioned their straying eyes
+          to twist his tune, toward
+          her battered lip
+          twitched, then and there. 
+        </p>
+
+        <div class="patch-source">
+          — sometime in October 2026
+        </div>
+
+      </div>
+
+
+      <!-- =================================
+           ADD NEW PATCHES BELOW THIS LINE
+
+           Copy the following template:
+
+           <div class="patch" data-number="X">
+
+             <div class="patch-number">X.</div>
+
+             <p>
+               YOUR TEXT HERE
+             </p>
+
+             <div class="patch-source">
+               YOUR SOURCE OR DATE
+             </div>
+
+           </div>
+
+           No CSS or JS changes needed.
+           ================================= -->
+
+
+    </div>
+
+
+    <div class="no-results" id="noResults">
+      NO MATCHING POEM.
+    </div>
+
+    <a class="return-link" href="/">
+      RETURN TO INDEX
+    </a>
+
+    <hr class="rule">
+
+  </main>
+
+
+  <script>
+
+    /* =====================================
+       PATCH ARRANGEMENT
+       ===================================== */
+
+    const grid = document.getElementById("poemGrid");
+
+    const searchForm = document.getElementById("poemSearch");
+    const searchInput = document.getElementById("searchInput");
+    const noResults = document.getElementById("noResults");
+
+
+    function getPatches() {
+      return Array.from(
+        grid.querySelectorAll(".patch")
+      );
+    }
+
+
+    /* SHUFFLE */
+
+    function shuffle(array) {
+
+      const result = [...array];
+
+      for (let i = result.length - 1; i > 0; i--) {
+
+        const j = Math.floor(Math.random() * (i + 1));
+
+        [result[i], result[j]] =
+          [result[j], result[i]];
+
+      }
+
+      return result;
+    }
+
+
+    /* RANDOM NUMBER */
+
+    function randomBetween(min, max) {
+      return Math.floor(
+        Math.random() * (max - min + 1)
+      ) + min;
+    }
+
+
+    /* RANDOMIZE PATCHES */
+
+    function randomizePatches() {
+
+      const patches = shuffle(getPatches());
+
+      patches.forEach(patch => {
+
+        /*
+          DESKTOP:
+          24 columns.
+          Each patch can start anywhere.
+          Width varies independently.
+        */
+
+        const desktopSpan = randomBetween(5, 13);
+
+        const desktopStart = randomBetween(
+          1,
+          25 - desktopSpan
+        );
+
+        /*
+          TABLET:
+          12 columns.
+        */
+
+        const mobileSpan = randomBetween(4, 9);
+
+        const mobileStart = randomBetween(
+          1,
+          13 - mobileSpan
+        );
+
+        /*
+          VERTICAL DISPLACEMENT:
+          Creates irregular spacing.
+        */
+
+        const desktopOffset = randomBetween(0, 110);
+
+        const mobileOffset = randomBetween(0, 45);
+
+        /*
+          SMALL MOBILE WIDTH
+        */
+
+        const mobileWidth = randomBetween(76, 96) + "%";
+
+
+        /* APPLY GEOMETRY */
+
+        patch.style.setProperty(
+          "--patch-start",
+          desktopStart
+        );
+
+        patch.style.setProperty(
+          "--patch-span",
+          desktopSpan
+        );
+
+        patch.style.setProperty(
+          "--mobile-start",
+          mobileStart
+        );
+
+        patch.style.setProperty(
+          "--mobile-span",
+          mobileSpan
+        );
+
+        patch.style.setProperty(
+          "--patch-offset",
+          desktopOffset + "px"
+        );
+
+        patch.style.setProperty(
+          "--mobile-offset",
+          mobileOffset + "px"
+        );
+
+        patch.style.setProperty(
+          "--mobile-width",
+          mobileWidth
+        );
+
+        // Randomized DOM order.
+        grid.appendChild(patch);
+
+      });
+
+    }
+
+
+    /* =====================================
+       SEARCH BY ROMAN NUMERAL
+       ===================================== */
+
+    function searchPoems() {
+
+      const query = searchInput.value
+        .trim()
+        .toUpperCase()
+        .replace(/\.$/, "");
+
+      const patches = getPatches();
+
+      if (query === "") {
+
+        patches.forEach(patch => {
+          patch.classList.remove("hidden");
+        });
+
+        grid.classList.remove("searching");
+
+        noResults.classList.remove("visible");
+
+        randomizePatches();
+
+        return;
+
+      }
+
+      let found = false;
+
+      patches.forEach(patch => {
+
+        const numeral = patch.dataset.number
+          .trim()
+          .toUpperCase();
+
+        if (numeral === query) {
+
+          patch.classList.remove("hidden");
+          found = true;
+
+        } else {
+
+          patch.classList.add("hidden");
+
+        }
+
+      });
+
+      grid.classList.add("searching");
+
+      if (found) {
+
+        noResults.classList.remove("visible");
+
+      } else {
+
+        noResults.classList.add("visible");
+
+      }
+
+    }
+
+
+    /* =====================================
+       SEARCH EVENTS
+       ===================================== */
+
+    searchForm.addEventListener("submit", function(event) {
+
+      event.preventDefault();
+
+      searchPoems();
+
+    });
+
+
+    searchInput.addEventListener("input", function() {
+
+      if (searchInput.value.trim() === "") {
+
+        searchPoems();
+
+      }
+
+    });
+
+
+    /* =====================================
+       INITIALIZE
+       ===================================== */
+
+    randomizePatches();
+
+  </script>
+
+</body>
+</html>
