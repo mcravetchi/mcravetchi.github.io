@@ -3,16 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Maximilian Cravetchi graduated from the University of Alberta with a degree in Applied Mathematics in 2026 and is the author of Sidetracks: An Exploration of Logical Investigations.">
+  <meta name="description" content="Correspondence, publication notifications and a statement of work by Maximilian Cravetchi, author of Sidetracks: An Exploration of Logical Investigations.">
   <meta name="author" content="Maximilian Cravetchi">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://mcravetchi.github.io/author/">
-  <title>MAXIMILIAN CRAVETCHI — AUTHOR</title>
-
+  <title>MAXIMILIAN CRAVETCHI — CORRESPONDENCE</title>
   <style>
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
@@ -27,10 +24,10 @@
     }
 
     .site-title {
+      margin-bottom: 12px;
       text-align: center;
       font: 22px "Times New Roman", Times, serif;
       letter-spacing: 5px;
-      margin-bottom: 12px;
     }
 
     .rule {
@@ -40,8 +37,29 @@
       margin: 12px 0;
     }
 
-    .biography {
-      padding: 18px 8px 22px;
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      border: 1px solid #C8BFA8;
+      margin: 20px 0;
+    }
+
+    .contact-grid section {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      padding: 16px;
+    }
+
+    .contact-grid section + section {
+      border-left: 1px solid #C8BFA8;
+    }
+
+    h2 {
+      margin: 0 0 14px;
+      font: 16px "Times New Roman", Times, serif;
+      letter-spacing: 1px;
+      text-align: center;
     }
 
     p {
@@ -50,14 +68,42 @@
       text-align: justify;
     }
 
-    p:last-child {
-      margin-bottom: 0;
+    p:last-child { margin-bottom: 0; }
+
+    a { color: inherit; }
+
+    .contact-link {
+      display: block;
+      margin-top: auto;
+      padding: 12px 8px;
+      border: 1px solid #C8BFA8;
+      font: 14px/1.3 "Times New Roman", Times, serif;
+      text-align: center;
+      text-decoration: none;
+      overflow-wrap: anywhere;
     }
+
+    .contact-link:hover,
+    .contact-link:focus-visible {
+      color: #1B1B1B;
+      background: #C8BFA8;
+      outline: 1px solid #C8BFA8;
+      outline-offset: -3px;
+    }
+
+    .statement {
+      padding: 8px 8px 18px;
+    }
+
+    .biography {
+      padding: 8px 8px 12px;
+    }
+
+    .biography p { font-size: 16px; }
 
     .return-link {
       display: inline-block;
       margin: 12px 8px 4px;
-      color: #C8BFA8;
       font: 14px "Times New Roman", Times, serif;
       letter-spacing: 1px;
       text-decoration: none;
@@ -70,22 +116,14 @@
     }
 
     @media (max-width: 620px) {
-      .site-title {
-        font-size: 18px;
-        letter-spacing: 3px;
+      .site-title { font-size: 18px; letter-spacing: 3px; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .contact-grid section + section {
+        border-left: 0;
+        border-top: 1px solid #C8BFA8;
       }
-
-      .biography {
-        padding: 14px 4px 18px;
-      }
-    }
-
-        a {
-      color: inherit;
-      text-decoration: underline;
     }
   </style>
-
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -97,45 +135,33 @@
   }
   </script>
 </head>
-
 <body>
   <main class="page">
     <header class="site-title">MAXIMILIAN CRAVETCHI</header>
     <hr class="rule">
 
-    <section class="biography" aria-label="Biography">
-      <p>
-        I graduated from the University of Alberta with a degree in Applied Mathematics
-        (minor in Philosophy) in 2026. Between the beginning and end of university I 
-        have worked many jobs, such as a cashier, mathematics tutor, and sales representative. 
-        Now I go where the wind blows. 
-      </p>
+    <div class="contact-grid">
+      <section aria-labelledby="correspondence">
+        <h2 id="correspondence">CORRESPONDENCE</h2>
+        <p>Questions, criticisms, and correspondence concerning my writings are welcome, as are proposals for collaboration.</p>
+        <a class="contact-link" href="mailto:mcravetchi@gmail.com?subject=Correspondence">mcravetchi@gmail.com</a>
+      </section>
+      <section aria-labelledby="notifications">
+        <h2 id="notifications">NOTIFICATIONS</h2>
+        <p>If you wish to be notified by email of new publications or substantial revisions to my writings, you may request notifications below.</p>
+        <a class="contact-link" href="mailto:mcravetchi@gmail.com?subject=Publication%20notifications&amp;body=I%20would%20like%20to%20receive%20publication%20notifications.">REQUEST NOTIFICATIONS</a>
+      </section>
+    </div>
 
-      <p> 
-        Any and all ideas generated alongside their bringing-to-words herein belong to I, Maximilian Cravetchi.
-        I am responsible for their intellectual upbringing and destiny. The fate of my ideas, on the other hand,
-        does not so simply belong to me.
-      </p>
-
-      <p>
-        Thus, the following declarations are made here: (1) all writings attributed to my name as an author originate
-        from out of this website alone; (2) any writings that are attributed to me but are not direct copies/references back to original documents found on my website 
-        are falsehoods unless stated (on this website) otherwise; (3) therefore, all writings published here are my original
-        work. All ideas pertaining to my writings have their ground here, at mcravetchi.github.io.          
-      </p>
-
-      <p>
-        Feel free to disseminate writings as pleased, for this is an ideal I strive for. If interacting with my writings
-        found on this website in a substantial manner, citations are an imperative. It would be most appreciated, if
-        you would like to collaborate in any way, that you reach me at <a href="mailto:mcravetchi@gmail.com">mcravetchi@gmail.com</a>.
-        That way I can interact. 
-      </p>
-
-      <p>
-        Maximilian Cravetchi is the author of 'Sidetracks: An Exploration of Logical Investigations.' 
-      </p>
+    <section class="statement" aria-labelledby="integrity">
+      <h2 id="integrity">STATEMENT OF WORK INTEGRITY</h2>
+      <p>All writings published here under my name are my original work. This website is the authoritative source for my writings unless otherwise stated here. Their dissemination is encouraged; substantial engagement with them requires citation of the original work.</p>
     </section>
 
+    <hr class="rule">
+    <section class="biography" aria-label="Author">
+      <p>I graduated from the University of Alberta in 2026 with a degree in Applied Mathematics and a minor in Philosophy. I am the author of <i><a href="/#sidetracks">Sidetracks: An Exploration of Logical Investigations</a></i>.</p>
+    </section>
     <hr class="rule">
     <a class="return-link" href="/">RETURN TO INDEX</a>
   </main>
